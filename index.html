@@ -4,170 +4,289 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Md Zahidul Islam | Operations Research &amp; Data Science</title>
-<meta name="description" content="Md Zahidul Islam, Ph.D. Candidate in Industrial Engineering (Operations Research) at Clemson University. Optimization, simulation, and data science.">
+<meta name="description" content="Md Zahidul Islam, Ph.D. Candidate in Industrial Engineering (Operations Research) at Clemson University. Optimization, simulation, and data science for healthcare, supply chain, and routing.">
+<meta property="og:title" content="Md Zahidul Islam | Operations Research & Data Science">
+<meta property="og:description" content="Ph.D. Candidate, Industrial Engineering (Operations Research), Clemson University.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fbfaf7;--card:#ffffff;--ink:#1d2330;--muted:#5b6474;--line:#e4e1d8;--accent:#8a3a1f;--accent-soft:#f4e9e3}
-@media (prefers-color-scheme:dark){:root{--bg:#14171d;--card:#1b1f27;--ink:#e8e6e1;--muted:#a3abb8;--line:#2c323d;--accent:#e59a76;--accent-soft:#2a211d}}
+:root{--bg:#fbfaf7;--card:#fff;--ink:#1d2330;--muted:#5b6474;--line:#e4e1d8;--accent:#8a3a1f;--accent-soft:#f4e9e3;--tint:#f3f1ea;--fig:#c8b9a6}
+@media (prefers-color-scheme:dark){:root{--bg:#14171d;--card:#1b1f27;--ink:#e8e6e1;--muted:#a3abb8;--line:#2c323d;--accent:#e59a76;--accent-soft:#2a211d;--tint:#181b22;--fig:#4a4f5b}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
 a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:20px;align-items:center;height:56px;overflow-x:auto}
-nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.92rem;white-space:nowrap}
+nav .wrap{display:flex;gap:18px;align-items:center;height:56px;overflow-x:auto}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.9rem;white-space:nowrap}
 nav a:hover{color:var(--accent)}
 nav .brand{color:var(--ink);font-family:"Source Serif 4",serif;font-weight:700;margin-right:auto}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header{padding:72px 0 48px}
 h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:1.2}
-h1{font-size:clamp(2.2rem,5vw,3.2rem);margin:0 0 8px}
-.role{font-size:1.1rem;color:var(--muted);margin:0 0 24px}
-.bio{max-width:680px;font-size:1.05rem}
-.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.btn{display:inline-block;padding:9px 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-weight:500;font-size:.92rem;background:var(--card)}
+header{padding:64px 0 48px}
+.hero{display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:center}
+.photo{width:180px;height:180px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;font-family:"Source Serif 4",serif;font-size:3.6rem;color:var(--accent);overflow:hidden;border:1px solid var(--line)}
+.photo img{width:100%;height:100%;object-fit:cover}
+h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 6px}
+.role{font-size:1.08rem;color:var(--muted);margin:0 0 18px}
+.bio{max-width:640px;margin:0}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-weight:500;font-size:.9rem;background:var(--card)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 @media (prefers-color-scheme:dark){.btn.primary{color:#14171d}}
 .btn:hover{border-color:var(--accent)}
-section{padding:48px 0;border-top:1px solid var(--line)}
-h2{font-size:1.8rem;margin:0 0 6px}
-.lede{color:var(--muted);margin:0 0 28px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
-.tag{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:999px}
-.card h3{font-size:1.18rem;margin:12px 0 10px}
-.card dl{margin:0;font-size:.93rem}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.fact{border-left:3px solid var(--accent);padding:4px 0 4px 14px}
+.fact b{display:block;font-family:"Source Serif 4",serif;font-size:1.5rem}
+.fact span{color:var(--muted);font-size:.86rem}
+section{padding:56px 0;border-top:1px solid var(--line)}
+section.tint{background:var(--tint)}
+h2{font-size:1.85rem;margin:0 0 6px}
+.lede{color:var(--muted);margin:0 0 28px;max-width:680px}
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.area h3{font-size:1.1rem;margin:0 0 6px}
+.area p{margin:0;color:var(--muted);font-size:.94rem}
+.feature{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;margin-bottom:24px}
+.feature ul{padding-left:18px;margin:10px 0 0}
+.feature li{margin-bottom:6px}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.card .fig{height:130px;background:var(--accent-soft);display:grid;place-items:center;border-bottom:1px solid var(--line)}
+.card .fig svg{width:72%;height:100px}
+.card .body{padding:20px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.15rem;margin:10px 0 8px}
+.card dl{margin:0;font-size:.92rem}
 .card dt{font-weight:600;margin-top:8px}
 .card dd{margin:0;color:var(--muted)}
-ol.pubs{padding-left:20px;margin:0}
-ol.pubs li{margin-bottom:16px}
-ol.pubs .venue{font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:16px}
+.chip{font-size:.82rem;font-weight:600;text-decoration:none;border:1px solid var(--accent);color:var(--accent);padding:4px 11px;border-radius:999px}
+.chip:hover{background:var(--accent-soft)}
+svg .s{stroke:var(--accent);fill:none;stroke-width:2}
+svg .f{fill:var(--accent)}
+svg .m{fill:var(--fig)}
+svg .ms{stroke:var(--fig);fill:none;stroke-width:2}
+ol.pubs{padding-left:22px;margin:0 0 24px}
+ol.pubs li{margin-bottom:14px}
+.venue{font-style:italic}
 .me{font-weight:600}
-.resume-box{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.talks{list-style:none;padding:0;margin:0}
+.talks li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.talks time{color:var(--muted);font-size:.9rem}
+.talks .t{font-weight:500}
+.talks .v{color:var(--muted);font-size:.9rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.two h3{font-size:1.2rem;margin:0 0 10px}
+.two ul{padding-left:18px;margin:0}
+.two li{margin-bottom:8px}
+.cvbox{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cvbox .card{padding:24px}
+.cvbox p{color:var(--muted);margin:6px 0 16px}
 footer{padding:32px 0 48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.photo{width:120px;height:120px;font-size:2.4rem}.facts{grid-template-columns:repeat(2,1fr)}.areas,.feature,.two,.cvbox{grid-template-columns:1fr}.talks li{grid-template-columns:1fr;gap:2px}}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <a class="brand" href="#top">Md Zahidul Islam</a>
+  <a href="#research">Research</a>
   <a href="#projects">Projects</a>
   <a href="#publications">Publications</a>
-  <a href="#resume">Resume</a>
+  <a href="#talks">Talks</a>
+  <a href="#teaching">Teaching</a>
+  <a href="#cv">CV</a>
 </div></nav>
 
 <header id="top"><div class="wrap">
-  <h1>Md Zahidul Islam</h1>
-  <p class="role">Ph.D. Candidate, Industrial Engineering (Operations Research), Clemson University</p>
-  <p class="bio">I work on mathematical optimization, simulation, and data science, applied in research on workforce scheduling, supply chains, routing, and healthcare operations, and in graduate projects on forecasting and predictive modeling. I work primarily in Python and translate operational requirements and data into models that support decisions. Author of eight peer-reviewed publications.</p>
-  <div class="links">
-    <a class="btn primary" href="Zahid_Islam_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-    <a class="btn" href="https://www.linkedin.com/in/md-zahidul-islam-9a0a68129/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
-    <a class="btn" href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a>
+  <div class="hero">
+    <!-- To add a photo: upload photo.jpg to the repository and replace "MZ" below with <img src="photo.jpg" alt="Md Zahidul Islam"> -->
+    <div class="photo">MZ</div>
+    <div>
+      <h1>Md Zahidul Islam</h1>
+      <p class="role">Ph.D. Candidate, Industrial Engineering (Operations Research), Clemson University</p>
+      <p class="bio">I build optimization, simulation, and machine-learning models that turn operational requirements and data into decisions. My doctoral research designs physician schedules for a multi-hospital health system that balance staffing rules, fatigue, fairness, and individual preferences. Earlier work covers supply chain simulation, learning-based routing, and production scheduling.</p>
+      <div class="links">
+        <a class="btn primary" href="Zahid_Islam_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="btn primary" href="Zahid_Islam_Academic_CV.pdf" target="_blank" rel="noopener">Academic CV</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn" href="https://www.linkedin.com/in/md-zahidul-islam-9a0a68129/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Zahid1150" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="mailto:mdzahii@clemson.edu">Email</a>
+      </div>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>8</b><span>peer-reviewed publications</span></div>
+    <div class="fact"><b>3.90</b><span>Ph.D. GPA, Clemson</span></div>
+    <div class="fact"><b>12</b><span>undergraduate researchers mentored</span></div>
+    <div class="fact"><b>Dec 2027</b><span>expected Ph.D. completion</span></div>
   </div>
 </div></header>
 
-<section id="projects"><div class="wrap">
-  <h2>Projects</h2>
-  <p class="lede">Research and graduate projects in optimization, simulation, and data science.</p>
-  <div class="grid">
-
-    <article class="card"><span class="tag">Doctoral Research</span>
-      <h3>Physician Scheduling Optimization</h3>
-      <dl>
-        <dt>Problem</dt><dd>Build multi-site physician schedules for a federally funded, multi-institution project with Prisma Health that meet staffing rules while respecting rest, fatigue, fairness, and individual preferences.</dd>
-        <dt>Method</dt><dd>Workforce scheduling models (MILP and CP-SAT) in Python with Gurobi and Google OR-Tools, run on a high-performance computing cluster, plus a bi-objective model trading clinician fatigue against schedule quality and fairness over a 90-day horizon.</dd>
-        <dt>Result</dt><dd>Schedules met an average of 84–87% of each physician's weighted preference categories across synthetic 25–75-physician benchmarks while satisfying all hard staffing rules.</dd>
-      </dl>
-    </article>
-
-    <article class="card"><span class="tag">Winter Simulation Conference</span>
-      <h3>Bullwhip Effect Simulation</h3>
-      <dl>
-        <dt>Problem</dt><dd>Reduce demand-signal amplification (the bullwhip effect) across a multi-stage supply chain.</dd>
-        <dt>Method</dt><dd>Agent-based supply chain simulation in AnyLogic testing information sharing and risk pooling.</dd>
-        <dt>Result</dt><dd>Combining both reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.</dd>
-      </dl>
-    </article>
-
-    <article class="card"><span class="tag">IEEE T-ITS Journal</span>
-      <h3>Learning-Based Optimization for the TSP</h3>
-      <dl>
-        <dt>Problem</dt><dd>Solve large traveling salesman problems quickly without losing tour quality.</dd>
-        <dt>Method</dt><dd>Co-authored a supervised-learning approach that predicts structural components of high-quality solutions and integrates them with exact and heuristic methods.</dd>
-        <dt>Result</dt><dd>Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.</dd>
-      </dl>
-    </article>
-
-    <article class="card"><span class="tag">Graduate Class Project</span>
-      <h3>Bike-Sharing Demand Forecasting</h3>
-      <dl>
-        <dt>Problem</dt><dd>Forecast hourly bike-rental demand in Seoul from weather, time-of-day, season, holiday, and operating-status features.</dd>
-        <dt>Method</dt><dd>Compared a neural network, a PyTorch LSTM on sliding-window sequences, XGBoost, and random forest; tuned with Ray Tune, staged grid search, and GridSearchCV.</dd>
-        <dt>Result</dt><dd>Raised the neural network's test R² from 0.91 to about 0.96 and identified demand drivers through feature-importance analysis.</dd>
-      </dl>
-    </article>
-
-    <article class="card"><span class="tag">Graduate Class Project</span>
-      <h3>Emergency Department Admission Prediction</h3>
-      <dl>
-        <dt>Problem</dt><dd>Predict which emergency department visits end in hospital admission.</dd>
-        <dt>Method</dt><dd>End-to-end Python workflow combining structured predictors with TF-IDF features from chief-complaint text; compared logistic regression, random forest, XGBoost, CatBoost, and LightGBM with cross-validated grid search.</dd>
-        <dt>Result</dt><dd>CatBoost reached the best ROC-AUC (0.863).</dd>
-      </dl>
-    </article>
-
-    <article class="card"><span class="tag">Graduate Class Project</span>
-      <h3>Dynamic Physician Allocation with MDPs</h3>
-      <dl>
-        <dt>Problem</dt><dd>Decide how to allocate physicians between critical and mild-patient queues over time.</dd>
-        <dt>Method</dt><dd>Discounted Markov decision process from a uniformized queueing model, solved by value iteration, policy iteration, modified policy iteration, and a Gurobi dual linear program.</dd>
-        <dt>Result</dt><dd>Compared the solution methods on convergence, value functions, and policy agreement.</dd>
-      </dl>
-    </article>
-
-    <article class="card"><span class="tag">Team Project · Fresenius Medical Care</span>
-      <h3>Reducing Production Downtime</h3>
-      <dl>
-        <dt>Problem</dt><dd>Low overall equipment effectiveness (OEE) on automated production lines.</dd>
-        <dt>Method</dt><dd>Analyzed four months of company-provided data, decomposing OEE into availability, performance, and quality and attributing breakdowns across failure modes.</dd>
-        <dt>Result</dt><dd>Proposed an integrated failure-reporting system, standardized data entry, a supporting database, and standard operating procedures.</dd>
-      </dl>
-    </article>
-
+<section id="research" class="tint"><div class="wrap">
+  <h2>Research</h2>
+  <p class="lede">Operations research methods applied to problems where people, resources, and uncertainty meet.</p>
+  <div class="areas">
+    <div class="area"><h3>Healthcare workforce scheduling</h3><p>Mixed-integer and constraint-programming models for multi-site physician schedules with rest, fatigue, fairness, and preference requirements.</p></div>
+    <div class="area"><h3>Supply chain &amp; simulation</h3><p>Agent-based simulation of multi-stage supply chains and reinforcement learning for perishable inventory.</p></div>
+    <div class="area"><h3>Learning for optimization</h3><p>Supervised learning that guides exact and heuristic solvers on large routing problems.</p></div>
   </div>
 </div></section>
 
-<section id="publications"><div class="wrap">
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <p class="lede">Doctoral research, published work, and graduate projects. Each card lists the problem, the method, and the result.</p>
+
+  <article class="feature">
+    <div>
+      <span class="tag">Doctoral Research · Clemson University</span>
+      <h3 style="font-size:1.45rem;margin:12px 0 8px">Multi-Hospital Physician Scheduling</h3>
+      <p style="margin:0;color:var(--muted)">Lead doctoral researcher on a federally funded, multi-institution project with Prisma Health, working with faculty in industrial engineering, psychology, emergency medicine, and sleep science.</p>
+      <ul>
+        <li>Turned clinician and hospital requirements into scheduling models (MILP and CP-SAT) covering staffing, eligibility, credentials, rest, fatigue, fairness, and preferences.</li>
+        <li>Implemented in Python with Gurobi and Google OR-Tools on a high-performance computing cluster.</li>
+        <li>Built a bi-objective model trading clinician fatigue against schedule quality and fairness over a 90-day horizon.</li>
+        <li>Combined schedules, surveys, interviews, and wearable-device data into model inputs and evaluation measures.</li>
+      </ul>
+      <p style="margin:14px 0 0"><b>Result:</b> schedules met an average of 84–87% of each physician's weighted preference categories across synthetic 25–75-physician benchmarks while satisfying all hard staffing rules.</p>
+    </div>
+    <svg viewBox="0 0 320 240" role="img" aria-label="Illustration of a weekly schedule grid">
+      <g class="ms"><rect x="20" y="20" width="280" height="200" rx="8"/></g>
+      <g font-family="Inter" font-size="11" class="f"><text x="70" y="42">Mon</text><text x="115" y="42">Tue</text><text x="160" y="42">Wed</text><text x="205" y="42">Thu</text><text x="250" y="42">Fri</text>
+      <text x="30" y="72">Site A</text><text x="30" y="122">Site B</text><text x="30" y="172">Site C</text></g>
+      <g class="f" opacity=".85"><rect x="68" y="58" width="36" height="22" rx="4"/><rect x="158" y="58" width="36" height="22" rx="4"/><rect x="248" y="58" width="36" height="22" rx="4"/><rect x="113" y="108" width="36" height="22" rx="4"/><rect x="203" y="108" width="36" height="22" rx="4"/><rect x="68" y="158" width="36" height="22" rx="4"/><rect x="203" y="158" width="36" height="22" rx="4"/></g>
+      <g class="m"><rect x="113" y="58" width="36" height="22" rx="4"/><rect x="203" y="58" width="36" height="22" rx="4"/><rect x="68" y="108" width="36" height="22" rx="4"/><rect x="158" y="108" width="36" height="22" rx="4"/><rect x="248" y="108" width="36" height="22" rx="4"/><rect x="113" y="158" width="36" height="22" rx="4"/><rect x="158" y="158" width="36" height="22" rx="4"/><rect x="248" y="158" width="36" height="22" rx="4"/></g>
+      <text x="30" y="208" font-family="Inter" font-size="10" class="f">Illustration only</text>
+    </svg>
+  </article>
+
+  <div class="grid" id="project-grid"></div>
+</div></section>
+
+<section id="publications" class="tint"><div class="wrap">
   <h2>Publications</h2>
-  <p class="lede">Eight peer-reviewed publications. Full list on <a href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+  <p class="lede">Eight peer-reviewed publications. Citations on <a href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
   <h3>Journal Articles</h3>
   <ol class="pubs">
-    <li>Lyu, Z., <span class="me">Islam, M. Z.</span>, &amp; Yu, A. J. (2024). A scalable and adaptable supervised learning approach for solving the traveling salesman problems. <span class="venue">IEEE Transactions on Intelligent Transportation Systems</span>, 25(11), 17092–17104. <a href="https://doi.org/10.1109/TITS.2024.3410691" target="_blank" rel="noopener">doi:10.1109/TITS.2024.3410691</a></li>
-    <li>Asadujjaman, M., Hossain, M. G., Rana, M. S., &amp; <span class="me">Islam, M. Z.</span> (2021). Stature estimation from handprint measurements: An application to the medicolegal investigation. <span class="venue">Egyptian Journal of Forensic Sciences</span>, 11(1), 1–13. <a href="https://doi.org/10.1186/s41935-020-00215-1" target="_blank" rel="noopener">doi:10.1186/s41935-020-00215-1</a></li>
+    <li>Lyu, Z., <span class="me">Islam, M. Z.</span>, &amp; Yu, A. J. (2024). A scalable and adaptable supervised learning approach for solving the traveling salesman problems. <span class="venue">IEEE Transactions on Intelligent Transportation Systems</span>, 25(11), 17092–17104. <a href="https://doi.org/10.1109/TITS.2024.3410691" target="_blank" rel="noopener">DOI</a></li>
+    <li>Asadujjaman, M., Hossain, M. G., Rana, M. S., &amp; <span class="me">Islam, M. Z.</span> (2021). Stature estimation from handprint measurements: An application to the medicolegal investigation. <span class="venue">Egyptian Journal of Forensic Sciences</span>, 11(1), 1–13. <a href="https://doi.org/10.1186/s41935-020-00215-1" target="_blank" rel="noopener">DOI</a></li>
     <li>Nahar, K., <span class="me">Islam, M. Z.</span>, &amp; Islam, M. M. (2016). Cost-effective decisions on service rate at a customer care centre with a multi-server queuing model. <span class="venue">Journal of Modern Science and Technology</span>, 4(1), 144–153.</li>
   </ol>
   <h3>Conference Proceedings</h3>
   <ol class="pubs" start="4">
-    <li><span class="me">Islam, M. Z.</span>, Roozeboom, N., Gunderson, P., Li, X., &amp; Yu, A. J. (2022). An agent-based simulation model to mitigate the bullwhip effect via information sharing and risk pooling. <span class="venue">2022 Winter Simulation Conference (WSC)</span>, 1636–1647. IEEE. <a href="https://doi.org/10.1109/WSC57314.2022.10015288" target="_blank" rel="noopener">doi:10.1109/WSC57314.2022.10015288</a></li>
-    <li>Kabir, M. R., Kamal, M. S., &amp; <span class="me">Islam, M. Z.</span> (2021). An improved network design of an open-loop reverse supply chain. <span class="venue">2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</span>, 1–6. IEEE. <a href="https://doi.org/10.1109/ACMI53878.2021.9528280" target="_blank" rel="noopener">doi:10.1109/ACMI53878.2021.9528280</a></li>
+    <li><span class="me">Islam, M. Z.</span>, Roozeboom, N., Gunderson, P., Li, X., &amp; Yu, A. J. (2022). An agent-based simulation model to mitigate the bullwhip effect via information sharing and risk pooling. <span class="venue">2022 Winter Simulation Conference (WSC)</span>, 1636–1647. IEEE. <a href="https://doi.org/10.1109/WSC57314.2022.10015288" target="_blank" rel="noopener">DOI</a></li>
+    <li>Kabir, M. R., Kamal, M. S., &amp; <span class="me">Islam, M. Z.</span> (2021). An improved network design of an open-loop reverse supply chain. <span class="venue">2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</span>, 1–6. IEEE. <a href="https://doi.org/10.1109/ACMI53878.2021.9528280" target="_blank" rel="noopener">DOI</a></li>
     <li>Rahul, J. K., Chakraborty, S., Khayer, N., Hriday, A. R., Mia, M. L., <span class="me">Islam, M. Z.</span>, &amp; Ahmed, T. (2021). Design and re-engineering of an automated solar lawn mower. <span class="venue">2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</span>. IEEE.</li>
-    <li><span class="me">Islam, M. Z.</span>, Supto, M. R., Asadujjaman, M., &amp; Chakrabortty, R. K. (2021). Sex identification from hand measurements using machine learning. <span class="venue">2021 International Conference on Computing, Communication, and Intelligent Systems (ICCCIS)</span>, 536–540. IEEE. <a href="https://doi.org/10.1109/ICCCIS51004.2021.9397222" target="_blank" rel="noopener">doi:10.1109/ICCCIS51004.2021.9397222</a></li>
+    <li><span class="me">Islam, M. Z.</span>, Supto, M. R., Asadujjaman, M., &amp; Chakrabortty, R. K. (2021). Sex identification from hand measurements using machine learning. <span class="venue">2021 International Conference on Computing, Communication, and Intelligent Systems (ICCCIS)</span>, 536–540. IEEE. <a href="https://doi.org/10.1109/ICCCIS51004.2021.9397222" target="_blank" rel="noopener">DOI</a></li>
     <li>Fahim, M. R. I., Chyon, F. A., Suman, M. N. H., &amp; <span class="me">Islam, M. Z.</span> (2020). Time befitting supply chain for the future of Bangladesh apparel industry by aligning Industry 4.0. <span class="venue">Proceedings of the International Conference on Mechanical, Industrial and Energy Engineering (ICMIEE20)</span>, Khulna, Bangladesh.</li>
   </ol>
 </div></section>
 
-<section id="resume"><div class="wrap">
-  <div class="resume-box">
+<section id="talks"><div class="wrap">
+  <h2>Talks &amp; Presentations</h2>
+  <p class="lede">Conference talks and posters.</p>
+  <ul class="talks">
+    <li><time>Nov 2026</time><div><div class="t">Emergency department physician scheduling with heterogeneous individual preferences</div><div class="v">INFORMS Annual Meeting, San Francisco, CA · accepted oral presentation</div></div></li>
+    <li><time>Oct 2026</time><div><div class="t">Preferences, alignment, fatigue, and burnout: A cross-sectional shift-schedule survey of emergency department nurses and attending physicians</div><div class="v">Prisma Health Education and Research Institute Research Showcase · accepted poster</div></div></li>
+    <li><time>May 2026</time><div><div class="t">Multi-site physician scheduling incorporating work-related fatigue and individual preferences</div><div class="v">IISE Annual Conference &amp; Expo, Arlington, TX · oral presentation</div></div></li>
+    <li><time>Feb 2026</time><div><div class="t">Fatigue-aware multi-site rostering model for emergency department physicians with fairness and well-being constraints</div><div class="v">Healthcare Systems Process Improvement Conference, Atlanta, GA · oral presentation</div></div></li>
+    <li><time>Nov 2025</time><div><div class="t">The impact of emergency department shift scheduling on clinician fatigue and well-being: A qualitative study</div><div class="v">Prisma Health Education and Research Institute Showcase, Columbia, SC · poster</div></div></li>
+    <li><time>May 2023</time><div><div class="t">Deep reinforcement learning for inventory optimization of perishable products with a quantity discount</div><div class="v">IISE Annual Conference &amp; Expo, New Orleans, LA</div></div></li>
+    <li><time>May 2023</time><div><div class="t">Unrelated parallel machine scheduling problem for plastic injection molding</div><div class="v">IISE Annual Conference &amp; Expo, New Orleans, LA</div></div></li>
+  </ul>
+</div></section>
+
+<section id="teaching" class="tint"><div class="wrap">
+  <h2>Teaching, Mentoring &amp; Service</h2>
+  <div class="two">
     <div>
-      <h2>Resume</h2>
-      <p class="lede" style="margin:0">Two-page resume for operations research and data science internships.</p>
+      <h3>Teaching</h3>
+      <ul>
+        <li><b>Lecturer and Assistant Professor</b>, RUET (2019–2021): Probability and Statistics, Operations Management, Industrial Simulation; advised undergraduate research and capstone projects.</li>
+        <li><b>Lecturer</b>, Ahsanullah University of Science and Technology (2017–2018): Operations Management, Engineering Economy, Manufacturing Processes.</li>
+        <li><b>Graduate Teaching Assistant</b>, Clemson and UT Knoxville (2022–2024): systems modeling, quality engineering, supply chain design, engineering economics.</li>
+      </ul>
     </div>
-    <a class="btn primary" href="Zahid_Islam_Resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a>
+    <div>
+      <h3>Mentoring &amp; Service</h3>
+      <ul>
+        <li><b>President</b>, Clemson INFORMS Student Chapter (2025–2026). The chapter received the INFORMS Magna Cum Laude award in 2025 (as Vice President) and 2026 (as President); co-hosted the <i>Optimality Gap</i> podcast.</li>
+        <li><b>Undergraduate Research Mentor</b>, Clemson Creative Inquiry: twelve undergraduates across five disciplines.</li>
+        <li><b>Peer Reviewer</b>: Journal of Big Data; Scientific Reports; BMC Medical Imaging.</li>
+        <li><b>Awards</b>: Dr. Lloyd W. Crawford Fellowship (2021); University Gold Medal, RUET (2019); Prime Minister Gold Medal, Bangladesh (2018).</li>
+      </ul>
+    </div>
   </div>
 </div></section>
 
-<footer><div class="wrap">© 2026 Md Zahidul Islam · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
+<section id="cv"><div class="wrap">
+  <h2>Resume &amp; CV</h2>
+  <p class="lede">A two-page industry resume and a full academic CV.</p>
+  <div class="cvbox">
+    <div class="card"><h3 style="margin:0">Resume</h3><p>Two pages, for operations research and data science internships.</p><div><a class="btn primary" href="Zahid_Islam_Resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a></div></div>
+    <div class="card"><h3 style="margin:0">Academic CV</h3><p>Full record of research, publications, presentations, teaching, and service.</p><div><a class="btn primary" href="Zahid_Islam_Academic_CV.pdf" target="_blank" rel="noopener">Download Academic CV (PDF)</a></div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Md Zahidul Islam · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Clemson, SC</div></footer>
+
+<script>
+/* ===== PROJECTS =====
+   To add a document link (Google Drive report, slides, poster, code), add it to that
+   project's "links" list, for example:  {label:"Report", url:"https://drive.google.com/..."}
+   Set Drive files to "Anyone with the link can view". */
+const FIG = {
+  network:'<svg viewBox="0 0 200 100"><g class="ms"><path d="M30 70 L70 30 L120 55 L170 25 M70 30 L100 85 L120 55 M30 70 L100 85"/></g><g class="f"><circle cx="30" cy="70" r="7"/><circle cx="70" cy="30" r="7"/><circle cx="120" cy="55" r="7"/><circle cx="170" cy="25" r="7"/><circle cx="100" cy="85" r="7"/></g></svg>',
+  wave:'<svg viewBox="0 0 200 100"><path class="ms" d="M10 50 Q35 10 60 50 T110 50 T160 50 T190 50"/><path class="s" d="M10 50 Q35 30 60 50 T110 50 T160 50 T190 50"/><g class="m"><rect x="20" y="80" width="30" height="10" rx="2"/><rect x="85" y="80" width="30" height="10" rx="2"/><rect x="150" y="80" width="30" height="10" rx="2"/></g></svg>',
+  tour:'<svg viewBox="0 0 200 100"><path class="s" d="M25 60 L55 20 L105 15 L160 30 L180 70 L130 88 L70 85 Z"/><g class="f"><circle cx="25" cy="60" r="5"/><circle cx="55" cy="20" r="5"/><circle cx="105" cy="15" r="5"/><circle cx="160" cy="30" r="5"/><circle cx="180" cy="70" r="5"/><circle cx="130" cy="88" r="5"/><circle cx="70" cy="85" r="5"/></g></svg>',
+  forecast:'<svg viewBox="0 0 200 100"><path class="ms" d="M10 70 L35 55 L60 62 L85 35 L110 45 L135 25"/><path class="s" stroke-dasharray="5 4" d="M135 25 L160 38 L190 20"/><line class="ms" x1="10" y1="92" x2="190" y2="92"/></svg>',
+  bars:'<svg viewBox="0 0 200 100"><g class="m"><rect x="25" y="50" width="22" height="42"/><rect x="60" y="30" width="22" height="62"/><rect x="130" y="40" width="22" height="52"/><rect x="165" y="58" width="22" height="34"/></g><rect class="f" x="95" y="12" width="22" height="80"/></svg>',
+  states:'<svg viewBox="0 0 200 100"><g class="ms"><circle cx="45" cy="50" r="24"/><circle cx="155" cy="50" r="24"/></g><path class="s" d="M70 40 Q100 15 130 40 M130 60 Q100 85 70 60"/><g class="f" font-family="Inter" font-size="11"><text x="33" y="54">Crit.</text><text x="141" y="54">Mild</text></g></svg>',
+  gauge:'<svg viewBox="0 0 200 100"><path class="ms" d="M40 85 A60 60 0 0 1 160 85"/><path class="s" d="M40 85 A60 60 0 0 1 120 33"/><line class="s" x1="100" y1="85" x2="125" y2="45"/><circle class="f" cx="100" cy="85" r="5"/></svg>'
+};
+const PROJECTS = [
+  {fig:'network', tag:'Winter Simulation Conference', title:'Bullwhip Effect Simulation',
+   p:'Reduce demand-signal amplification (the bullwhip effect) across a multi-stage supply chain.',
+   m:'Agent-based supply chain simulation in AnyLogic testing information sharing and risk pooling.',
+   r:'Combining both reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.',
+   links:[{label:'Paper',url:'https://doi.org/10.1109/WSC57314.2022.10015288'}]},
+  {fig:'tour', tag:'IEEE T-ITS Journal', title:'Learning-Based Optimization for the TSP',
+   p:'Solve large traveling salesman problems quickly without losing tour quality.',
+   m:'Co-authored a supervised-learning approach that predicts structural components of high-quality solutions and integrates them with exact and heuristic methods.',
+   r:'Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.',
+   links:[{label:'Paper',url:'https://doi.org/10.1109/TITS.2024.3410691'}]},
+  {fig:'forecast', tag:'Graduate Class Project', title:'Bike-Sharing Demand Forecasting',
+   p:'Forecast hourly bike-rental demand in Seoul from weather, time-of-day, season, holiday, and operating-status features.',
+   m:'Compared a neural network, a PyTorch LSTM on sliding-window sequences, XGBoost, and random forest; tuned with Ray Tune and grid search.',
+   r:"Raised the neural network's test R² from 0.91 to about 0.96 and identified demand drivers through feature-importance analysis.",
+   links:[]},
+  {fig:'bars', tag:'Graduate Class Project', title:'Emergency Department Admission Prediction',
+   p:'Predict which emergency department visits end in hospital admission.',
+   m:'End-to-end Python workflow combining structured predictors with TF-IDF features from chief-complaint text; compared logistic regression, random forest, XGBoost, CatBoost, and LightGBM.',
+   r:'CatBoost reached the best ROC-AUC (0.863).',
+   links:[]},
+  {fig:'states', tag:'Graduate Class Project', title:'Dynamic Physician Allocation with MDPs',
+   p:'Decide how to allocate physicians between critical and mild-patient queues over time.',
+   m:'Discounted Markov decision process from a uniformized queueing model, solved by value iteration, policy iteration, modified policy iteration, and a Gurobi dual linear program.',
+   r:'Compared the solution methods on convergence, value functions, and policy agreement.',
+   links:[]},
+  {fig:'gauge', tag:'Team Project · Fresenius Medical Care', title:'Reducing Production Downtime',
+   p:'Low overall equipment effectiveness (OEE) on automated production lines.',
+   m:'Analyzed four months of company-provided data, decomposing OEE into availability, performance, and quality and attributing breakdowns across failure modes.',
+   r:'Proposed an integrated failure-reporting system, standardized data entry, a supporting database, and standard operating procedures.',
+   links:[]}
+];
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.getElementById('project-grid').innerHTML = PROJECTS.map(x => `
+  <article class="card">
+    <div class="fig" aria-hidden="true">${FIG[x.fig]}</div>
+    <div class="body">
+      <span class="tag">${esc(x.tag)}</span>
+      <h3>${esc(x.title)}</h3>
+      <dl><dt>Problem</dt><dd>${esc(x.p)}</dd><dt>Method</dt><dd>${esc(x.m)}</dd><dt>Result</dt><dd>${esc(x.r)}</dd></dl>
+      ${x.links.length ? `<div class="chips">${x.links.map(l => `<a class="chip" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>` : ''}
+    </div>
+  </article>`).join('');
+</script>
 </body>
 </html>
