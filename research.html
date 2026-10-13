@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research | Md Zahidul Islam</title>
+<meta name="description" content="Md Zahidul Islam, Ph.D. candidate in Industrial Engineering (Operations Research), Clemson University.">
+<link rel="icon" href="images/photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--fg:#1f2328;--muted:#5f6b76;--line:#e6e8eb;--accent:#0b5c86;--soft:#f5f7f9}
+@media (prefers-color-scheme:dark){:root{--bg:#111418;--fg:#e6e8eb;--muted:#9aa5b1;--line:#2a3038;--accent:#6cb6e0;--soft:#181c21}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:840px;margin:0 auto;padding:0 20px}
+header.site{border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:22px;height:60px;overflow-x:auto}
+header.site .name{font-weight:600;color:var(--fg);margin-right:auto;white-space:nowrap}
+header.site nav a{color:var(--muted);white-space:nowrap;font-size:.95rem}
+header.site nav a.on,header.site nav a:hover{color:var(--fg);text-decoration:none}
+header.site nav{display:flex;gap:20px}
+main{padding:40px 0 64px}
+h1{font-size:2rem;line-height:1.2;margin:0 0 6px;font-weight:600}
+h2{font-size:1.3rem;margin:48px 0 14px;font-weight:600;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:1.08rem;margin:0 0 4px;font-weight:600}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+.small{font-size:.92rem}
+.hero{display:grid;grid-template-columns:150px 1fr;gap:32px;align-items:start}
+.hero img{width:150px;height:150px;object-fit:cover;border-radius:6px}
+.role{color:var(--muted);margin:0 0 16px}
+.links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px;font-size:.95rem}
+.list{list-style:none;padding:0;margin:0}
+.list>li{padding:14px 0;border-bottom:1px solid var(--line)}
+.list>li:last-child{border-bottom:0}
+.meta{color:var(--muted);font-size:.9rem}
+.more{display:inline-block;margin-top:10px;font-size:.95rem}
+.pub{padding:10px 0}
+.pub .t{font-weight:600}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.badge{font-size:.82rem;border:1px solid var(--line);border-radius:4px;padding:1px 8px;color:var(--muted)}
+a.badge{color:var(--accent);border-color:var(--accent)}
+a.badge:hover{text-decoration:none;background:var(--soft)}
+.news td{padding:6px 16px 6px 0;vertical-align:top}
+.news td:first-child{color:var(--muted);white-space:nowrap;font-size:.92rem}
+.crumb{font-size:.92rem;margin-bottom:18px}
+figure{margin:24px 0;padding:14px;border:1px solid var(--line);border-radius:6px;background:#fff}
+figure img{display:block;max-width:100%;max-height:520px;margin:0 auto}
+figcaption{color:#5f6b76;font-size:.88rem;margin-top:10px;text-align:center}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 6px}
+.facts div{background:var(--soft);border-radius:6px;padding:12px 14px}
+.facts b{display:block;font-size:1.25rem}
+.facts span{color:var(--muted);font-size:.88rem}
+.note{background:var(--soft);border-left:3px solid var(--accent);padding:10px 14px;font-size:.93rem;color:var(--muted);margin:18px 0}
+ul.tight{padding-left:20px;margin:0 0 14px}
+ul.tight li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.hero{grid-template-columns:1fr;gap:18px}.hero img{width:120px;height:120px}.facts{grid-template-columns:1fr}h1{font-size:1.7rem}}
+</style>
+</head><body>
+<header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html">About</a><a href="research.html" class=on>Research</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
+<main><div class="wrap">
+<h1>Research</h1>
+<p>My doctoral research asks how emergency department schedules can be built to meet staffing needs while protecting clinicians from fatigue and burnout. It combines optimization models with evidence collected from the clinicians themselves through interviews, surveys, and wearable-device data.</p>
+<div class="note">This work is part of a CDC/NIOSH-funded, multi-institution project with Prisma Health, Clemson University, Wake Forest University School of Medicine, and the University of Central Florida. Advisor: Dr. Kevin M. Taaffe.</div>
+
+<h2 id="scheduling">Optimization models for physician scheduling</h2>
+<p>Emergency physicians in a multi-hospital system rotate across sites, work nights and weekends, and have individual preferences. I build models that produce schedules meeting every hard staffing rule while balancing fatigue, fairness, and those preferences.</p>
+<ul class="tight">
+<li>Turned clinician and hospital requirements into multi-site scheduling models (mixed-integer and constraint programming) covering staffing levels, eligibility, credentials, rest, fatigue, fairness, and individual preferences.</li>
+<li>Implemented the models in Python with Gurobi and Google OR-Tools and compared solution approaches for large instances on a high-performance computing cluster.</li>
+<li>Built a bi-objective model that trades clinician fatigue against schedule quality and fairness for physicians rotating across multiple hospitals over a 90-day planning horizon. Fatigue is scored with a shift fatigue index based on chronotype misalignment, shift end time, and shift length.</li>
+<li>With Dr. Kevin Taaffe and Dr. Hervé Kerivin: a model in which each physician distributes 100 points across preference categories (nights, weekends, protected days, work blocks, shift types, and others); the points become physician-specific weights in the objective.</li>
+</ul>
+<p><b>Result so far:</b> on synthetic benchmarks with 25 to 75 physicians, schedules met an average of 84–87% of each physician's weighted preference categories while satisfying all hard staffing rules.</p>
+<p class="small muted">Presented at the Healthcare Systems Process Improvement Conference (Feb 2026) and the IISE Annual Conference (May 2026); accepted talk at the INFORMS Annual Meeting (Nov 2026).</p>
+
+<h2 id="interviews">Interview study: how schedules shape fatigue</h2>
+<figure><img src="images/interview_poster.jpg" alt="Interview study poster"><figcaption>Poster, Prisma Health Research Showcase, November 2025.</figcaption></figure>
+<p>Semi-structured interviews with 13 physicians and 18 nurses at three Prisma Health emergency departments explored how shift length, timing, distribution, and flexibility affect fatigue, burnout, and well-being. Transcripts were coded with codebooks developed by the team, with interrater reliability assessed on a dual-coded subset.</p>
+<ul class="tight">
+<li>Both groups linked fatigue to unpredictable shifts, high workload, and insufficient recovery.</li>
+<li>Nurses tended to prefer 12-hour shifts for fewer workdays but reported fatigue after long stretches; physicians tended to prefer 9–10-hour shifts and rotations that fit their body clock.</li>
+<li>The findings informed the survey questions and the scheduling models.</li>
+</ul>
+<div class="badges"><a class="badge" href="docs/Interview_Study_Poster_2025.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
+
+<h2 id="survey">Survey study: preferences, schedule fit, and burnout</h2>
+<figure><img src="images/survey_poster.jpg" alt="Survey study poster"><figcaption>Poster accepted for the Prisma Health Research Showcase, October 2026.</figcaption></figure>
+<p>A survey of 103 nurses and 57 attending physicians at seven Prisma Health emergency departments (March–May 2026) compared scheduling preferences, recovery needs, and the link between schedule fit and burnout.</p>
+<ul class="tight">
+<li>Nurses most often preferred 12-hour shifts; physicians most often preferred 9-hour shifts.</li>
+<li>76% of clinicians preferred shifts longer than the point at which they begin to feel tired.</li>
+<li>Clinicians reported needing more time off after more consecutive shifts and after night shifts.</li>
+<li>Schedules that better matched clinicians' preferences were associated with lower burnout and fatigue, after accounting for profession, age, and work hours.</li>
+</ul>
+<div class="badges"><a class="badge" href="docs/Survey_Study_Poster_2026.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
+
+<h2 id="llm">Large language models for qualitative analysis</h2>
+<p>With S. V. Abrol, V. Prabhu, and K. M. Taaffe, I am evaluating how well large language models perform inductive thematic analysis of healthcare interviews. Using 18 emergency department nurse interviews and a human-developed codebook of 47 codes, we compare Claude Sonnet and Opus at medium and high reasoning-effort settings on conceptual alignment, code coverage, coding specificity, and higher-order interpretation.</p>
+<ul class="tight">
+<li>Preliminary results: the four model configurations together captured 93.6% of the human codes, and the best single configuration captured 83.0%.</li>
+<li>Larger models generally covered more codes, but the models struggled with higher-order themes about schedule satisfaction and alignment.</li>
+<li>My role: reviewing and refining human–model code mappings, evaluating prompting approaches, designing the inter-rater reliability assessment, and computing agreement statistics.</li>
+</ul>
+<div class="badges"><span class="badge">Ongoing · manuscript in preparation</span></div>
+
+<h2 id="earlier">Earlier research</h2>
+<p>At the University of Tennessee Space Institute (2021–2022) I worked on supply chain simulation, learning-based routing, perishable inventory, and production scheduling. See the <a href="projects.html">projects page</a>.</p>
+
+</div></main>
+<footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
+</body></html>

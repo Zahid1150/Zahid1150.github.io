@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Production Scheduling for Plastic Injection Molding | Md Zahidul Islam</title>
+<meta name="description" content="Mixed-integer model for scheduling jobs on parallel molding machines under resource limits, using a manufacturer&#x27;s data.">
+<link rel="icon" href="../images/photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--fg:#1f2328;--muted:#5f6b76;--line:#e6e8eb;--accent:#0b5c86;--soft:#f5f7f9}
+@media (prefers-color-scheme:dark){:root{--bg:#111418;--fg:#e6e8eb;--muted:#9aa5b1;--line:#2a3038;--accent:#6cb6e0;--soft:#181c21}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:840px;margin:0 auto;padding:0 20px}
+header.site{border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:22px;height:60px;overflow-x:auto}
+header.site .name{font-weight:600;color:var(--fg);margin-right:auto;white-space:nowrap}
+header.site nav a{color:var(--muted);white-space:nowrap;font-size:.95rem}
+header.site nav a.on,header.site nav a:hover{color:var(--fg);text-decoration:none}
+header.site nav{display:flex;gap:20px}
+main{padding:40px 0 64px}
+h1{font-size:2rem;line-height:1.2;margin:0 0 6px;font-weight:600}
+h2{font-size:1.3rem;margin:48px 0 14px;font-weight:600;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:1.08rem;margin:0 0 4px;font-weight:600}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+.small{font-size:.92rem}
+.hero{display:grid;grid-template-columns:150px 1fr;gap:32px;align-items:start}
+.hero img{width:150px;height:150px;object-fit:cover;border-radius:6px}
+.role{color:var(--muted);margin:0 0 16px}
+.links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px;font-size:.95rem}
+.list{list-style:none;padding:0;margin:0}
+.list>li{padding:14px 0;border-bottom:1px solid var(--line)}
+.list>li:last-child{border-bottom:0}
+.meta{color:var(--muted);font-size:.9rem}
+.more{display:inline-block;margin-top:10px;font-size:.95rem}
+.pub{padding:10px 0}
+.pub .t{font-weight:600}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.badge{font-size:.82rem;border:1px solid var(--line);border-radius:4px;padding:1px 8px;color:var(--muted)}
+a.badge{color:var(--accent);border-color:var(--accent)}
+a.badge:hover{text-decoration:none;background:var(--soft)}
+.news td{padding:6px 16px 6px 0;vertical-align:top}
+.news td:first-child{color:var(--muted);white-space:nowrap;font-size:.92rem}
+.crumb{font-size:.92rem;margin-bottom:18px}
+figure{margin:24px 0;padding:14px;border:1px solid var(--line);border-radius:6px;background:#fff}
+figure img{display:block;max-width:100%;max-height:520px;margin:0 auto}
+figcaption{color:#5f6b76;font-size:.88rem;margin-top:10px;text-align:center}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 6px}
+.facts div{background:var(--soft);border-radius:6px;padding:12px 14px}
+.facts b{display:block;font-size:1.25rem}
+.facts span{color:var(--muted);font-size:.88rem}
+.note{background:var(--soft);border-left:3px solid var(--accent);padding:10px 14px;font-size:.93rem;color:var(--muted);margin:18px 0}
+ul.tight{padding-left:20px;margin:0 0 14px}
+ul.tight li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.hero{grid-template-columns:1fr;gap:18px}.hero img{width:120px;height:120px}.facts{grid-template-columns:1fr}h1{font-size:1.7rem}}
+</style>
+</head><body>
+<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
+<main><div class="wrap">
+<div class="crumb"><a href="../projects.html">← All projects</a></div>
+<h1>Production Scheduling for Plastic Injection Molding</h1>
+<p class="muted">Research · UT Space Institute · IISE Annual Conference 2023</p>
+
+<h2>Problem</h2><p>A plastics manufacturer needed to assign jobs to parallel injection-molding machines that differ in capability, while respecting shared resource limits.</p>
+<h2>What I did</h2><ul class="tight"><li>Collaborated on a resource-constrained, unrelated parallel-machine scheduling formulation (mixed-integer linear program).</li><li>Solved it with Gurobi using data from the manufacturer.</li></ul>
+<h2>Results</h2><ul class="tight"><li>Presented at the IISE Annual Conference &amp; Expo, New Orleans, May 2023 (with A. Owens and A. J. Yu).</li></ul>
+
+
+<p class="small muted"><b>Tools:</b> MILP, Gurobi</p>
+
+</div></main>
+<footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
+</body></html>
