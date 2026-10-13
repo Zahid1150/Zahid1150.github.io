@@ -54,6 +54,8 @@ h2{font-size:1.85rem;margin:0 0 6px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
 .card .fig{height:130px;background:var(--accent-soft);display:grid;place-items:center;border-bottom:1px solid var(--line)}
 .card .fig svg{width:72%;height:100px}
+.card .fig.photo-fig{height:180px;background:#fff;padding:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card .fig img{max-width:100%;max-height:164px;object-fit:contain;display:block}
 .card .body{padding:20px;display:flex;flex-direction:column;flex:1}
 .card h3{font-size:1.15rem;margin:10px 0 8px}
 .card dl{margin:0;font-size:.92rem}
@@ -249,22 +251,24 @@ const PROJECTS = [
    p:'Reduce demand-signal amplification (the bullwhip effect) across a multi-stage supply chain.',
    m:'Agent-based supply chain simulation in AnyLogic testing information sharing and risk pooling.',
    r:'Combining both reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.',
-   links:[{label:'Paper',url:'https://doi.org/10.1109/WSC57314.2022.10015288'}]},
+   links:[{label:'Paper (DOI)',url:'https://doi.org/10.1109/WSC57314.2022.10015288'}]},
   {fig:'tour', tag:'IEEE T-ITS Journal', title:'Learning-Based Optimization for the TSP',
    p:'Solve large traveling salesman problems quickly without losing tour quality.',
    m:'Co-authored a supervised-learning approach that predicts structural components of high-quality solutions and integrates them with exact and heuristic methods.',
    r:'Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.',
-   links:[{label:'Paper',url:'https://doi.org/10.1109/TITS.2024.3410691'}]},
+   links:[{label:'Paper (DOI)',url:'https://doi.org/10.1109/TITS.2024.3410691'}]},
   {fig:'forecast', tag:'Graduate Class Project', title:'Bike-Sharing Demand Forecasting',
    p:'Forecast hourly bike-rental demand in Seoul from weather, time-of-day, season, holiday, and operating-status features.',
    m:'Compared a neural network, a PyTorch LSTM on sliding-window sequences, XGBoost, and random forest; tuned with Ray Tune and grid search.',
    r:"Raised the neural network's test R² from 0.91 to about 0.96 and identified demand drivers through feature-importance analysis.",
-   links:[]},
+   img:'images/bike_fit.jpg', alt:'Predicted versus actual bike demand scatter plot',
+   links:[{label:'Presentation',url:'docs/Bike_Sharing_Forecasting_Presentation.pdf'}]},
   {fig:'bars', tag:'Graduate Class Project', title:'Emergency Department Admission Prediction',
    p:'Predict which emergency department visits end in hospital admission.',
    m:'End-to-end Python workflow combining structured predictors with TF-IDF features from chief-complaint text; compared logistic regression, random forest, XGBoost, CatBoost, and LightGBM.',
    r:'CatBoost reached the best ROC-AUC (0.863).',
-   links:[]},
+   img:'images/ed_roc.jpg', alt:'ROC curves for five tuned models',
+   links:[{label:'Report',url:'docs/ED_Admission_Prediction_Report.pdf'}]},
   {fig:'states', tag:'Graduate Class Project', title:'Dynamic Physician Allocation with MDPs',
    p:'Decide how to allocate physicians between critical and mild-patient queues over time.',
    m:'Discounted Markov decision process from a uniformized queueing model, solved by value iteration, policy iteration, modified policy iteration, and a Gurobi dual linear program.',
@@ -274,12 +278,29 @@ const PROJECTS = [
    p:'Low overall equipment effectiveness (OEE) on automated production lines.',
    m:'Analyzed four months of company-provided data, decomposing OEE into availability, performance, and quality and attributing breakdowns across failure modes.',
    r:'Proposed an integrated failure-reporting system, standardized data entry, a supporting database, and standard operating procedures.',
-   links:[]}
+   img:'images/fresenius_poster.jpg', alt:'Team poster: data-driven approach to minimize downtime',
+   links:[{label:'Poster',url:'docs/Fresenius_Downtime_Poster.pdf'}]},
+  {fig:'network', tag:'Graduate Class Project', title:'Network Interdiction for Wildlife Trafficking',
+   p:'Choose which routes to block to disrupt trafficking of poached tiger parts through a transportation network.',
+   m:'Bilevel shortest-path interdiction models (travel-distance and detection-probability variants), reformulated to single level by dualization and solved in Gurobi; built in Python with NetworkX and Matplotlib.',
+   r:'Compared interdicted routes and objective values across budgets on a 29-node, 68-edge synthetic case study based on Bandhavgarh Tiger Reserve geography (illustrative, not observed trafficking data).',
+   img:'images/interdiction.jpg', alt:'Network with interdicted arcs highlighted in red',
+   links:[{label:'Report',url:'docs/Network_Interdiction_Report.pdf'}]},
+  {fig:'bars', tag:'Graduate Class Project', title:'Lagrangian Relaxation with Subgradient Updates',
+   p:'Obtain bounds and good solutions for a scheduling model with time-indexed resource constraints.',
+   m:'Relaxed the resource constraints with Lagrange multipliers updated by a subgradient method, tracking bounds and recovered feasible solutions.',
+   r:'Analyzed step-size sensitivity and benchmarked against the original formulation and an LP bound.',
+   links:[{label:'Report',url:'docs/Lagrangian_Relaxation_Report.pdf'}]},
+  {fig:'gauge', tag:'Team Project · UT Knoxville', title:'Deep Q-Network Agent for Ludo',
+   p:'Train an agent to play the board game Ludo against a computer opponent.',
+   m:'Deep Q-Network with epsilon-greedy exploration, experience replay, and local and target networks.',
+   r:'Compared processed and raw state representations, action-selection designs, reward shaping, network depth, learning rate, and discount factor.',
+   links:[{label:'Report',url:'docs/Ludo_DQN_Report.pdf'}]}
 ];
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.getElementById('project-grid').innerHTML = PROJECTS.map(x => `
   <article class="card">
-    <div class="fig" aria-hidden="true">${FIG[x.fig]}</div>
+    ${x.img ? `<div class="fig photo-fig"><img src="${x.img}" alt="${esc(x.alt)}" loading="lazy"></div>` : `<div class="fig" aria-hidden="true">${FIG[x.fig]}</div>`}
     <div class="body">
       <span class="tag">${esc(x.tag)}</span>
       <h3>${esc(x.title)}</h3>
