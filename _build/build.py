@@ -467,7 +467,7 @@ header.site .name{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;col
 header.site nav{display:flex;gap:22px}
 header.site nav a{color:#c7cbe0;font-size:.93rem;font-weight:500;white-space:nowrap}
 header.site nav a.on,header.site nav a:hover{color:#fff;text-decoration:none}
-.band{background:linear-gradient(120deg,var(--navy) 0%,#2b2a5e 55%,var(--purple) 100%);color:#fff;padding:56px 0 92px}
+.band{background:linear-gradient(120deg,var(--navy) 0%,#2b2a5e 55%,var(--purple) 100%);color:#fff;padding:56px 0 60px}
 .band.slim{padding:40px 0 48px}
 .band h1{font-size:clamp(2rem,4.6vw,2.9rem);margin:0 0 8px}
 .band .role{color:#d9dcf0;font-size:1.08rem;margin:0 0 16px}
@@ -732,6 +732,198 @@ def main():
         f'<tr><td>{d}</td><td><b>{E(t)}</b><br><span class="muted">{v} · {k}</span></td></tr>' for d, t, v, k in TALKS) + "</table></div></section></div>"
     page("publications.html", "Publications | Md Zahidul Islam", pubs, "publications.html")
 
+
+
+# ================================================================ v4 content (overrides above)
+CSS += """
+.skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.sk{font-size:.76rem;font-weight:500;color:var(--fg);background:var(--chip);border-radius:6px;padding:2px 8px}
+.card p.long{color:var(--fg);opacity:.86}
+.skillgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.skillgrid .panel h3{font-size:1.02rem;margin-bottom:10px}
+.intro{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin-bottom:22px}
+.intro p:last-child{margin-bottom:0}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.figs figure{margin:14px 0}
+.doc h3{font-size:1.12rem;margin:26px 0 8px}
+@media (max-width:760px){.figs{grid-template-columns:1fr}}
+"""
+
+
+def skills_html(items):
+    return '<div class="skills">' + "".join(f'<span class="sk">{E(x)}</span>' for x in items) + "</div>"
+
+
+BLURB = {
+ "bullwhip-simulation": "Built an agent-based supply chain simulation in AnyLogic to test two ways of damping the bullwhip effect. Combining information sharing with risk pooling reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.",
+ "learning-tsp": "Co-authored a supervised-learning method that predicts parts of a high-quality tour and feeds those predictions to exact and heuristic solvers. Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.",
+ "perishable-inventory-rl": "Developed reinforcement-learning ordering policies for perishable products whose value decays over time, under random demand and quantity discounts that reward ordering more. Presented at the IISE Annual Conference in 2023.",
+ "injection-molding-scheduling": "Collaborated on a mixed-integer model that assigns jobs to injection-molding machines with different capabilities under shared resource limits, solved in Gurobi with a plastics manufacturer's data. Presented at the IISE Annual Conference in 2023.",
+ "ed-admission-prediction": "Predicted admission versus discharge for 347,360 emergency department visits by combining 50 structured triage variables with 500 text features from chief complaints. Compared five classifiers with cross-validated tuning; CatBoost reached the best ROC-AUC (0.863).",
+ "bike-demand-forecasting": "Forecast hourly bike rentals in Seoul from weather, time, season, and holiday features, comparing a neural network, an LSTM, XGBoost, and random forest. Hyperparameter tuning raised the neural network's test R² from 0.91 to about 0.96.",
+ "mdp-physician-allocation": "Modeled how to split physicians between critical and mild-patient queues as a Markov decision process built from a queueing model. Solved a 336-state instance with value iteration, policy iteration, modified policy iteration, and linear programming, and compared the results.",
+ "network-interdiction": "Built bilevel optimization models that choose which routes to block, under a budget, to disrupt trafficking of poached tiger parts. Reformulated them to single-level models and compared blocked routes across budgets on a case study based on Bandhavgarh Tiger Reserve.",
+ "facility-location-branch-and-bound": "Implemented a branch-and-bound algorithm from scratch for the uncapacitated facility location problem in MATLAB with Gurobi, and benchmarked it against the integer solver and LP relaxation on instances with 10 to 50 facilities.",
+ "lagrangian-relaxation": "Relaxed hard resource constraints in a scheduling model with Lagrange multipliers and updated them with a subgradient method over 200 iterations. Studied how the step size affects convergence, bounds, and how often feasible schedules are recovered.",
+ "fresenius-downtime": "Analyzed four months of production data from automated dialysis-product lines, breaking equipment effectiveness into availability, performance, and quality losses by failure mode. Proposed a failure-reporting system, a supporting database, and standard operating procedures.",
+ "ludo-dqn": "Trained a Deep Q-Network agent to play Ludo and tested how state representation, reward shaping, network depth, and learning parameters affect it. Some changes helped, but overall performance fell short of expectations.",
+}
+SKILLS = {
+ "bullwhip-simulation": ["Agent-Based Simulation", "AnyLogic", "Supply Chain Analysis", "Scenario Analysis"],
+ "learning-tsp": ["Supervised Learning", "Combinatorial Optimization", "Routing", "Heuristics"],
+ "perishable-inventory-rl": ["Deep Reinforcement Learning", "Inventory Optimization", "Stochastic Modeling", "Python"],
+ "injection-molding-scheduling": ["Mixed-Integer Linear Programming", "Production Scheduling", "Gurobi"],
+ "ed-admission-prediction": ["Python", "pandas", "scikit-learn", "Gradient Boosting", "Text Features (TF-IDF)", "Cross-Validation", "Healthcare Data"],
+ "bike-demand-forecasting": ["Time-Series Forecasting", "PyTorch", "LSTM", "XGBoost", "Hyperparameter Tuning", "Ray Tune"],
+ "mdp-physician-allocation": ["Markov Decision Processes", "Dynamic Programming", "Queueing Theory", "Linear Programming", "Gurobi"],
+ "network-interdiction": ["Bilevel Optimization", "Duality", "Network Models", "Gurobi", "NetworkX"],
+ "facility-location-branch-and-bound": ["Branch and Bound", "Integer Programming", "LP Relaxation", "MATLAB", "Gurobi"],
+ "lagrangian-relaxation": ["Lagrangian Relaxation", "Subgradient Optimization", "Integer Programming"],
+ "fresenius-downtime": ["Production Data Analysis", "OEE", "Process Improvement", "Failure-Mode Analysis"],
+ "ludo-dqn": ["Deep Q-Learning", "Reinforcement Learning", "Python"],
+}
+
+
+def project_item(p):
+    return f"""<a class="card" href="{{up}}projects/{p['slug']}.html">{thumb_html(p)}<div class="cbody">
+<span class="tag">{E(short_label(p))}</span><h3>{E(p['title'])}</h3><p class="long">{E(BLURB[p['slug']])}</p>{skills_html(SKILLS[p['slug']])}<span class="go">Details →</span></div></a>"""
+
+
+_old_project_page = project_page
+
+
+def project_page(p):
+    p = dict(p)
+    p["tools"] = p["tools"] + "</p>" + "<h2>Skills</h2>" + skills_html(SKILLS[p["slug"]]) + "<p style='display:none'>"
+    _old_project_page(p)
+
+
+RESEARCH_INTRO = """<p>My research develops data-driven, fatigue-aware, and preference-based optimization models for healthcare workforce scheduling, with a focus on emergency department physicians and nurses. I combine operations research, mathematical optimization, statistical analysis, and human-factors research to understand how shift schedules affect clinicians' fatigue, sleep, recovery, burnout, and well-being, and to build schedules that account for them.</p>
+<p>The work is part of a CDC/NIOSH-funded, multi-institution project with Prisma Health, Clemson University, Wake Forest University School of Medicine, and the University of Central Florida. I bring together evidence from clinician interviews, surveys, historical work schedules, wearable sleep monitoring, and physiological measurements, and use it to design scheduling approaches that meet clinical staffing requirements while balancing individual preferences, fairness, and fatigue-related risk, in support of clinician well-being, patient safety, and efficient operations.</p>"""
+
+RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor: Dr. Kevin M. Taaffe, Clemson University.</p></div>
+
+<h2 id="scheduling">Optimization models for emergency physician scheduling</h2>
+<p>Prisma Health's emergency physicians rotate among seven emergency department locations. Every schedule has to keep each department staffed around the clock while respecting credentials, rest rules, and leave, and it also shapes how tired physicians get, how fairly nights and weekends are shared, and how well each person's life fits around work. I am working on two connected scheduling problems.</p>
+<figure style="max-width:520px"><img src="{{up}}images/multi_hospital.jpg" alt="Illustration of one physician working across several hospitals"><figcaption>Physicians in a hospital network work at several sites, often far from home.</figcaption></figure>
+
+<h3 id="preferences">1. Scheduling with individually weighted preferences</h3>
+<p>With Dr. Kevin Taaffe and Dr. Hervé Kerivin, and in partnership with Prisma Health, I am building a mixed-integer model in which physicians say not only what they prefer but how much each preference matters to them. Each physician distributes a fixed budget of points across scheduling features such as night shifts, weekend shifts, protected days off, work blocks and recovery after them, shift type, early and late shifts, runs of the same shift type, and paired weekends. More points on a feature means that feature matters more, and the points become physician-specific weights in the objective.</p>
+<ul>
+<li>Hard constraints enforce shift coverage, availability, workload targets, overtime limits, one shift per day, minimum rest, and no backward shift rotations.</li>
+<li>Violations are measured two ways: whether an undesired event happened, and how far a count (for example, nights in a month) exceeds the physician's preferred limit.</li>
+<li>On synthetic benchmarks with 25 to 75 physicians, schedules met an average of 84–87% of each physician's weighted preference categories while satisfying all hard staffing rules.</li>
+</ul>
+<p class="small muted">Accepted talk, INFORMS Annual Meeting, November 2026 · manuscript in preparation.</p>
+{{skills1}}
+
+<h3 id="fatigue">2. Fatigue-aware multi-site rostering</h3>
+<p>This model builds three-month schedules for physicians across a multi-hospital network with the explicit goal of reducing fatigue. Fatigue is scored with a Shift Fatigue Index that combines how well a shift matches the physician's chronotype (body clock), when the shift ends, and how long it is. The model minimizes total fatigue alongside penalties for unfair sharing of night, weekend, and distant-hospital shifts, departures from shift-bundling or spreading preferences, and over- or under-time.</p>
+<ul>
+<li>Hard rules guarantee coverage, at most one shift per day, vacation and request-off days, protected rest after nights, and no night shifts at distant hospitals.</li>
+<li>The interview study shaped the model: themes such as batching versus spreading shifts, recovery after nights, fair sharing of undesirable shifts, and chronotype fit became constraints and penalties.</li>
+<li>On synthetic instances built to reflect real operations (including a case with 80 physicians across four nearby departments), the model produced feasible rosters that met coverage while lowering total fatigue, extending recovery after nights, shortening long runs of workdays, and sharing night, weekend, and distant shifts more evenly.</li>
+<li>I implemented the models in Python with Gurobi and Google OR-Tools and ran large instances on a high-performance computing cluster. A bi-objective version makes the trade-off between fatigue and schedule quality explicit, giving decision-makers a range of options rather than a single schedule.</li>
+<li>I have presented this work to emergency physicians for feedback. Data collection on sleep and fatigue is ongoing and will be used to calibrate the fatigue measure.</li>
+</ul>
+<div class="figs">
+<figure><img src="{{up}}images/roster_heatmap.jpg" alt="Roster heatmap for 20 physicians over 30 days"><figcaption>Roster for 20 of 80 physicians over 30 days, colored by shift type (synthetic instance).</figcaption></figure>
+<figure><img src="{{up}}images/schedule_fatigue.jpg" alt="Schedules and fatigue scores over time for five physicians"><figcaption>Schedules and fatigue scores over a month for five physicians (synthetic instance).</figcaption></figure>
+</div>
+<p class="small muted">Presented at the Healthcare Systems Process Improvement Conference (Feb 2026) and the IISE Annual Conference (May 2026).</p>
+{{skills2}}
+
+<h2 id="interviews">Interview study: how schedules shape fatigue</h2>
+<p>To ground the models in clinicians' experience, I led a qualitative study with 13 physicians and 18 nurses (including seven leaders) at three Prisma Health emergency departments. I co-designed the interview guide, conducted 30-minute semi-structured interviews on ideal schedules, recovery, nights and weekends, flexibility, and what a "fatigue-optimized" schedule would look like, and coded transcripts with codebooks the team developed (6 nurse categories with 40+ codes; 16 physician categories with 150+ sub-codes), checking interrater reliability on a dual-coded subset.</p>
+<ul>
+<li>Both groups linked fatigue to unpredictable shifts, high workload, and insufficient recovery, and saw control, consistency, and recovery time as essential.</li>
+<li>Nurses tended to prefer 12-hour shifts for fewer workdays but reported fatigue after long stretches; physicians tended to prefer 9–10-hour shifts and rotations aligned with their body clock.</li>
+<li>The findings informed the survey questions and the scheduling models.</li>
+</ul>
+<figure style="max-width:620px"><img src="{{up}}images/interview_poster.jpg" alt="Interview study poster"><figcaption>Poster, Prisma Health Research Showcase, November 2025.</figcaption></figure>
+<div class="badges"><a class="badge" href="{{up}}docs/Interview_Study_Poster_2025.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
+{{skills3}}
+
+<h2 id="survey">Survey study: preferences, schedule fit, and burnout</h2>
+<p>I led a cross-sectional survey of 103 nurses and 57 attending physicians at seven Prisma Health general, pediatric, and psychiatric emergency departments (March–May 2026). It measured preferred shift length, block length, and night shifts and the reasons behind them; when fatigue sets in during a shift; time off needed to recover; how well clinicians' recent schedules matched their preferences; burnout; physical, mental, and emotional fatigue; sleep; and chronotype.</p>
+<ul>
+<li>Nurses most often preferred 12-hour shifts (67%); physicians most often preferred 9-hour shifts (49%).</li>
+<li>76% of clinicians preferred shifts that last beyond the point at which they begin to feel tired (a median of 2 hours longer).</li>
+<li>Clinicians reported needing more time off after more consecutive shifts and after night shifts.</li>
+<li>Schedules that better matched clinicians' preferences were associated with lower burnout and fatigue after adjusting for profession, age, and work hours; associations with burnout and emotional fatigue held after also adjusting for sleep, chronotype, and shift types.</li>
+</ul>
+<figure style="max-width:720px"><img src="{{up}}images/survey_poster.jpg" alt="Survey study poster"><figcaption>Poster accepted for the Prisma Health Research Showcase, October 2026.</figcaption></figure>
+<div class="badges"><a class="badge" href="{{up}}docs/Survey_Study_Poster_2026.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
+{{skills4}}
+
+<h2 id="llm">Large language models for qualitative analysis</h2>
+<p>With S. V. Abrol, V. Prabhu, and K. M. Taaffe, I am evaluating how well large language models can perform inductive thematic analysis of healthcare interviews. Using the 18 nurse interviews and a human-developed reference codebook of 47 codes, we compare Claude Sonnet and Opus at medium and high reasoning-effort settings on conceptual alignment, code coverage, coding specificity, and whether the models reproduce higher-order human interpretations.</p>
+<ul>
+<li>Preliminary results: the four model configurations together captured 93.6% of the human codes, and the best single configuration captured 83.0%.</li>
+<li>Larger models generally covered more codes, but the models struggled with higher-order themes about schedule satisfaction and alignment.</li>
+<li>My role: reviewing and refining human–model code mappings, evaluating prompting and analysis approaches, designing the inter-rater reliability assessment, computing agreement statistics, and contributing to validation and the manuscript.</li>
+</ul>
+<div class="badges"><span class="badge">Ongoing · manuscript in preparation</span></div>
+{{skills5}}
+
+<h2 id="earlier">Earlier research</h2>
+<p>At the University of Tennessee Space Institute (2021–2022) I worked on supply chain simulation, learning-based routing, perishable inventory, and production scheduling. See the <a href="{{up}}projects.html">projects page</a>.</p>
+"""
+RSK = {
+ "skills1": ["Mixed-Integer Linear Programming", "Preference Modeling", "Multi-Criteria Optimization", "Gurobi", "Python", "Workforce Scheduling"],
+ "skills2": ["Mixed-Integer Linear Programming", "Constraint Programming (CP-SAT)", "Multi-Objective Optimization", "Fatigue Modeling", "Gurobi", "Google OR-Tools", "HPC / SLURM"],
+ "skills3": ["Qualitative Research", "Interview Design", "Thematic Analysis", "Inter-Rater Reliability", "Stakeholder Engagement"],
+ "skills4": ["Survey Design", "Regression Analysis", "Hypothesis Testing", "Statistical Analysis", "Data Visualization"],
+ "skills5": ["Large Language Models", "Prompt Design", "Inter-Rater Agreement", "Qualitative Coding", "Evaluation Design"],
+}
+for k, v in RSK.items():
+    RESEARCH = RESEARCH.replace("{" + k + "}", skills_html(v))
+
+
+def rcard(anchor, tag, title, text, sk, img=None, art=None):
+    th = f'<div class="thumb"><img src="{{up}}{img}" alt="" loading="lazy"></div>' if img else f'<div class="thumb art" aria-hidden="true">{ART[art]}</div>'
+    return f'<a class="card" href="{{up}}research.html#{anchor}">{th}<div class="cbody"><span class="tag">{tag}</span><h3>{title}</h3><p class="long">{text}</p>{skills_html(sk)}<span class="go">Read more →</span></div></a>'
+
+
+RCARDS = "".join([
+    rcard("preferences", "Optimization", "Physician scheduling with weighted preferences",
+          "A mixed-integer model in which each physician distributes a budget of points across scheduling features, so the schedule reflects both what they prefer and how much it matters. Schedules met 84–87% of weighted preferences on synthetic 25–75-physician benchmarks while meeting all staffing rules.",
+          RSK["skills1"][:4], img="images/multi_hospital.jpg"),
+    rcard("fatigue", "Optimization", "Fatigue-aware multi-site rostering",
+          "Three-month schedules across a hospital network that minimize a Shift Fatigue Index built from chronotype fit, shift end time, and shift length, while sharing nights, weekends, and distant shifts fairly. Presented at HSPI and IISE 2026.",
+          RSK["skills2"][:4], img="images/roster_heatmap.jpg"),
+    rcard("interviews", "Qualitative study", "How schedules shape clinician fatigue",
+          "Semi-structured interviews with 13 physicians and 18 nurses at three emergency departments, coded into team-built codebooks. The themes became constraints and penalties in the scheduling models.",
+          RSK["skills3"][:4], img="images/interview_poster.jpg"),
+    rcard("survey", "Survey study", "Preferences, schedule fit, and burnout",
+          "A survey of 160 nurses and physicians at seven emergency departments. Clinicians whose schedules better matched their preferences reported lower burnout and fatigue.",
+          RSK["skills4"][:4], img="images/survey_poster.jpg"),
+    rcard("llm", "Large language models", "LLMs for thematic analysis",
+          "Testing whether large language models can reproduce human coding of nurse interviews. Four model configurations together recovered 93.6% of a 47-code human codebook, but missed higher-order themes.",
+          RSK["skills5"][:4], art="llm"),
+])
+
+SKILL_GROUPS = [
+ ("Optimization", ["Mixed-Integer Linear Programming", "Constraint Programming (CP-SAT)", "Multi-Objective Optimization", "Lagrangian Relaxation", "Branch and Bound", "Bilevel Optimization", "Dynamic Programming", "Markov Decision Processes", "Queueing Theory", "Workforce Scheduling"]),
+ ("Machine learning and statistics", ["Supervised Learning", "Gradient Boosting (XGBoost, CatBoost, LightGBM)", "Neural Networks and LSTM", "Time-Series Forecasting", "Deep Reinforcement Learning", "Text Features (TF-IDF)", "Regression Analysis", "Hypothesis Testing", "Design of Experiments"]),
+ ("Simulation", ["Agent-Based Simulation", "Discrete-Event Simulation", "AnyLogic", "Arena"]),
+ ("Human-centered research", ["Survey Design", "Semi-Structured Interviews", "Thematic Analysis", "Inter-Rater Reliability", "Wearable and Physiological Data", "LLM Evaluation"]),
+ ("Software and tools", ["Python", "NumPy", "pandas", "scikit-learn", "PyTorch", "TensorFlow", "Gurobi", "Google OR-Tools", "CPLEX", "MATLAB", "R", "SQL", "Git", "SLURM / HPC"]),
+]
+SKILLS_SECTION = '<section><h2>Skills</h2><p class="lede">Methods and tools used across my research and projects.</p><div class="skillgrid">' + "".join(
+    f'<div class="panel"><h3>{n}</h3>{skills_html(v)}</div>' for n, v in SKILL_GROUPS) + "</div></section>"
+
+import re as _re
+HOME = _re.sub(r'<div class="stats">.*?</div>\n</div>\n', '', HOME, count=1, flags=_re.S)
+HOME = _re.sub(r'(<section><h2>Research</h2>).*?(</section>)',
+               lambda m: m.group(1) + '<div class="intro" style="margin-top:6px">' + RESEARCH_INTRO + '</div><div class="grid">' + RCARDS + '</div>' + m.group(2),
+               HOME, count=1, flags=_re.S)
+HOME = HOME.replace('<section><h2>Publications</h2>', SKILLS_SECTION + '<section><h2>Publications</h2>', 1)
+
+
+HOME = _re.sub(r'(<section><h2>Selected projects</h2>.*?<div class="grid">).*?(</div>\n<p style)',
+               lambda m: m.group(1) + "".join(project_item(p) for p in PROJECTS if p["slug"] in SELECTED) + m.group(2),
+               HOME, count=1, flags=_re.S)
 
 if __name__ == "__main__":
     main()
