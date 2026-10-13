@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md Zahidul Islam | Operations Research &amp; Data Science</title>
+<meta name="description" content="Md Zahidul Islam, Ph.D. Candidate in Industrial Engineering (Operations Research) at Clemson University. Optimization, simulation, and data science.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--card:#ffffff;--ink:#1d2330;--muted:#5b6474;--line:#e4e1d8;--accent:#8a3a1f;--accent-soft:#f4e9e3}
+@media (prefers-color-scheme:dark){:root{--bg:#14171d;--card:#1b1f27;--ink:#e8e6e1;--muted:#a3abb8;--line:#2c323d;--accent:#e59a76;--accent-soft:#2a211d}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
+a{color:var(--accent)}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:20px;align-items:center;height:56px;overflow-x:auto}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.92rem;white-space:nowrap}
+nav a:hover{color:var(--accent)}
+nav .brand{color:var(--ink);font-family:"Source Serif 4",serif;font-weight:700;margin-right:auto}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{padding:72px 0 48px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:1.2}
+h1{font-size:clamp(2.2rem,5vw,3.2rem);margin:0 0 8px}
+.role{font-size:1.1rem;color:var(--muted);margin:0 0 24px}
+.bio{max-width:680px;font-size:1.05rem}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-block;padding:9px 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-weight:500;font-size:.92rem;background:var(--card)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme:dark){.btn.primary{color:#14171d}}
+.btn:hover{border-color:var(--accent)}
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font-size:1.8rem;margin:0 0 6px}
+.lede{color:var(--muted);margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:999px}
+.card h3{font-size:1.18rem;margin:12px 0 10px}
+.card dl{margin:0;font-size:.93rem}
+.card dt{font-weight:600;margin-top:8px}
+.card dd{margin:0;color:var(--muted)}
+ol.pubs{padding-left:20px;margin:0}
+ol.pubs li{margin-bottom:16px}
+ol.pubs .venue{font-style:italic}
+.me{font-weight:600}
+.resume-box{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+footer{padding:32px 0 48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top">Md Zahidul Islam</a>
+  <a href="#projects">Projects</a>
+  <a href="#publications">Publications</a>
+  <a href="#resume">Resume</a>
+</div></nav>
+
+<header id="top"><div class="wrap">
+  <h1>Md Zahidul Islam</h1>
+  <p class="role">Ph.D. Candidate, Industrial Engineering (Operations Research), Clemson University</p>
+  <p class="bio">I work on mathematical optimization, simulation, and data science, applied in research on workforce scheduling, supply chains, routing, and healthcare operations, and in graduate projects on forecasting and predictive modeling. I work primarily in Python and translate operational requirements and data into models that support decisions. Author of eight peer-reviewed publications.</p>
+  <div class="links">
+    <a class="btn primary" href="Zahid_Islam_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    <a class="btn" href="https://www.linkedin.com/in/md-zahidul-islam-9a0a68129/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+    <a class="btn" href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a>
+  </div>
+</div></header>
+
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <p class="lede">Research and graduate projects in optimization, simulation, and data science.</p>
+  <div class="grid">
+
+    <article class="card"><span class="tag">Doctoral Research</span>
+      <h3>Physician Scheduling Optimization</h3>
+      <dl>
+        <dt>Problem</dt><dd>Build multi-site physician schedules for a federally funded, multi-institution project with Prisma Health that meet staffing rules while respecting rest, fatigue, fairness, and individual preferences.</dd>
+        <dt>Method</dt><dd>Workforce scheduling models (MILP and CP-SAT) in Python with Gurobi and Google OR-Tools, run on a high-performance computing cluster, plus a bi-objective model trading clinician fatigue against schedule quality and fairness over a 90-day horizon.</dd>
+        <dt>Result</dt><dd>Schedules met an average of 84–87% of each physician's weighted preference categories across synthetic 25–75-physician benchmarks while satisfying all hard staffing rules.</dd>
+      </dl>
+    </article>
+
+    <article class="card"><span class="tag">Winter Simulation Conference</span>
+      <h3>Bullwhip Effect Simulation</h3>
+      <dl>
+        <dt>Problem</dt><dd>Reduce demand-signal amplification (the bullwhip effect) across a multi-stage supply chain.</dd>
+        <dt>Method</dt><dd>Agent-based supply chain simulation in AnyLogic testing information sharing and risk pooling.</dd>
+        <dt>Result</dt><dd>Combining both reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.</dd>
+      </dl>
+    </article>
+
+    <article class="card"><span class="tag">IEEE T-ITS Journal</span>
+      <h3>Learning-Based Optimization for the TSP</h3>
+      <dl>
+        <dt>Problem</dt><dd>Solve large traveling salesman problems quickly without losing tour quality.</dd>
+        <dt>Method</dt><dd>Co-authored a supervised-learning approach that predicts structural components of high-quality solutions and integrates them with exact and heuristic methods.</dd>
+        <dt>Result</dt><dd>Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.</dd>
+      </dl>
+    </article>
+
+    <article class="card"><span class="tag">Graduate Class Project</span>
+      <h3>Bike-Sharing Demand Forecasting</h3>
+      <dl>
+        <dt>Problem</dt><dd>Forecast hourly bike-rental demand in Seoul from weather, time-of-day, season, holiday, and operating-status features.</dd>
+        <dt>Method</dt><dd>Compared a neural network, a PyTorch LSTM on sliding-window sequences, XGBoost, and random forest; tuned with Ray Tune, staged grid search, and GridSearchCV.</dd>
+        <dt>Result</dt><dd>Raised the neural network's test R² from 0.91 to about 0.96 and identified demand drivers through feature-importance analysis.</dd>
+      </dl>
+    </article>
+
+    <article class="card"><span class="tag">Graduate Class Project</span>
+      <h3>Emergency Department Admission Prediction</h3>
+      <dl>
+        <dt>Problem</dt><dd>Predict which emergency department visits end in hospital admission.</dd>
+        <dt>Method</dt><dd>End-to-end Python workflow combining structured predictors with TF-IDF features from chief-complaint text; compared logistic regression, random forest, XGBoost, CatBoost, and LightGBM with cross-validated grid search.</dd>
+        <dt>Result</dt><dd>CatBoost reached the best ROC-AUC (0.863).</dd>
+      </dl>
+    </article>
+
+    <article class="card"><span class="tag">Graduate Class Project</span>
+      <h3>Dynamic Physician Allocation with MDPs</h3>
+      <dl>
+        <dt>Problem</dt><dd>Decide how to allocate physicians between critical and mild-patient queues over time.</dd>
+        <dt>Method</dt><dd>Discounted Markov decision process from a uniformized queueing model, solved by value iteration, policy iteration, modified policy iteration, and a Gurobi dual linear program.</dd>
+        <dt>Result</dt><dd>Compared the solution methods on convergence, value functions, and policy agreement.</dd>
+      </dl>
+    </article>
+
+    <article class="card"><span class="tag">Team Project · Fresenius Medical Care</span>
+      <h3>Reducing Production Downtime</h3>
+      <dl>
+        <dt>Problem</dt><dd>Low overall equipment effectiveness (OEE) on automated production lines.</dd>
+        <dt>Method</dt><dd>Analyzed four months of company-provided data, decomposing OEE into availability, performance, and quality and attributing breakdowns across failure modes.</dd>
+        <dt>Result</dt><dd>Proposed an integrated failure-reporting system, standardized data entry, a supporting database, and standard operating procedures.</dd>
+      </dl>
+    </article>
+
+  </div>
+</div></section>
+
+<section id="publications"><div class="wrap">
+  <h2>Publications</h2>
+  <p class="lede">Eight peer-reviewed publications. Full list on <a href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+  <h3>Journal Articles</h3>
+  <ol class="pubs">
+    <li>Lyu, Z., <span class="me">Islam, M. Z.</span>, &amp; Yu, A. J. (2024). A scalable and adaptable supervised learning approach for solving the traveling salesman problems. <span class="venue">IEEE Transactions on Intelligent Transportation Systems</span>, 25(11), 17092–17104. <a href="https://doi.org/10.1109/TITS.2024.3410691" target="_blank" rel="noopener">doi:10.1109/TITS.2024.3410691</a></li>
+    <li>Asadujjaman, M., Hossain, M. G., Rana, M. S., &amp; <span class="me">Islam, M. Z.</span> (2021). Stature estimation from handprint measurements: An application to the medicolegal investigation. <span class="venue">Egyptian Journal of Forensic Sciences</span>, 11(1), 1–13. <a href="https://doi.org/10.1186/s41935-020-00215-1" target="_blank" rel="noopener">doi:10.1186/s41935-020-00215-1</a></li>
+    <li>Nahar, K., <span class="me">Islam, M. Z.</span>, &amp; Islam, M. M. (2016). Cost-effective decisions on service rate at a customer care centre with a multi-server queuing model. <span class="venue">Journal of Modern Science and Technology</span>, 4(1), 144–153.</li>
+  </ol>
+  <h3>Conference Proceedings</h3>
+  <ol class="pubs" start="4">
+    <li><span class="me">Islam, M. Z.</span>, Roozeboom, N., Gunderson, P., Li, X., &amp; Yu, A. J. (2022). An agent-based simulation model to mitigate the bullwhip effect via information sharing and risk pooling. <span class="venue">2022 Winter Simulation Conference (WSC)</span>, 1636–1647. IEEE. <a href="https://doi.org/10.1109/WSC57314.2022.10015288" target="_blank" rel="noopener">doi:10.1109/WSC57314.2022.10015288</a></li>
+    <li>Kabir, M. R., Kamal, M. S., &amp; <span class="me">Islam, M. Z.</span> (2021). An improved network design of an open-loop reverse supply chain. <span class="venue">2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</span>, 1–6. IEEE. <a href="https://doi.org/10.1109/ACMI53878.2021.9528280" target="_blank" rel="noopener">doi:10.1109/ACMI53878.2021.9528280</a></li>
+    <li>Rahul, J. K., Chakraborty, S., Khayer, N., Hriday, A. R., Mia, M. L., <span class="me">Islam, M. Z.</span>, &amp; Ahmed, T. (2021). Design and re-engineering of an automated solar lawn mower. <span class="venue">2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</span>. IEEE.</li>
+    <li><span class="me">Islam, M. Z.</span>, Supto, M. R., Asadujjaman, M., &amp; Chakrabortty, R. K. (2021). Sex identification from hand measurements using machine learning. <span class="venue">2021 International Conference on Computing, Communication, and Intelligent Systems (ICCCIS)</span>, 536–540. IEEE. <a href="https://doi.org/10.1109/ICCCIS51004.2021.9397222" target="_blank" rel="noopener">doi:10.1109/ICCCIS51004.2021.9397222</a></li>
+    <li>Fahim, M. R. I., Chyon, F. A., Suman, M. N. H., &amp; <span class="me">Islam, M. Z.</span> (2020). Time befitting supply chain for the future of Bangladesh apparel industry by aligning Industry 4.0. <span class="venue">Proceedings of the International Conference on Mechanical, Industrial and Energy Engineering (ICMIEE20)</span>, Khulna, Bangladesh.</li>
+  </ol>
+</div></section>
+
+<section id="resume"><div class="wrap">
+  <div class="resume-box">
+    <div>
+      <h2>Resume</h2>
+      <p class="lede" style="margin:0">Two-page resume for operations research and data science internships.</p>
+    </div>
+    <a class="btn primary" href="Zahid_Islam_Resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Md Zahidul Islam · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
+</body>
+</html>
