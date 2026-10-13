@@ -151,7 +151,7 @@ TALKS = [
 def pub_html(p):
     kind, year, title, authors, venue, doi = p
     links = [("DOI", doi)] if doi else []
-    return f'<div class="pub"><div class="t">{E(title)}</div><div>{authors} ({year}). {venue}.</div>{badges(links)}</div>'
+    return f'<div class="pub"><div class="t">{E(title)}</div><div class="a">{authors} ({year}). {venue}.</div>{badges(links)}</div>'
 
 
 # ---------------------------------------------------------------- projects
@@ -446,6 +446,290 @@ def main():
     pubs += "<h2>Conference proceedings</h2>" + "".join(pub_html(p) for p in PUBS if p[0] == "conf")
     pubs += "<h2>Talks and posters</h2><table class=\"news\">" + "".join(
         f"<tr><td>{d}</td><td><b>{E(t)}</b><br><span class=\"muted\">{v} · {k}</span></td></tr>" for d, t, v, k in TALKS) + "</table>"
+    page("publications.html", "Publications | Md Zahidul Islam", pubs, "publications.html")
+
+
+
+# ================================================================ v3 design (overrides above)
+CSS = """
+:root{--bg:#f5f6fa;--card:#fff;--fg:#1b2133;--muted:#5d6577;--line:#e3e6ee;--navy:#16213e;--purple:#522d80;--orange:#e8590c;--orange-soft:#fff1e8;--chip:#eef0f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1320;--card:#171c2c;--fg:#e8eaf2;--muted:#a2a9bb;--line:#272e44;--orange:#ff8a4c;--orange-soft:#2a1c14;--chip:#202741}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16.5px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--orange);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:"Plus Jakarta Sans",Inter,sans-serif;line-height:1.2;letter-spacing:-.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.site{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--navy) 94%,transparent);backdrop-filter:blur(6px)}
+header.site .wrap{display:flex;align-items:center;gap:22px;height:58px;overflow-x:auto}
+header.site .name{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;color:#fff;margin-right:auto;white-space:nowrap}
+header.site nav{display:flex;gap:22px}
+header.site nav a{color:#c7cbe0;font-size:.93rem;font-weight:500;white-space:nowrap}
+header.site nav a.on,header.site nav a:hover{color:#fff;text-decoration:none}
+.band{background:linear-gradient(120deg,var(--navy) 0%,#2b2a5e 55%,var(--purple) 100%);color:#fff;padding:56px 0 92px}
+.band.slim{padding:40px 0 48px}
+.band h1{font-size:clamp(2rem,4.6vw,2.9rem);margin:0 0 8px}
+.band .role{color:#d9dcf0;font-size:1.08rem;margin:0 0 16px}
+.band p{color:#e9eaf6;max-width:640px}
+.band a{color:#fff}
+.hero{display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:center}
+.hero img{width:190px;height:190px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-block;padding:9px 18px;border-radius:8px;font-weight:600;font-size:.92rem;border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn:hover{text-decoration:none;background:rgba(255,255,255,.1)}
+.btn.primary{background:var(--orange);border-color:var(--orange)}
+.btn.primary:hover{filter:brightness(1.08);background:var(--orange)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-56px;position:relative}
+.stat{background:var(--card);border-radius:12px;padding:18px 20px;box-shadow:0 6px 20px rgba(22,33,62,.08);border:1px solid var(--line)}
+.stat b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.7rem;color:var(--purple)}
+@media (prefers-color-scheme:dark){.stat b{color:#b79cf0}}
+.stat span{color:var(--muted);font-size:.88rem}
+section{padding:56px 0 8px}
+section h2{font-size:1.75rem;margin:0 0 6px}
+.lede{color:var(--muted);margin:0 0 24px;max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.grid.two{grid-template-columns:repeat(auto-fill,minmax(440px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;color:var(--fg);transition:transform .15s,box-shadow .15s}
+a.card:hover{text-decoration:none;transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,33,62,.12)}
+.thumb{height:170px;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden;padding:10px}
+.thumb img{max-width:100%;max-height:150px;object-fit:contain}
+.thumb.art{background:linear-gradient(135deg,#f3f0fa,#fdf1ea)}
+@media (prefers-color-scheme:dark){.thumb.art{background:linear-gradient(135deg,#221d36,#2a1d17)}}
+.thumb svg{width:70%;height:120px}
+.thumb .s{stroke:var(--purple);fill:none;stroke-width:2.2}
+.thumb .f{fill:var(--orange)}
+.thumb .m{fill:#c9bfdc}
+.thumb .ms{stroke:#c9bfdc;fill:none;stroke-width:2}
+.cbody{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--purple);background:var(--chip);padding:3px 9px;border-radius:999px}
+@media (prefers-color-scheme:dark){.tag{color:#c9b5f5}}
+.card h3{font-size:1.12rem;margin:10px 0 6px}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.go{margin-top:auto;padding-top:14px;color:var(--orange);font-weight:600;font-size:.9rem}
+.pubs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 24px}
+.pub{padding:14px 0;border-bottom:1px solid var(--line)}
+.pub:last-child{border-bottom:0}
+.pub .t{font-weight:600}
+.pub .a{color:var(--muted);font-size:.93rem}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.badge{font-size:.8rem;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--muted)}
+a.badge{color:var(--orange);border-color:var(--orange)}
+a.badge:hover{text-decoration:none;background:var(--orange-soft)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+.panel h3{margin:0 0 10px;font-size:1.15rem}
+.panel ul{padding-left:18px;margin:0}
+.panel li{margin-bottom:8px}
+.news{width:100%;border-collapse:collapse}
+.news td{padding:9px 14px 9px 0;vertical-align:top;border-bottom:1px solid var(--line)}
+.news tr:last-child td{border-bottom:0}
+.news td:first-child{color:var(--purple);font-weight:600;white-space:nowrap;font-size:.9rem;width:96px}
+@media (prefers-color-scheme:dark){.news td:first-child{color:#c9b5f5}}
+.doc>*{max-width:860px}
+.doc h2{font-size:1.35rem;margin:36px 0 10px}
+.doc ul{padding-left:20px}
+.doc li{margin-bottom:6px}
+.crumb a{color:#d9dcf0;font-size:.92rem}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:-36px 0 8px;position:relative}
+figure{margin:26px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+figure img{display:block;max-width:100%;max-height:560px;margin:0 auto}
+figcaption{color:#5d6577;font-size:.88rem;margin-top:10px;text-align:center}
+.note{background:var(--orange-soft);border-left:3px solid var(--orange);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.93rem;margin:18px 0}
+.small{font-size:.92rem}.muted{color:var(--muted)}
+footer{margin-top:64px;background:var(--navy);color:#c7cbe0;padding:28px 0;font-size:.9rem}
+footer a{color:#fff}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.hero img{width:130px;height:130px}.stats{grid-template-columns:repeat(2,1fr)}.cols,.grid.two{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
+"""
+
+ART = {
+ "network": '<svg viewBox="0 0 200 100"><g class="ms"><path d="M30 70 L70 30 L120 55 L170 25 M70 30 L100 85 L120 55 M30 70 L100 85"/></g><g class="f"><circle cx="30" cy="70" r="7"/><circle cx="70" cy="30" r="7"/><circle cx="120" cy="55" r="7"/><circle cx="170" cy="25" r="7"/><circle cx="100" cy="85" r="7"/></g></svg>',
+ "tour": '<svg viewBox="0 0 200 100"><path class="s" d="M25 60 L55 20 L105 15 L160 30 L180 70 L130 88 L70 85 Z"/><g class="f"><circle cx="25" cy="60" r="5"/><circle cx="55" cy="20" r="5"/><circle cx="105" cy="15" r="5"/><circle cx="160" cy="30" r="5"/><circle cx="180" cy="70" r="5"/><circle cx="130" cy="88" r="5"/><circle cx="70" cy="85" r="5"/></g></svg>',
+ "stock": '<svg viewBox="0 0 200 100"><path class="s" d="M15 25 L55 75 L55 25 L95 75 L95 25 L135 75 L135 25 L175 75"/><line class="ms" x1="10" y1="80" x2="190" y2="80"/><g class="f"><rect x="160" y="10" width="26" height="10" rx="2"/></g></svg>',
+ "gantt": '<svg viewBox="0 0 200 100"><g class="m"><rect x="20" y="18" width="50" height="14" rx="3"/><rect x="90" y="43" width="60" height="14" rx="3"/><rect x="40" y="68" width="40" height="14" rx="3"/></g><g class="f"><rect x="75" y="18" width="70" height="14" rx="3"/><rect x="20" y="43" width="60" height="14" rx="3"/><rect x="90" y="68" width="80" height="14" rx="3"/></g></svg>',
+ "states": '<svg viewBox="0 0 200 100"><g class="ms"><circle cx="45" cy="50" r="24"/><circle cx="155" cy="50" r="24"/></g><path class="s" d="M70 40 Q100 15 130 40 M130 60 Q100 85 70 60"/><g class="f"><circle cx="45" cy="50" r="7"/><circle cx="155" cy="50" r="7"/></g></svg>',
+ "facility": '<svg viewBox="0 0 200 100"><g class="ms"><path d="M100 50 L40 20 M100 50 L40 80 M100 50 L60 50 M160 30 L185 15 M160 30 L185 50"/></g><g class="m"><circle cx="40" cy="20" r="6"/><circle cx="40" cy="80" r="6"/><circle cx="60" cy="50" r="6"/><circle cx="185" cy="15" r="6"/><circle cx="185" cy="50" r="6"/></g><g class="f"><rect x="90" y="40" width="20" height="20" rx="3"/><rect x="150" y="20" width="20" height="20" rx="3"/></g></svg>',
+ "converge": '<svg viewBox="0 0 200 100"><path class="s" d="M10 85 Q40 20 60 60 T100 40 T140 45 T190 42"/><line class="ms" stroke-dasharray="5 4" x1="10" y1="40" x2="190" y2="40"/><circle class="f" cx="190" cy="42" r="5"/></svg>',
+ "dice": '<svg viewBox="0 0 200 100"><rect class="s" x="40" y="20" width="56" height="56" rx="10"/><rect class="s" x="110" y="30" width="56" height="56" rx="10"/><g class="f"><circle cx="56" cy="36" r="5"/><circle cx="68" cy="48" r="5"/><circle cx="80" cy="60" r="5"/><circle cx="126" cy="46" r="5"/><circle cx="150" cy="46" r="5"/><circle cx="126" cy="70" r="5"/><circle cx="150" cy="70" r="5"/></g></svg>',
+ "schedule": '<svg viewBox="0 0 200 100"><g class="m"><rect x="20" y="15" width="30" height="18" rx="3"/><rect x="100" y="15" width="30" height="18" rx="3"/><rect x="60" y="41" width="30" height="18" rx="3"/><rect x="140" y="41" width="30" height="18" rx="3"/><rect x="20" y="67" width="30" height="18" rx="3"/><rect x="140" y="67" width="30" height="18" rx="3"/></g><g class="f"><rect x="60" y="15" width="30" height="18" rx="3"/><rect x="140" y="15" width="30" height="18" rx="3"/><rect x="20" y="41" width="30" height="18" rx="3"/><rect x="100" y="41" width="30" height="18" rx="3"/><rect x="60" y="67" width="30" height="18" rx="3"/><rect x="100" y="67" width="30" height="18" rx="3"/></g></svg>',
+ "llm": '<svg viewBox="0 0 200 100"><rect class="s" x="18" y="18" width="70" height="64" rx="8"/><g class="m"><rect x="30" y="32" width="46" height="6"/><rect x="30" y="46" width="36" height="6"/><rect x="30" y="60" width="42" height="6"/></g><path class="s" d="M98 50 L120 50"/><g class="f"><rect x="130" y="24" width="52" height="14" rx="7"/><rect x="130" y="43" width="42" height="14" rx="7"/><rect x="130" y="62" width="48" height="14" rx="7"/></g></svg>',
+}
+THUMB = {"bullwhip-simulation":"network","learning-tsp":"tour","perishable-inventory-rl":"stock","injection-molding-scheduling":"gantt",
+ "mdp-physician-allocation":"states","facility-location-branch-and-bound":"facility","lagrangian-relaxation":"converge","ludo-dqn":"dice"}
+
+
+def thumb_html(p):
+    if p.get("figure"):
+        return f'<div class="thumb"><img src="{{up}}{p["figure"][0]}" alt="" loading="lazy"></div>'
+    return f'<div class="thumb art" aria-hidden="true">{ART[THUMB[p["slug"]]]}</div>'
+
+
+SHORT = {"learning-tsp": "IEEE T-ITS 2024", "bullwhip-simulation": "WSC 2022", "perishable-inventory-rl": "IISE 2023", "injection-molding-scheduling": "IISE 2023"}
+
+
+def short_label(p):
+    if p["slug"] in SHORT:
+        return SHORT[p["slug"]]
+    l = p["label"]
+    return l.split(" · ")[0] if not l.startswith("Research") else l.split(" · ")[-1]
+
+
+def project_item(p):
+    return f"""<a class="card" href="{{up}}projects/{p['slug']}.html">{thumb_html(p)}<div class="cbody">
+<span class="tag">{E(short_label(p))}</span><h3>{E(p['title'])}</h3><p>{E(p['line'])}</p><span class="go">Details →</span></div></a>"""
+
+
+def page(path, title, body, active, desc="Md Zahidul Islam, Ph.D. candidate in Industrial Engineering (Operations Research), Clemson University."):
+    up = "../" * path.count("/")
+    nav = "".join(f'<a href="{up}{h}"{" class=on" if h == active else ""}>{t}</a>' for h, t in NAV)
+    out = f"""<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{E(title)}</title>
+<meta name="description" content="{E(desc)}">
+<link rel="icon" href="{up}images/photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<style>{CSS}</style>
+</head><body>
+<header class="site"><div class="wrap"><a class="name" href="{up}index.html">Md Zahidul Islam</a><nav>{nav}</nav></div></header>
+{body.replace('{up}', up)}
+<footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:{EMAIL}">{EMAIL}</a></div></footer>
+</body></html>
+"""
+    full = os.path.join(ROOT, path)
+    os.makedirs(os.path.dirname(full), exist_ok=True)
+    open(full, "w").write(out)
+
+
+def band(title, sub, crumb=""):
+    c = f'<div class="crumb">{crumb}</div>' if crumb else ""
+    return f'<div class="band slim"><div class="wrap">{c}<h1>{E(title)}</h1><p class="role" style="margin:0">{sub}</p></div></div>'
+
+
+def project_page(p):
+    facts = ""
+    if p.get("facts"):
+        facts = '<div class="facts">' + "".join(f'<div class="stat"><b>{E(v)}</b><span>{E(l)}</span></div>' for v, l in p["facts"]) + "</div>"
+    fig = ""
+    if p.get("figure"):
+        src, cap = p["figure"]
+        fig = f'<figure><img src="{{up}}{src}" alt="{E(cap)}"><figcaption>{E(cap)}</figcaption></figure>'
+    docs = ""
+    if p.get("docs"):
+        docs = "<h2>Documents</h2>" + badges([(l, (u if u.startswith("http") else "{up}" + u)) for l, u in p["docs"]])
+    note = f'<div class="note">{E(p["note"])}</div>' if p.get("note") else ""
+    body = band(p["title"], E(p["label"]), '<a href="{up}projects.html">← All projects</a>') + f"""
+<div class="wrap doc">{facts}
+<h2>Problem</h2><p>{E(p['overview'])}</p>
+<h2>What I did</h2><ul>{''.join(f'<li>{E(x)}</li>' for x in p['approach'])}</ul>
+<h2>Results</h2><ul>{''.join(f'<li>{E(x)}</li>' for x in p['results'])}</ul>
+{note}{fig}
+<p class="small muted"><b>Tools:</b> {E(p['tools'])}</p>
+{docs}</div>"""
+    page(f"projects/{p['slug']}.html", f"{p['title']} | Md Zahidul Islam", body, "projects.html", p["line"])
+
+
+def rcard(anchor, tag, title, text, img=None, art=None):
+    th = f'<div class="thumb"><img src="{{up}}{img}" alt="" loading="lazy"></div>' if img else f'<div class="thumb art" aria-hidden="true">{ART[art]}</div>'
+    return f'<a class="card" href="{{up}}research.html#{anchor}">{th}<div class="cbody"><span class="tag">{tag}</span><h3>{title}</h3><p>{text}</p><span class="go">Read more →</span></div></a>'
+
+
+RCARDS = "".join([
+    rcard("scheduling", "Optimization", "Physician scheduling models", "Multi-site schedules that meet every staffing rule while balancing fatigue, fairness, and individual preferences.", art="schedule"),
+    rcard("interviews", "Qualitative study", "How schedules shape fatigue", "Interviews with 31 nurses and physicians at three emergency departments.", img="images/interview_poster.jpg"),
+    rcard("survey", "Survey study", "Preferences, schedule fit, and burnout", "Survey of 160 clinicians at seven emergency departments.", img="images/survey_poster.jpg"),
+    rcard("llm", "Large language models", "LLMs for thematic analysis", "How well do large language models reproduce human coding of healthcare interviews?", art="llm"),
+])
+
+SELECTED = ['ed-admission-prediction', 'bike-demand-forecasting', 'network-interdiction', 'learning-tsp', 'bullwhip-simulation', 'fresenius-downtime']
+
+HOME = f"""<div class="band"><div class="wrap"><div class="hero">
+<img src="{{up}}images/photo.jpg" alt="Md Zahidul Islam">
+<div>
+<h1>Md Zahidul Islam</h1>
+<p class="role">Ph.D. Candidate, Industrial Engineering (Operations Research) · Clemson University</p>
+<p>I build optimization, simulation, and machine-learning models that turn operational requirements and data into decisions. My doctoral research designs emergency physician schedules for a multi-hospital health system that meet staffing rules while accounting for fatigue, fairness, and individual preferences.</p>
+<div class="btns">
+<a class="btn primary" href="{{up}}Zahid_Islam_Resume.pdf">Resume</a>
+<a class="btn primary" href="{{up}}Zahid_Islam_Academic_CV.pdf">Academic CV</a>
+<a class="btn" href="{SCHOLAR}">Google Scholar</a>
+<a class="btn" href="{LINKEDIN}">LinkedIn</a>
+<a class="btn" href="{GITHUB}">GitHub</a>
+<a class="btn" href="mailto:{EMAIL}">Email</a>
+</div></div></div></div></div>
+
+<div class="wrap">
+<div class="stats">
+<div class="stat"><b>8</b><span>peer-reviewed publications</span></div>
+<div class="stat"><b>3.90</b><span>Ph.D. GPA, Clemson University</span></div>
+<div class="stat"><b>12</b><span>undergraduate researchers mentored</span></div>
+<div class="stat"><b>Dec 2027</b><span>expected Ph.D.; seeking 2027 internships</span></div>
+</div>
+
+<section><h2>Research</h2>
+<p class="lede">Scheduling emergency department clinicians so that hospitals stay covered and clinicians stay rested. Part of a CDC/NIOSH-funded, multi-institution project with Prisma Health.</p>
+<div class="grid two">{RCARDS}</div></section>
+
+<section><h2>Selected projects</h2>
+<p class="lede">Research and graduate projects in optimization, simulation, and machine learning. Open a project for methods, results, figures, and documents.</p>
+<div class="grid">{''.join(project_item(p) for p in PROJECTS if p['slug'] in SELECTED)}</div>
+<p style="margin-top:18px"><a href="{{up}}projects.html"><b>All 12 projects →</b></a></p></section>
+
+<section><h2>Publications</h2>
+<p class="lede">Eight peer-reviewed publications. <a href="{{up}}publications.html">Full list with talks and posters →</a></p>
+<div class="pubs">{''.join(pub_html(p) for p in PUBS[:4])}</div></section>
+
+<section><h2>News</h2>
+<div class="panel"><table class="news">
+<tr><td>Nov 2026</td><td>Talk accepted at the INFORMS Annual Meeting on physician scheduling with individual preferences.</td></tr>
+<tr><td>Oct 2026</td><td>Survey study poster accepted at the Prisma Health Research Showcase.</td></tr>
+<tr><td>May 2026</td><td>Presented multi-site physician scheduling at the IISE Annual Conference.</td></tr>
+<tr><td>2026</td><td>Clemson INFORMS student chapter received the INFORMS Magna Cum Laude award during my term as president.</td></tr>
+</table></div></section>
+
+<section><h2>Teaching, service, and education</h2>
+<div class="cols">
+<div class="panel"><h3>Teaching and service</h3><ul>
+<li>Lecturer and Assistant Professor, Industrial &amp; Production Engineering, RUET, Bangladesh (2019–2021): Probability and Statistics, Operations Management, Industrial Simulation.</li>
+<li>Lecturer, Ahsanullah University of Science and Technology, Bangladesh (2017–2018).</li>
+<li>Graduate Teaching Assistant, Clemson University and University of Tennessee (2022–2024).</li>
+<li>President, Clemson University INFORMS Student Chapter (2025–2026); co-host of the <i>Optimality Gap</i> podcast.</li>
+<li>Mentor to twelve undergraduate researchers across five disciplines, Clemson Creative Inquiry.</li>
+<li>Peer reviewer: <i>Journal of Big Data</i>, <i>Scientific Reports</i>, <i>BMC Medical Imaging</i>.</li>
+</ul></div>
+<div class="panel"><h3>Education</h3><ul>
+<li><b>Ph.D., Industrial Engineering</b> (Operations Research), Clemson University, expected Dec 2027. GPA 3.90/4.00. Advisor: Dr. Kevin M. Taaffe.</li>
+<li><b>M.S., Industrial Engineering</b>, University of Tennessee, Knoxville, 2023. GPA 4.00/4.00.</li>
+<li><b>B.Sc., Industrial &amp; Production Engineering</b>, Rajshahi University of Engineering &amp; Technology, 2016. First in class.</li>
+</ul>
+<h3 style="margin-top:18px">Honors</h3><ul>
+<li>Dr. Lloyd W. Crawford Fellowship, UT Space Institute (2021)</li>
+<li>University Gold Medal, RUET (2019); Prime Minister Gold Medal, Bangladesh (2018)</li>
+</ul></div>
+</div></section>
+</div>
+"""
+
+
+def main():
+    page("index.html", "Md Zahidul Islam | Operations Research & Data Science", HOME, "index.html")
+    rb = RESEARCH.replace("<h1>Research</h1>\n", "", 1)
+    page("research.html", "Research | Md Zahidul Islam",
+         band("Research", "Emergency department scheduling, clinician fatigue, and well-being") + f'<div class="wrap doc">{rb}</div>', "research.html")
+    groups = [("Research projects", [p for p in PROJECTS if p["label"].startswith("Research")]),
+              ("Graduate and industry projects", [p for p in PROJECTS if not p["label"].startswith("Research")])]
+    body = band("Projects", 'Open a project for methods, results, figures, and documents. Current doctoral work is on the <a href="{up}research.html">research page</a>.') + '<div class="wrap">'
+    for name, ps in groups:
+        body += f'<section><h2>{name}</h2><div class="grid">{"".join(project_item(p) for p in ps)}</div></section>'
+    page("projects.html", "Projects | Md Zahidul Islam", body + "</div>", "projects.html")
+    for p in PROJECTS:
+        project_page(p)
+    pubs = band("Publications", f'Eight peer-reviewed publications · <a href="{SCHOLAR}">Google Scholar</a>') + '<div class="wrap">'
+    pubs += '<section><h2>Journal articles</h2><div class="pubs">' + "".join(pub_html(p) for p in PUBS if p[0] == "journal") + "</div></section>"
+    pubs += '<section><h2>Conference proceedings</h2><div class="pubs">' + "".join(pub_html(p) for p in PUBS if p[0] == "conf") + "</div></section>"
+    pubs += '<section><h2>Talks and posters</h2><div class="panel"><table class="news">' + "".join(
+        f'<tr><td>{d}</td><td><b>{E(t)}</b><br><span class="muted">{v} · {k}</span></td></tr>' for d, t, v, k in TALKS) + "</table></div></section></div>"
     page("publications.html", "Publications | Md Zahidul Islam", pubs, "publications.html")
 
 

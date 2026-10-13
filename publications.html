@@ -5,63 +5,99 @@
 <meta name="description" content="Md Zahidul Islam, Ph.D. candidate in Industrial Engineering (Operations Research), Clemson University.">
 <link rel="icon" href="images/photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#ffffff;--fg:#1f2328;--muted:#5f6b76;--line:#e6e8eb;--accent:#0b5c86;--soft:#f5f7f9}
-@media (prefers-color-scheme:dark){:root{--bg:#111418;--fg:#e6e8eb;--muted:#9aa5b1;--line:#2a3038;--accent:#6cb6e0;--soft:#181c21}}
+:root{--bg:#f5f6fa;--card:#fff;--fg:#1b2133;--muted:#5d6577;--line:#e3e6ee;--navy:#16213e;--purple:#522d80;--orange:#e8590c;--orange-soft:#fff1e8;--chip:#eef0f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1320;--card:#171c2c;--fg:#e8eaf2;--muted:#a2a9bb;--line:#272e44;--orange:#ff8a4c;--orange-soft:#2a1c14;--chip:#202741}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
-a{color:var(--accent);text-decoration:none}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16.5px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--orange);text-decoration:none}
 a:hover{text-decoration:underline}
-.wrap{max-width:840px;margin:0 auto;padding:0 20px}
-header.site{border-bottom:1px solid var(--line)}
-header.site .wrap{display:flex;align-items:center;gap:22px;height:60px;overflow-x:auto}
-header.site .name{font-weight:600;color:var(--fg);margin-right:auto;white-space:nowrap}
-header.site nav a{color:var(--muted);white-space:nowrap;font-size:.95rem}
-header.site nav a.on,header.site nav a:hover{color:var(--fg);text-decoration:none}
-header.site nav{display:flex;gap:20px}
-main{padding:40px 0 64px}
-h1{font-size:2rem;line-height:1.2;margin:0 0 6px;font-weight:600}
-h2{font-size:1.3rem;margin:48px 0 14px;font-weight:600;padding-bottom:6px;border-bottom:1px solid var(--line)}
-h3{font-size:1.08rem;margin:0 0 4px;font-weight:600}
-p{margin:0 0 14px}
-.muted{color:var(--muted)}
-.small{font-size:.92rem}
-.hero{display:grid;grid-template-columns:150px 1fr;gap:32px;align-items:start}
-.hero img{width:150px;height:150px;object-fit:cover;border-radius:6px}
-.role{color:var(--muted);margin:0 0 16px}
-.links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px;font-size:.95rem}
-.list{list-style:none;padding:0;margin:0}
-.list>li{padding:14px 0;border-bottom:1px solid var(--line)}
-.list>li:last-child{border-bottom:0}
-.meta{color:var(--muted);font-size:.9rem}
-.more{display:inline-block;margin-top:10px;font-size:.95rem}
-.pub{padding:10px 0}
+h1,h2,h3{font-family:"Plus Jakarta Sans",Inter,sans-serif;line-height:1.2;letter-spacing:-.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.site{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--navy) 94%,transparent);backdrop-filter:blur(6px)}
+header.site .wrap{display:flex;align-items:center;gap:22px;height:58px;overflow-x:auto}
+header.site .name{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;color:#fff;margin-right:auto;white-space:nowrap}
+header.site nav{display:flex;gap:22px}
+header.site nav a{color:#c7cbe0;font-size:.93rem;font-weight:500;white-space:nowrap}
+header.site nav a.on,header.site nav a:hover{color:#fff;text-decoration:none}
+.band{background:linear-gradient(120deg,var(--navy) 0%,#2b2a5e 55%,var(--purple) 100%);color:#fff;padding:56px 0 92px}
+.band.slim{padding:40px 0 48px}
+.band h1{font-size:clamp(2rem,4.6vw,2.9rem);margin:0 0 8px}
+.band .role{color:#d9dcf0;font-size:1.08rem;margin:0 0 16px}
+.band p{color:#e9eaf6;max-width:640px}
+.band a{color:#fff}
+.hero{display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:center}
+.hero img{width:190px;height:190px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-block;padding:9px 18px;border-radius:8px;font-weight:600;font-size:.92rem;border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn:hover{text-decoration:none;background:rgba(255,255,255,.1)}
+.btn.primary{background:var(--orange);border-color:var(--orange)}
+.btn.primary:hover{filter:brightness(1.08);background:var(--orange)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-56px;position:relative}
+.stat{background:var(--card);border-radius:12px;padding:18px 20px;box-shadow:0 6px 20px rgba(22,33,62,.08);border:1px solid var(--line)}
+.stat b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.7rem;color:var(--purple)}
+@media (prefers-color-scheme:dark){.stat b{color:#b79cf0}}
+.stat span{color:var(--muted);font-size:.88rem}
+section{padding:56px 0 8px}
+section h2{font-size:1.75rem;margin:0 0 6px}
+.lede{color:var(--muted);margin:0 0 24px;max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.grid.two{grid-template-columns:repeat(auto-fill,minmax(440px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;color:var(--fg);transition:transform .15s,box-shadow .15s}
+a.card:hover{text-decoration:none;transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,33,62,.12)}
+.thumb{height:170px;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden;padding:10px}
+.thumb img{max-width:100%;max-height:150px;object-fit:contain}
+.thumb.art{background:linear-gradient(135deg,#f3f0fa,#fdf1ea)}
+@media (prefers-color-scheme:dark){.thumb.art{background:linear-gradient(135deg,#221d36,#2a1d17)}}
+.thumb svg{width:70%;height:120px}
+.thumb .s{stroke:var(--purple);fill:none;stroke-width:2.2}
+.thumb .f{fill:var(--orange)}
+.thumb .m{fill:#c9bfdc}
+.thumb .ms{stroke:#c9bfdc;fill:none;stroke-width:2}
+.cbody{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--purple);background:var(--chip);padding:3px 9px;border-radius:999px}
+@media (prefers-color-scheme:dark){.tag{color:#c9b5f5}}
+.card h3{font-size:1.12rem;margin:10px 0 6px}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.go{margin-top:auto;padding-top:14px;color:var(--orange);font-weight:600;font-size:.9rem}
+.pubs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 24px}
+.pub{padding:14px 0;border-bottom:1px solid var(--line)}
+.pub:last-child{border-bottom:0}
 .pub .t{font-weight:600}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.badge{font-size:.82rem;border:1px solid var(--line);border-radius:4px;padding:1px 8px;color:var(--muted)}
-a.badge{color:var(--accent);border-color:var(--accent)}
-a.badge:hover{text-decoration:none;background:var(--soft)}
-.news td{padding:6px 16px 6px 0;vertical-align:top}
-.news td:first-child{color:var(--muted);white-space:nowrap;font-size:.92rem}
-.crumb{font-size:.92rem;margin-bottom:18px}
-figure{margin:24px 0;padding:14px;border:1px solid var(--line);border-radius:6px;background:#fff}
-figure img{display:block;max-width:100%;max-height:520px;margin:0 auto}
-figcaption{color:#5f6b76;font-size:.88rem;margin-top:10px;text-align:center}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 6px}
-.facts div{background:var(--soft);border-radius:6px;padding:12px 14px}
-.facts b{display:block;font-size:1.25rem}
-.facts span{color:var(--muted);font-size:.88rem}
-.note{background:var(--soft);border-left:3px solid var(--accent);padding:10px 14px;font-size:.93rem;color:var(--muted);margin:18px 0}
-ul.tight{padding-left:20px;margin:0 0 14px}
-ul.tight li{margin-bottom:6px}
-footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:.9rem}
-@media (max-width:640px){.hero{grid-template-columns:1fr;gap:18px}.hero img{width:120px;height:120px}.facts{grid-template-columns:1fr}h1{font-size:1.7rem}}
+.pub .a{color:var(--muted);font-size:.93rem}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.badge{font-size:.8rem;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--muted)}
+a.badge{color:var(--orange);border-color:var(--orange)}
+a.badge:hover{text-decoration:none;background:var(--orange-soft)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+.panel h3{margin:0 0 10px;font-size:1.15rem}
+.panel ul{padding-left:18px;margin:0}
+.panel li{margin-bottom:8px}
+.news{width:100%;border-collapse:collapse}
+.news td{padding:9px 14px 9px 0;vertical-align:top;border-bottom:1px solid var(--line)}
+.news tr:last-child td{border-bottom:0}
+.news td:first-child{color:var(--purple);font-weight:600;white-space:nowrap;font-size:.9rem;width:96px}
+@media (prefers-color-scheme:dark){.news td:first-child{color:#c9b5f5}}
+.doc>*{max-width:860px}
+.doc h2{font-size:1.35rem;margin:36px 0 10px}
+.doc ul{padding-left:20px}
+.doc li{margin-bottom:6px}
+.crumb a{color:#d9dcf0;font-size:.92rem}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:-36px 0 8px;position:relative}
+figure{margin:26px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+figure img{display:block;max-width:100%;max-height:560px;margin:0 auto}
+figcaption{color:#5d6577;font-size:.88rem;margin-top:10px;text-align:center}
+.note{background:var(--orange-soft);border-left:3px solid var(--orange);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.93rem;margin:18px 0}
+.small{font-size:.92rem}.muted{color:var(--muted)}
+footer{margin-top:64px;background:var(--navy);color:#c7cbe0;padding:28px 0;font-size:.9rem}
+footer a{color:#fff}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:20px}.hero img{width:130px;height:130px}.stats{grid-template-columns:repeat(2,1fr)}.cols,.grid.two{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
 </style>
 </head><body>
 <header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html">About</a><a href="research.html">Research</a><a href="projects.html">Projects</a><a href="publications.html" class=on>Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
-<main><div class="wrap">
-<h1>Publications</h1><p class="muted">Citation counts on <a href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&hl=en">Google Scholar</a>.</p><h2>Journal articles</h2><div class="pub"><div class="t">A scalable and adaptable supervised learning approach for solving the traveling salesman problems</div><div>Lyu, Z., <b>Islam, M. Z.</b>, &amp; Yu, A. J. (2024). <i>IEEE Transactions on Intelligent Transportation Systems</i>, 25(11), 17092–17104.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/TITS.2024.3410691" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Stature estimation from handprint measurements: An application to the medicolegal investigation</div><div>Asadujjaman, M., Hossain, M. G., Rana, M. S., &amp; <b>Islam, M. Z.</b> (2021). <i>Egyptian Journal of Forensic Sciences</i>, 11(1), 1–13.</div><div class="badges"><a class="badge" href="https://doi.org/10.1186/s41935-020-00215-1" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Cost-effective decisions on service rate at a customer care centre with a multi-server queuing model</div><div>Nahar, K., <b>Islam, M. Z.</b>, &amp; Islam, M. M. (2016). <i>Journal of Modern Science and Technology</i>, 4(1), 144–153.</div></div><h2>Conference proceedings</h2><div class="pub"><div class="t">An agent-based simulation model to mitigate the bullwhip effect via information sharing and risk pooling</div><div><b>Islam, M. Z.</b>, Roozeboom, N., Gunderson, P., Li, X., &amp; Yu, A. J. (2022). <i>2022 Winter Simulation Conference (WSC)</i>, 1636–1647. IEEE.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/WSC57314.2022.10015288" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">An improved network design of an open-loop reverse supply chain</div><div>Kabir, M. R., Kamal, M. S., &amp; <b>Islam, M. Z.</b> (2021). <i>2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</i>, 1–6. IEEE.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/ACMI53878.2021.9528280" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Design and re-engineering of an automated solar lawn mower</div><div>Rahul, J. K., Chakraborty, S., Khayer, N., Hriday, A. R., Mia, M. L., <b>Islam, M. Z.</b>, &amp; Ahmed, T. (2021). <i>2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</i>. IEEE.</div></div><div class="pub"><div class="t">Sex identification from hand measurements using machine learning</div><div><b>Islam, M. Z.</b>, Supto, M. R., Asadujjaman, M., &amp; Chakrabortty, R. K. (2021). <i>2021 International Conference on Computing, Communication, and Intelligent Systems (ICCCIS)</i>, 536–540. IEEE.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/ICCCIS51004.2021.9397222" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Time befitting supply chain for the future of Bangladesh apparel industry by aligning Industry 4.0</div><div>Fahim, M. R. I., Chyon, F. A., Suman, M. N. H., &amp; <b>Islam, M. Z.</b> (2020). <i>International Conference on Mechanical, Industrial and Energy Engineering (ICMIEE20)</i>, Khulna, Bangladesh.</div></div><h2>Talks and posters</h2><table class="news"><tr><td>Nov 2026</td><td><b>Emergency department physician scheduling with heterogeneous individual preferences</b><br><span class="muted">INFORMS Annual Meeting, San Francisco, CA · Accepted talk</span></td></tr><tr><td>Oct 2026</td><td><b>Preferences, alignment, fatigue, and burnout: A cross-sectional shift-schedule survey of emergency department nurses and attending physicians</b><br><span class="muted">Prisma Health Education and Research Institute Research Showcase · Accepted poster</span></td></tr><tr><td>Oct 2026</td><td><b>Shift preference alignment, workload, and fatigue in emergency medicine clinicians (with C. Norton, first author)</b><br><span class="muted">Prisma Health Education and Research Institute Research Showcase · Accepted poster</span></td></tr><tr><td>May 2026</td><td><b>Multi-site physician scheduling incorporating work-related fatigue and individual preferences</b><br><span class="muted">IISE Annual Conference &amp; Expo, Arlington, TX · Talk</span></td></tr><tr><td>Feb 2026</td><td><b>Fatigue-aware multi-site rostering model for emergency department physicians with fairness and well-being constraints</b><br><span class="muted">Healthcare Systems Process Improvement Conference, Atlanta, GA · Talk</span></td></tr><tr><td>Nov 2025</td><td><b>The impact of emergency department shift scheduling on clinician fatigue and well-being: A qualitative study</b><br><span class="muted">Prisma Health Education and Research Institute Showcase, Columbia, SC · Poster</span></td></tr><tr><td>May 2023</td><td><b>Deep reinforcement learning for inventory optimization of perishable products with a quantity discount</b><br><span class="muted">IISE Annual Conference &amp; Expo, New Orleans, LA · Talk</span></td></tr><tr><td>May 2023</td><td><b>Unrelated parallel machine scheduling problem for plastic injection molding (with A. Owens and A. J. Yu)</b><br><span class="muted">IISE Annual Conference &amp; Expo, New Orleans, LA · Talk</span></td></tr></table>
-</div></main>
+<div class="band slim"><div class="wrap"><h1>Publications</h1><p class="role" style="margin:0">Eight peer-reviewed publications · <a href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&hl=en">Google Scholar</a></p></div></div><div class="wrap"><section><h2>Journal articles</h2><div class="pubs"><div class="pub"><div class="t">A scalable and adaptable supervised learning approach for solving the traveling salesman problems</div><div class="a">Lyu, Z., <b>Islam, M. Z.</b>, &amp; Yu, A. J. (2024). <i>IEEE Transactions on Intelligent Transportation Systems</i>, 25(11), 17092–17104.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/TITS.2024.3410691" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Stature estimation from handprint measurements: An application to the medicolegal investigation</div><div class="a">Asadujjaman, M., Hossain, M. G., Rana, M. S., &amp; <b>Islam, M. Z.</b> (2021). <i>Egyptian Journal of Forensic Sciences</i>, 11(1), 1–13.</div><div class="badges"><a class="badge" href="https://doi.org/10.1186/s41935-020-00215-1" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Cost-effective decisions on service rate at a customer care centre with a multi-server queuing model</div><div class="a">Nahar, K., <b>Islam, M. Z.</b>, &amp; Islam, M. M. (2016). <i>Journal of Modern Science and Technology</i>, 4(1), 144–153.</div></div></div></section><section><h2>Conference proceedings</h2><div class="pubs"><div class="pub"><div class="t">An agent-based simulation model to mitigate the bullwhip effect via information sharing and risk pooling</div><div class="a"><b>Islam, M. Z.</b>, Roozeboom, N., Gunderson, P., Li, X., &amp; Yu, A. J. (2022). <i>2022 Winter Simulation Conference (WSC)</i>, 1636–1647. IEEE.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/WSC57314.2022.10015288" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">An improved network design of an open-loop reverse supply chain</div><div class="a">Kabir, M. R., Kamal, M. S., &amp; <b>Islam, M. Z.</b> (2021). <i>2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</i>, 1–6. IEEE.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/ACMI53878.2021.9528280" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Design and re-engineering of an automated solar lawn mower</div><div class="a">Rahul, J. K., Chakraborty, S., Khayer, N., Hriday, A. R., Mia, M. L., <b>Islam, M. Z.</b>, &amp; Ahmed, T. (2021). <i>2021 International Conference on Automation, Control and Mechatronics for Industry 4.0 (ACMI)</i>. IEEE.</div></div><div class="pub"><div class="t">Sex identification from hand measurements using machine learning</div><div class="a"><b>Islam, M. Z.</b>, Supto, M. R., Asadujjaman, M., &amp; Chakrabortty, R. K. (2021). <i>2021 International Conference on Computing, Communication, and Intelligent Systems (ICCCIS)</i>, 536–540. IEEE.</div><div class="badges"><a class="badge" href="https://doi.org/10.1109/ICCCIS51004.2021.9397222" target="_blank" rel="noopener">DOI</a></div></div><div class="pub"><div class="t">Time befitting supply chain for the future of Bangladesh apparel industry by aligning Industry 4.0</div><div class="a">Fahim, M. R. I., Chyon, F. A., Suman, M. N. H., &amp; <b>Islam, M. Z.</b> (2020). <i>International Conference on Mechanical, Industrial and Energy Engineering (ICMIEE20)</i>, Khulna, Bangladesh.</div></div></div></section><section><h2>Talks and posters</h2><div class="panel"><table class="news"><tr><td>Nov 2026</td><td><b>Emergency department physician scheduling with heterogeneous individual preferences</b><br><span class="muted">INFORMS Annual Meeting, San Francisco, CA · Accepted talk</span></td></tr><tr><td>Oct 2026</td><td><b>Preferences, alignment, fatigue, and burnout: A cross-sectional shift-schedule survey of emergency department nurses and attending physicians</b><br><span class="muted">Prisma Health Education and Research Institute Research Showcase · Accepted poster</span></td></tr><tr><td>Oct 2026</td><td><b>Shift preference alignment, workload, and fatigue in emergency medicine clinicians (with C. Norton, first author)</b><br><span class="muted">Prisma Health Education and Research Institute Research Showcase · Accepted poster</span></td></tr><tr><td>May 2026</td><td><b>Multi-site physician scheduling incorporating work-related fatigue and individual preferences</b><br><span class="muted">IISE Annual Conference &amp; Expo, Arlington, TX · Talk</span></td></tr><tr><td>Feb 2026</td><td><b>Fatigue-aware multi-site rostering model for emergency department physicians with fairness and well-being constraints</b><br><span class="muted">Healthcare Systems Process Improvement Conference, Atlanta, GA · Talk</span></td></tr><tr><td>Nov 2025</td><td><b>The impact of emergency department shift scheduling on clinician fatigue and well-being: A qualitative study</b><br><span class="muted">Prisma Health Education and Research Institute Showcase, Columbia, SC · Poster</span></td></tr><tr><td>May 2023</td><td><b>Deep reinforcement learning for inventory optimization of perishable products with a quantity discount</b><br><span class="muted">IISE Annual Conference &amp; Expo, New Orleans, LA · Talk</span></td></tr><tr><td>May 2023</td><td><b>Unrelated parallel machine scheduling problem for plastic injection molding (with A. Owens and A. J. Yu)</b><br><span class="muted">IISE Annual Conference &amp; Expo, New Orleans, LA · Talk</span></td></tr></table></div></section></div>
 <footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
 </body></html>
