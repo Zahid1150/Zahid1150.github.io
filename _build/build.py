@@ -793,9 +793,13 @@ _old_project_page = project_page
 
 
 def project_page(p):
-    p = dict(p)
-    p["tools"] = p["tools"] + "</p>" + "<h2>Skills</h2>" + skills_html(SKILLS[p["slug"]]) + "<p style='display:none'>"
     _old_project_page(p)
+    f = os.path.join(ROOT, "projects", p["slug"] + ".html")
+    t = open(f).read()
+    tools = f'<p class="small muted"><b>Tools:</b> {E(p["tools"])}</p>'
+    assert tools in t
+    t = t.replace(tools, tools + "<h2>Skills</h2>" + skills_html(SKILLS[p["slug"]]), 1)
+    open(f, "w").write(t)
 
 
 RESEARCH_INTRO = """<p>My research develops data-driven, fatigue-aware, and preference-based optimization models for healthcare workforce scheduling, with a focus on emergency department physicians and nurses. I combine operations research, mathematical optimization, statistical analysis, and human-factors research to understand how shift schedules affect clinicians' fatigue, sleep, recovery, burnout, and well-being, and to build schedules that account for them.</p>
