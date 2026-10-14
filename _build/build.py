@@ -929,5 +929,94 @@ HOME = _re.sub(r'(<section><h2>Selected projects</h2>.*?<div class="grid">).*?(<
                lambda m: m.group(1) + "".join(project_item(p) for p in PROJECTS if p["slug"] in SELECTED) + m.group(2),
                HOME, count=1, flags=_re.S)
 
+
+# ================================================================ v5: experience page
+NAV = [("index.html", "About"), ("research.html", "Research"), ("experience.html", "Experience"), ("projects.html", "Projects"),
+       ("publications.html", "Publications"), ("Zahid_Islam_Academic_CV.pdf", "CV")]
+CSS += """
+.tl{position:relative;padding-left:26px;border-left:2px solid var(--line);margin-left:6px}
+.job{position:relative;margin-bottom:22px}
+.job:before{content:"";position:absolute;left:-34px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:3px solid var(--bg)}
+.job .head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.job h3{margin:0;font-size:1.12rem}
+.job .when{color:var(--purple);font-weight:600;font-size:.9rem;white-space:nowrap}
+@media (prefers-color-scheme:dark){.job .when{color:#c9b5f5}}
+.job .org{color:var(--muted);margin:2px 0 10px}
+.job ul{padding-left:18px;margin:0}
+.job li{margin-bottom:6px}
+"""
+
+JOBS = [
+ ("Research", [
+  ("Graduate Research Assistant", "Department of Industrial Engineering, Clemson University · Clemson, SC", "Jan 2025 – Present", [
+    "Lead doctoral researcher on a CDC/NIOSH-funded, multi-institution scheduling project with Prisma Health, collaborating with faculty in industrial engineering, psychology, emergency medicine, and sleep science.",
+    "Translated clinician and hospital requirements into multi-site workforce scheduling models (MILP and CP-SAT) covering staffing levels, eligibility, credentials, rest, fatigue, fairness, and individual preferences.",
+    "Implemented the models in Python with Gurobi and Google OR-Tools and compared solution approaches for large instances on a high-performance computing cluster; schedules met an average of 84–87% of each physician's weighted preference categories across synthetic 25–75-physician benchmarks while satisfying all hard staffing rules.",
+    "Formulated a bi-objective model trading clinician fatigue against schedule quality and fairness for physicians rotating across multiple hospitals over a 90-day planning horizon.",
+    "Integrated work schedules, surveys, interviews, wearable-device, and physiological data into analysis-ready datasets, and turned the findings into model inputs, constraints, and evaluation measures.",
+    "Coordinate multi-site data collection and supervise undergraduate research assistants; present results to clinical collaborators to inform scheduling recommendations."],
+   ["Mixed-Integer Linear Programming", "CP-SAT", "Gurobi", "Google OR-Tools", "Python", "HPC", "Survey and Interview Research"], "research.html"),
+  ("Graduate Research Assistant", "University of Tennessee Space Institute · Tullahoma, TN", "Aug 2021 – Jul 2022", [
+    "Built an AnyLogic supply chain simulation (Winter Simulation Conference paper) in which combined information sharing and risk pooling reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.",
+    "Worked on a supervised-learning approach for the traveling salesman problem (IEEE Transactions on Intelligent Transportation Systems article).",
+    "Developed reinforcement-learning ordering policies for perishable inventory with stochastic demand, deterioration, and quantity discounts (IISE Annual Conference presentation).",
+    "Collaborated on a Gurobi production-scheduling model for parallel injection-molding machines using a plastics manufacturer's data (IISE Annual Conference presentation)."],
+   ["Agent-Based Simulation", "AnyLogic", "Supervised Learning", "Reinforcement Learning", "MILP"], "projects.html"),
+ ]),
+ ("Teaching", [
+  ("Lecturer and Assistant Professor", "Department of Industrial & Production Engineering, Rajshahi University of Engineering & Technology (RUET) · Bangladesh", "Feb 2019 – Aug 2021", [
+    "Taught undergraduate courses in Probability and Statistics, Operations Management, Product Design, Control Theory and Automation, and Industrial Simulation, with associated laboratory courses.",
+    "Advised undergraduate research and capstone projects in optimization, simulation, scheduling, manufacturing, and supply chain systems.",
+    "Developed course materials, examinations, laboratory exercises, and applied modeling assignments."],
+   ["Teaching", "Statistics", "Simulation", "Project Advising"], None),
+  ("Lecturer", "Department of Mechanical and Production Engineering, Ahsanullah University of Science and Technology · Dhaka, Bangladesh", "Apr 2017 – Dec 2018", [
+    "Taught Operations Management, Engineering Economy, Material Handling and Maintenance Management, Manufacturing Processes, Machine Tools and Machining, and Engineering Materials.",
+    "Prepared lectures, assessments, laboratory activities, and applied engineering assignments."],
+   ["Teaching", "Operations Management", "Engineering Economy"], None),
+  ("Graduate Teaching Assistant", "Department of Industrial Engineering, Clemson University · Clemson, SC", "Aug 2023 – Dec 2024", [
+    "Supported Systems Modeling, Quality Engineering, Supply Chain Design and Control, and Engineering Economic Analysis with grading, student consultation, laboratory activities, and problem-solving sessions."],
+   ["Teaching Support"], None),
+  ("Graduate Teaching Assistant", "Department of Industrial and Systems Engineering, University of Tennessee · Knoxville, TN", "Aug 2022 – Jul 2023", [
+    "Supported Facilities Planning and Material Handling and Quality Control and Management with grading and student consultation."],
+   ["Teaching Support"], None),
+ ]),
+ ("Industry", [
+  ("Intern", "Energypack Engineering Limited · Dhaka, Bangladesh", "Jun 2015 – Jul 2015", [
+    "Prepared a quality manual for transformer fabrication processes to support standardized manufacturing and quality-control procedures.",
+    "Conducted facility layout planning for production areas."],
+   ["Quality Management", "Facility Layout"], None),
+ ]),
+ ("Leadership and mentoring", [
+  ("President", "Clemson University INFORMS Student Chapter", "Aug 2025 – Sep 2026", [
+    "Led chapter programming, invited seminars, professional-development and outreach events, and coordination with faculty and university partners; co-host and producer of the Optimality Gap podcast.",
+    "The chapter received the INFORMS Student Chapter Annual Award at the Magna Cum Laude level in 2026 during this term."],
+   ["Leadership", "Event Organization", "Science Communication"], None),
+  ("Vice President", "Clemson University INFORMS Student Chapter", "Aug 2024 – Jul 2025", [
+    "Supported chapter programming, professional-development events, and outreach; co-host and producer of the Optimality Gap podcast.",
+    "The chapter received the INFORMS Student Chapter Annual Award at the Magna Cum Laude level in 2025 during this term."],
+   ["Leadership"], None),
+  ("Undergraduate Research Mentor", "Clemson University Creative Inquiry", "Fall 2025 – Present", [
+    "Mentor twelve undergraduates from industrial engineering, biological sciences, bioengineering, health science, and nursing in field data collection, data-quality checks, analysis, and research presentation."],
+   ["Mentoring", "Research Supervision"], None),
+ ]),
+]
+
+
+def job_html(j):
+    title, org, when, bullets, sk, link = j
+    more = f'<p style="margin:10px 0 0"><a href="{{up}}{link}"><b>Related work →</b></a></p>' if link else ""
+    return f'<div class="job panel"><div class="head"><h3>{E(title)}</h3><span class="when">{E(when)}</span></div><div class="org">{E(org)}</div><ul>{"".join(f"<li>{E(b)}</li>" for b in bullets)}</ul>{skills_html(sk)}{more}</div>'
+
+
+_main_v4 = main
+
+
+def main():
+    _main_v4()
+    body = band("Experience", "Research, teaching, industry, and leadership") + '<div class="wrap">'
+    for name, jobs in JOBS:
+        body += f'<section><h2>{name}</h2><div class="tl">{"".join(job_html(j) for j in jobs)}</div></section>'
+    page("experience.html", "Experience | Md Zahidul Islam", body + "</div>", "experience.html")
+
 if __name__ == "__main__":
     main()

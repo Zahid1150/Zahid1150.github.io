@@ -107,9 +107,20 @@ footer a{color:#fff}
 .figs figure{margin:14px 0}
 .doc h3{font-size:1.12rem;margin:26px 0 8px}
 @media (max-width:760px){.figs{grid-template-columns:1fr}}
+
+.tl{position:relative;padding-left:26px;border-left:2px solid var(--line);margin-left:6px}
+.job{position:relative;margin-bottom:22px}
+.job:before{content:"";position:absolute;left:-34px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:3px solid var(--bg)}
+.job .head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.job h3{margin:0;font-size:1.12rem}
+.job .when{color:var(--purple);font-weight:600;font-size:.9rem;white-space:nowrap}
+@media (prefers-color-scheme:dark){.job .when{color:#c9b5f5}}
+.job .org{color:var(--muted);margin:2px 0 10px}
+.job ul{padding-left:18px;margin:0}
+.job li{margin-bottom:6px}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html">About</a><a href="research.html">Research</a><a href="projects.html" class=on>Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html">About</a><a href="research.html">Research</a><a href="experience.html">Experience</a><a href="projects.html" class=on>Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
 <div class="band slim"><div class="wrap"><h1>Projects</h1><p class="role" style="margin:0">Open a project for methods, results, figures, and documents. Current doctoral work is on the <a href="research.html">research page</a>.</p></div></div><div class="wrap"><section><h2>Research projects</h2><div class="grid"><a class="card" href="projects/bullwhip-simulation.html"><div class="thumb art" aria-hidden="true"><svg viewBox="0 0 200 100"><g class="ms"><path d="M30 70 L70 30 L120 55 L170 25 M70 30 L100 85 L120 55 M30 70 L100 85"/></g><g class="f"><circle cx="30" cy="70" r="7"/><circle cx="70" cy="30" r="7"/><circle cx="120" cy="55" r="7"/><circle cx="170" cy="25" r="7"/><circle cx="100" cy="85" r="7"/></g></svg></div><div class="cbody">
 <span class="tag">WSC 2022</span><h3>Agent-Based Simulation of the Bullwhip Effect</h3><p class="long">Built an agent-based supply chain simulation in AnyLogic to test two ways of damping the bullwhip effect. Combining information sharing with risk pooling reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.</p><div class="skills"><span class="sk">Agent-Based Simulation</span><span class="sk">AnyLogic</span><span class="sk">Supply Chain Analysis</span><span class="sk">Scenario Analysis</span></div><span class="go">Details →</span></div></a><a class="card" href="projects/learning-tsp.html"><div class="thumb art" aria-hidden="true"><svg viewBox="0 0 200 100"><path class="s" d="M25 60 L55 20 L105 15 L160 30 L180 70 L130 88 L70 85 Z"/><g class="f"><circle cx="25" cy="60" r="5"/><circle cx="55" cy="20" r="5"/><circle cx="105" cy="15" r="5"/><circle cx="160" cy="30" r="5"/><circle cx="180" cy="70" r="5"/><circle cx="130" cy="88" r="5"/><circle cx="70" cy="85" r="5"/></g></svg></div><div class="cbody">
 <span class="tag">IEEE T-ITS 2024</span><h3>Learning-Based Optimization for the Traveling Salesman Problem</h3><p class="long">Co-authored a supervised-learning method that predicts parts of a high-quality tour and feeds those predictions to exact and heuristic solvers. Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.</p><div class="skills"><span class="sk">Supervised Learning</span><span class="sk">Combinatorial Optimization</span><span class="sk">Routing</span><span class="sk">Heuristics</span></div><span class="go">Details →</span></div></a><a class="card" href="projects/perishable-inventory-rl.html"><div class="thumb art" aria-hidden="true"><svg viewBox="0 0 200 100"><path class="s" d="M15 25 L55 75 L55 25 L95 75 L95 25 L135 75 L135 25 L175 75"/><line class="ms" x1="10" y1="80" x2="190" y2="80"/><g class="f"><rect x="160" y="10" width="26" height="10" rx="2"/></g></svg></div><div class="cbody">

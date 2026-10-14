@@ -107,9 +107,20 @@ footer a{color:#fff}
 .figs figure{margin:14px 0}
 .doc h3{font-size:1.12rem;margin:26px 0 8px}
 @media (max-width:760px){.figs{grid-template-columns:1fr}}
+
+.tl{position:relative;padding-left:26px;border-left:2px solid var(--line);margin-left:6px}
+.job{position:relative;margin-bottom:22px}
+.job:before{content:"";position:absolute;left:-34px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:3px solid var(--bg)}
+.job .head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.job h3{margin:0;font-size:1.12rem}
+.job .when{color:var(--purple);font-weight:600;font-size:.9rem;white-space:nowrap}
+@media (prefers-color-scheme:dark){.job .when{color:#c9b5f5}}
+.job .org{color:var(--muted);margin:2px 0 10px}
+.job ul{padding-left:18px;margin:0}
+.job li{margin-bottom:6px}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Agent-Based Simulation of the Bullwhip Effect</h1><p class="role" style="margin:0">Research · UT Space Institute · Winter Simulation Conference 2022</p></div></div>
 <div class="wrap doc"><div class="facts"><div class="stat"><b>46.3%</b><span>lower order-to-demand variance at the factory</span></div><div class="stat"><b>49.3%</b><span>lower variance at the wholesaler</span></div><div class="stat"><b>WSC 2022</b><span>peer-reviewed proceedings</span></div></div>
 <h2>Problem</h2><p>Small changes in customer demand grow into large swings in orders as they move up a supply chain (the bullwhip effect). This study tested two strategies for damping those swings.</p>
