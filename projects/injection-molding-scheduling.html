@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Production Scheduling for Plastic Injection Molding | Md Zahidul Islam</title>
-<meta name="description" content="Mixed-integer model for scheduling jobs on parallel molding machines under resource limits, using a manufacturer&#x27;s data.">
+<meta name="description" content="Mixed-integer model for scheduling injection-molding jobs, including drying, setup resources, and machine eligibility.">
 <meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">
 <meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">
 <link rel="icon" href="../images/photo.jpg">
@@ -199,12 +199,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 </head><body>
 <header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Production Scheduling for Plastic Injection Molding</h1><p class="role" style="margin:0">Research · UT Space Institute · IISE Annual Conference 2023</p></div></div>
-<div class="wrap doc">
-<h2>Problem</h2><p>A plastics manufacturer needed to assign jobs to parallel injection-molding machines that differ in capability, while respecting shared resource limits.</p>
-<h2>What I did</h2><ul><li>Collaborated on a resource-constrained, unrelated parallel-machine scheduling formulation (mixed-integer linear program).</li><li>Solved it with Gurobi using data from the manufacturer.</li></ul>
-<h2>Results</h2><ul><li>Presented at the IISE Annual Conference &amp; Expo, New Orleans, May 2023 (with A. Owens and A. J. Yu).</li></ul>
+<div class="wrap doc"><div class="facts"><div class="stat"><b>Makespan</b><span>objective minimized</span></div><div class="stat"><b>2</b><span>stages: drying and molding</span></div><div class="stat"><b>IISE 2023</b><span>conference presentation</span></div></div>
+<h2>Problem</h2><p>In plastic injection molding, some raw materials absorb moisture and must be dried before molding. Earlier scheduling models covered only setup and processing on parallel machines. This study built a more realistic model with the drying stage and machine eligibility, using a plastics manufacturer&#x27;s data.</p>
+<h2>Approach</h2><ul><li>Modeled dryers as parallel machines whose drying time depends on the job, followed by unrelated parallel molding machines.</li><li>Included job- and machine-dependent setup and processing times, machine eligibility, and limited shared resources: mold hangers, setup technicians, and operators.</li><li>Formulated the problem as a mixed-integer linear program minimizing makespan and solved smaller instances with Gurobi.</li></ul>
+<h2>Results</h2><ul><li>Gurobi solved the smaller instances; because the problem is NP-hard, larger instances call for a multi-phase algorithm.</li></ul>
 
-<p class="small muted"><b>Tools:</b> MILP, Gurobi</p><h2>Skills</h2><div class="skills"><span class="sk">Mixed-Integer Linear Programming</span><span class="sk">Production Scheduling</span><span class="sk">Gurobi</span></div>
+<h2>Skills</h2><div class="skills"><span class="sk">Mixed-Integer Linear Programming</span><span class="sk">Parallel-Machine Scheduling</span><span class="sk">Resource-Constrained Scheduling</span><span class="sk">Gurobi</span></div>
+<p class="small muted" style="margin-top:14px"><b>Tools:</b> Mixed-integer linear programming, Gurobi</p>
 </div>
 <footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>

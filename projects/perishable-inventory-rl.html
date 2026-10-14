@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Deep Reinforcement Learning for Perishable Inventory | Md Zahidul Islam</title>
-<meta name="description" content="Reinforcement-learning ordering policies for perishable products with stochastic demand, deterioration, and quantity discounts.">
+<meta name="description" content="Ordering policies for perishable products with an all-unit quantity discount, learned with DQN, A2C, and PPO.">
 <meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">
 <meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">
 <link rel="icon" href="../images/photo.jpg">
@@ -199,12 +199,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 </head><body>
 <header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Deep Reinforcement Learning for Perishable Inventory</h1><p class="role" style="margin:0">Research · UT Space Institute · IISE Annual Conference 2023</p></div></div>
-<div class="wrap doc">
-<h2>Problem</h2><p>Perishable products lose value over time, so ordering too much creates waste and ordering too little creates shortages. Quantity discounts add a further trade-off.</p>
-<h2>What I did</h2><ul><li>Developed reinforcement-learning policies for a perishable inventory system with stochastic demand, product deterioration, and quantity discounts.</li></ul>
-<h2>Results</h2><ul><li>Presented at the IISE Annual Conference &amp; Expo, New Orleans, May 2023.</li></ul>
+<div class="wrap doc"><div class="facts"><div class="stat"><b>3</b><span>deep RL algorithms compared</span></div><div class="stat"><b>2</b><span>issuing policies (FIFO, LIFO)</span></div><div class="stat"><b>IISE 2023</b><span>conference presentation</span></div></div>
+<h2>Problem</h2><p>Perishable products expire at the end of their shelf life, so a retailer must balance waste against stockouts. Quantity discounts reward larger orders, which makes the trade-off harder. Earlier deep reinforcement learning studies of perishable inventory had not considered quantity discounts.</p>
+<h2>Approach</h2><ul><li>Modeled a retailer serving random demand without backorders; each item has a fixed lifetime and must be disposed of when it expires, and orders arrive after a deterministic lead time.</li><li>Included ordering, holding, lost-sales, and perishability costs, with an all-unit quantity discount on orders.</li><li>Formulated the problem as a Markov decision process and solved it with three deep reinforcement learning algorithms: deep Q-network, advantage actor-critic, and proximal policy optimization.</li><li>Compared first-in-first-out and last-in-first-out issuing policies and analyzed sensitivity to model parameters.</li></ul>
+<h2>Results</h2><ul><li>The deep RL policies performed well against previously reported techniques, and the study analyzed how each algorithm responds to changes in cost and demand parameters.</li></ul>
 
-<p class="small muted"><b>Tools:</b> Deep reinforcement learning, Python</p><h2>Skills</h2><div class="skills"><span class="sk">Deep Reinforcement Learning</span><span class="sk">Inventory Optimization</span><span class="sk">Stochastic Modeling</span><span class="sk">Python</span></div>
+<h2>Skills</h2><div class="skills"><span class="sk">Deep Reinforcement Learning</span><span class="sk">DQN</span><span class="sk">Actor-Critic (A2C)</span><span class="sk">PPO</span><span class="sk">Markov Decision Processes</span><span class="sk">Inventory Optimization</span></div>
+<p class="small muted" style="margin-top:14px"><b>Tools:</b> Python, deep reinforcement learning (DQN, A2C, PPO)</p>
 </div>
 <footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>

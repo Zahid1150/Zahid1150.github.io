@@ -1363,7 +1363,7 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 <div class="feat">
 {fcard("research.html#preferences", "images/thumb_sched_pref.jpg", "Doctoral research · Optimization", "Personalized physician scheduling", "Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. A new fairness design cut night-shift imbalance by about half.", ["MILP", "Gurobi", "CP-SAT"])}
 {fcard("projects/ed-admission-prediction.html", "images/thumb_ed_importance.jpg", "Machine learning", "Predicting ED admissions", "Five classifiers on 347,360 emergency visits, combining triage data with chief-complaint text. CatBoost reached the best ROC-AUC (0.863).", ["Python", "Gradient Boosting", "NLP"])}
-{fcard("projects/learning-tsp.html", "STAT:28%~shorter tours|59%~less runtime", "IEEE T-ITS journal article", "Learning-based routing optimization", "Supervised learning guides exact and heuristic solvers on large traveling salesman problems: 28% shorter tours with 59% less runtime on 1,000-node instances.", ["Supervised Learning", "Routing", "Optimization"])}
+{fcard("projects/learning-tsp.html", "STAT:28%~shorter tours|59%~less runtime", "IEEE T-ITS journal article", "Learning-based routing optimization", "Supervised learning guides exact and heuristic solvers on large traveling salesman problems: a 28% smaller average gap and 59% less computation time than a graph pointer network on 1,000-node instances.", ["Supervised Learning", "Routing", "Optimization"])}
 </div>
 <div class="more2"><a href="{{up}}research.html">All research →</a><a href="{{up}}projects.html">All 12 projects →</a><a href="{{up}}publications.html">Publications →</a></div>
 </section>
@@ -1466,6 +1466,259 @@ HOME = _re.sub(r'(<section><h2>Featured work</h2>\s*<div class="feat">).*?(</div
 ]) + "\n" + m.group(2), HOME, count=1, flags=_re.S)
 HOME = HOME.replace('<a href="{up}research.html">All research →</a>', '<a href="{up}research.html">All research →</a>', 1)
 
+
+# ================================================================ v12: detailed project pages from reports and papers (Oct 14, 2026)
+def proj(slug, title, label, line, facts, overview, approach, results, tools, figures, docs, skills, blurb, thumb=None):
+    return dict(slug=slug, title=title, label=label, line=line, facts=facts, overview=overview, approach=approach,
+                results=results, tools=tools, figures=figures, docs=docs, thumb=thumb), skills, blurb
+
+_PJ = [
+ proj("bullwhip-simulation", "Agent-Based Simulation of the Bullwhip Effect",
+  "Research · UT Space Institute · Winter Simulation Conference 2022",
+  "AnyLogic simulation of a three-echelon supply chain testing information sharing and risk pooling.",
+  [("46.3%", "lower order-to-demand variance at the factory"), ("49.3%", "lower variance at the wholesaler"), ("4", "supply chain scenarios compared")],
+  "Small swings in customer demand grow into large swings in orders as they move up a supply chain, the bullwhip effect. It causes excess inventory, shortages, and poor capacity planning. This study asked whether two strategies, sharing demand information and pooling risk across retailers, reduce order amplification, and whether they work better together than separately.",
+  ["Built an agent-based model in AnyLogic of a three-echelon supply chain with one manufacturer, one wholesaler, and two retailers serving separate customer markets.",
+   "Simulated four scenarios: decentralized or centralized (shared) demand information, each with and without risk pooling between the retailers.",
+   "Measured order amplification as the ratio of order variance to customer-demand variance at the wholesaler and the factory, over repeated replications.",
+   "Tested sensitivity to deterministic and stochastic lead times."],
+  ["Each strategy alone reduced amplification; combining them worked best.",
+   "With information sharing and risk pooling together, the variance ratio fell from 16.2 to 8.5 at the factory (46.3% lower) and from 9.5 to 4.8 at the wholesaler (49.3% lower).",
+   "The benefit of the combined strategy grew with lead time: with a five-period lead time, variance-ratio reductions reached 99% from customer to manufacturer."],
+  "AnyLogic, agent-based simulation, experimental design",
+  [("images/wsc_variance.jpg", "Order-to-demand variance ratio in the four scenarios (data from Table 1 of the paper).")],
+  [("Paper (DOI)", "https://doi.org/10.1109/WSC57314.2022.10015288")],
+  ["Agent-Based Simulation", "AnyLogic", "Supply Chain Modeling", "Scenario Analysis", "Experimental Design"],
+  "An AnyLogic model of a three-echelon supply chain with two retailers. Combining information sharing with risk pooling cut order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler, and the benefit grew with lead time."),
+ proj("learning-tsp", "Learning-Based Optimization for the Traveling Salesman Problem",
+  "Research · UT Space Institute · IEEE Transactions on Intelligent Transportation Systems, 2024",
+  "A neural network predicts “anchor” nodes that guide exact and heuristic solvers on large routing problems.",
+  [("87%", "of anchors identified, at over 95% precision"), ("28%", "smaller average gap than a graph pointer network"), ("59%", "less computation time on 1,000-node instances")],
+  "Learning-based methods for the traveling salesman problem often work well only on instances like the ones they were trained on. This work aimed for a method that stays accurate as problems grow, by learning a simple local pattern that holds at any scale.",
+  ["Defined “anchors”: nodes that connect to their nearest neighbors in the optimal tour. In solved instances, roughly 80–90% of nodes are anchors at every problem size.",
+   "Trained a feedforward neural network to classify each node as an anchor using only a local distance matrix of its nearest neighbors, so the model applies to instances of any size.",
+   "Tuned the feature dimension and hyperparameters by random search, and evaluated accuracy, precision, recall, and F1 on generated and TSPLIB instances the model never saw.",
+   "Fed the predicted anchors into existing methods, the Miller–Tucker–Zemlin integer model and insertion heuristics, to build the full tour."],
+  ["The model identified 87% of anchors with over 95% precision on both generated and TSPLIB instances.",
+   "Compared with a graph pointer network, the approach cut the average optimality gap by 28% and computation time by 59% on 1,000-node instances."],
+  "Python, neural networks, mixed-integer programming, heuristics",
+  [("images/tsp_architecture.jpg", "Two-stage approach: a neural network predicts anchors from local distance features, then a heuristic or exact method builds the tour. Figure from the published paper (© IEEE)."),
+   ("images/tsp_anchors.jpg", "Anchor-based construction: anchors (shaded) are connected to their nearest neighbors first. Figure from the published paper (© IEEE).")],
+  [("Paper (DOI)", "https://doi.org/10.1109/TITS.2024.3410691")],
+  ["Supervised Learning", "Neural Networks", "Combinatorial Optimization", "Integer Programming", "Heuristics", "Routing"],
+  "A neural network predicts “anchor” nodes from local distance features, then exact and heuristic solvers build the tour. Against a graph pointer network on 1,000-node instances: 28% smaller average gap and 59% less computation time.",
+  thumb="images/tsp_architecture.jpg"),
+ proj("perishable-inventory-rl", "Deep Reinforcement Learning for Perishable Inventory",
+  "Research · UT Space Institute · IISE Annual Conference 2023",
+  "Ordering policies for perishable products with an all-unit quantity discount, learned with DQN, A2C, and PPO.",
+  [("3", "deep RL algorithms compared"), ("2", "issuing policies (FIFO, LIFO)"), ("IISE 2023", "conference presentation")],
+  "Perishable products expire at the end of their shelf life, so a retailer must balance waste against stockouts. Quantity discounts reward larger orders, which makes the trade-off harder. Earlier deep reinforcement learning studies of perishable inventory had not considered quantity discounts.",
+  ["Modeled a retailer serving random demand without backorders; each item has a fixed lifetime and must be disposed of when it expires, and orders arrive after a deterministic lead time.",
+   "Included ordering, holding, lost-sales, and perishability costs, with an all-unit quantity discount on orders.",
+   "Formulated the problem as a Markov decision process and solved it with three deep reinforcement learning algorithms: deep Q-network, advantage actor-critic, and proximal policy optimization.",
+   "Compared first-in-first-out and last-in-first-out issuing policies and analyzed sensitivity to model parameters."],
+  ["The deep RL policies performed well against previously reported techniques, and the study analyzed how each algorithm responds to changes in cost and demand parameters."],
+  "Python, deep reinforcement learning (DQN, A2C, PPO)",
+  [], [], ["Deep Reinforcement Learning", "DQN", "Actor-Critic (A2C)", "PPO", "Markov Decision Processes", "Inventory Optimization"],
+  "A Markov decision process for perishable products with an all-unit quantity discount, solved with three deep RL algorithms (DQN, A2C, PPO) and tested under FIFO and LIFO issuing. Presented at IISE 2023."),
+ proj("injection-molding-scheduling", "Production Scheduling for Plastic Injection Molding",
+  "Research · UT Space Institute · IISE Annual Conference 2023",
+  "Mixed-integer model for scheduling injection-molding jobs, including drying, setup resources, and machine eligibility.",
+  [("Makespan", "objective minimized"), ("2", "stages: drying and molding"), ("IISE 2023", "conference presentation")],
+  "In plastic injection molding, some raw materials absorb moisture and must be dried before molding. Earlier scheduling models covered only setup and processing on parallel machines. This study built a more realistic model with the drying stage and machine eligibility, using a plastics manufacturer's data.",
+  ["Modeled dryers as parallel machines whose drying time depends on the job, followed by unrelated parallel molding machines.",
+   "Included job- and machine-dependent setup and processing times, machine eligibility, and limited shared resources: mold hangers, setup technicians, and operators.",
+   "Formulated the problem as a mixed-integer linear program minimizing makespan and solved smaller instances with Gurobi."],
+  ["Gurobi solved the smaller instances; because the problem is NP-hard, larger instances call for a multi-phase algorithm."],
+  "Mixed-integer linear programming, Gurobi",
+  [], [], ["Mixed-Integer Linear Programming", "Parallel-Machine Scheduling", "Resource-Constrained Scheduling", "Gurobi"],
+  "A mixed-integer model that schedules molding jobs across dryers and unrelated parallel machines with shared setup resources and machine eligibility, minimizing makespan with a manufacturer's data. Presented at IISE 2023 (with A. Owens and A. J. Yu)."),
+ proj("ed-admission-prediction", "Predicting Emergency Department Admissions",
+  "Graduate class project · Applied Data Science, Clemson University, Spring 2025",
+  "Five classifiers on 347,360 emergency department visits, combining triage data with chief-complaint text.",
+  [("347,360", "visits in the analysis dataset"), ("550", "features (50 structured + 500 text)"), ("0.863", "best ROC-AUC (CatBoost)")],
+  "Knowing early which emergency department patients will be admitted helps hospitals plan beds and staff. This project predicted admission versus discharge from information available at triage, using the MIMIC-IV-ED research database.",
+  ["Joined the ED stay, triage, and patient tables and cleaned 425,011 initial visits to an analysis set of 347,360.",
+   "Built 50 structured predictors (vital signs, acuity, age, arrival mode) and 500 TF-IDF features from the free-text chief complaint.",
+   "Compared logistic regression, random forest, XGBoost, CatBoost, and LightGBM on an 80/20 stratified split with three-fold cross-validated grid search.",
+   "Evaluated ROC-AUC, precision, recall, F1, confusion matrices, decision thresholds, and feature importance."],
+  ["CatBoost reached the best ROC-AUC (0.863), ahead of logistic regression (0.853).",
+   "Triage acuity and age were by far the strongest predictors, followed by heart rate, arrival mode, and transfer status."],
+  "Python, pandas, scikit-learn, XGBoost, CatBoost, LightGBM",
+  [("images/ed_feature_importance.jpg", "CatBoost feature importance: triage acuity and age dominate."),
+   ("images/ed_roc.jpg", "ROC curves for the five tuned models.")],
+  [("Project report (PDF)", "docs/ED_Admission_Prediction_Report.pdf")],
+  ["Python", "pandas", "scikit-learn", "Gradient Boosting", "Text Features (TF-IDF)", "Cross-Validation", "Healthcare Data"],
+  "Predicted admission versus discharge for 347,360 emergency visits from 50 triage variables and 500 chief-complaint text features. Five classifiers compared; CatBoost reached the best ROC-AUC (0.863)."),
+ proj("bike-demand-forecasting", "Bike-Sharing Demand Forecasting",
+  "Graduate class project · team project with A. Hines",
+  "Six models forecasting hourly bike rentals in Seoul; a tuned neural network reached a test R² of 0.96.",
+  [("0.96", "test R² for the tuned neural network"), ("6", "models compared"), ("8,620", "hourly observations")],
+  "Bike-sharing operators need to know how many bikes will be rented each hour to plan staff and fleet. This project predicted hourly rentals in Seoul from a year of hourly weather, calendar, and operating data (UCI Seoul Bike Sharing Demand dataset).",
+  ["Prepared the data: checked completeness, studied correlations, and converted rainfall, snowfall, visibility, solar radiation, and holidays into binary indicators; split the data 80/20.",
+   "Compared linear regression, Gaussian process regression, an artificial neural network, a PyTorch LSTM, XGBoost, and random forest, scored by R², RMSE, and MAE.",
+   "Tuned the neural network with Ray Tune (128 configurations of layer sizes, dropout, and learning rate), random forest with three-fold GridSearchCV, and XGBoost with sequential grid search and 10-fold cross-validation.",
+   "Trained the LSTM on one-month sliding windows, holding out the last two months for testing, and explained the models with SHAP values and feature importance."],
+  ["The tuned neural network performed best (R² 0.96, RMSE 142, MAE 87), followed by the LSTM (R² 0.95); linear regression reached R² 0.72.",
+   "Hour of day, temperature, season, humidity, and solar radiation were the most important features in all three explained models; demand peaks at the morning and evening commutes and is lowest in winter."],
+  "Python, PyTorch, Ray Tune, XGBoost, scikit-learn, SHAP",
+  [("images/bike_models.jpg", "Test performance of the six models (from the project report)."),
+   ("images/bike_seasons.jpg", "Average hourly demand by season: commute peaks at 8 a.m. and 6 p.m., with much lower demand in winter."),
+   ("images/bike_shap.jpg", "SHAP values for the neural network: temperature and hour have the largest effect on predicted demand.")],
+  [("Project report (PDF)", "docs/Bike_Sharing_Forecasting_Report.pdf"), ("Final presentation (PDF)", "docs/Bike_Sharing_Forecasting_Presentation.pdf")],
+  ["Time-Series Forecasting", "PyTorch", "LSTM", "XGBoost", "Hyperparameter Tuning", "Ray Tune", "SHAP"],
+  "Six models forecast hourly bike rentals in Seoul from weather and calendar data. A Ray Tune–tuned neural network reached a test R² of 0.96 (LSTM 0.95, linear regression 0.72), and SHAP showed hour and temperature drive demand.",
+  thumb="images/bike_models.jpg"),
+ proj("mdp-physician-allocation", "Dynamic Physician Allocation with Markov Decision Processes",
+  "Graduate class project · Clemson University",
+  "Allocating physicians between critical and mild-patient streams in real time, solved and benchmarked four ways.",
+  [("5,041", "states in the largest instance"), ("8–15", "policy-iteration steps to converge"), ("4", "solution methods compared")],
+  "An emergency department must decide, as patients arrive, how many physicians to assign to resuscitation for critical patients and how many to general consultation for mild patients. Waiting is costlier for critical patients, but mild-patient queues also build up.",
+  ["Modeled arrivals and services as Poisson processes and the system as a continuous-time MDP, with states giving the number of critical and mild patients and actions giving the number of physicians (0–8) assigned to resuscitation.",
+   "Uniformized the model into an equivalent discrete-time MDP with an infinite-horizon discounted cost that penalizes queue lengths and overload.",
+   "Implemented value iteration, policy iteration, modified policy iteration, and the dual linear program (in Gurobi) on the same transition model.",
+   "Generated synthetic instances from 676 to 5,041 states and compared iterations, runtime, value-function error, and policy agreement."],
+  ["Policy iteration was the fastest and most stable, converging in 8–15 steps even above 5,000 states; value iteration needed up to 2,200 sweeps.",
+   "Value iteration and the linear program matched policy iteration's value function to within 10⁻⁷, but the linear program took over 6,000 seconds at 5,041 states.",
+   "The optimal policy assigns more physicians to resuscitation as critical patients accumulate, largely regardless of the mild queue."],
+  "Python, NumPy, Gurobi",
+  [("images/mdp_runtime.jpg", "Runtime versus state-space size for the four methods (log scale)."),
+   ("images/mdp_policy.jpg", "Optimal policy: physicians assigned to resuscitation by number of critical and mild patients.")],
+  [("Project report (PDF)", "docs/MDP_Physician_Allocation_Report.pdf")],
+  ["Markov Decision Processes", "Dynamic Programming", "Queueing Theory", "Linear Programming", "Gurobi", "Python"],
+  "A continuous-time MDP for assigning physicians between critical and mild-patient streams, solved by value, policy, and modified policy iteration and an LP. Policy iteration converged in 8–15 steps on up to 5,041 states.",
+  thumb="images/mdp_runtime.jpg"),
+ proj("network-interdiction", "Network Interdiction for Wildlife Trafficking",
+  "Graduate class project · IE 8700, Clemson University, Fall 2023",
+  "Which routes should enforcement block to make trafficking of poached tiger parts as hard as possible?",
+  [("29", "nodes"), ("68", "edges"), ("2", "model variants")],
+  "Poached tiger parts move through local transportation networks before reaching international markets. With a limited enforcement budget, which links should be blocked to lengthen traffickers' best route or raise their chance of detection?",
+  ["Formulated bilevel shortest-path interdiction models: the defender chooses links to block, then the trafficker takes the best remaining route.",
+   "Built two variants, one maximizing the trafficker's travel distance and one maximizing the probability of detection.",
+   "Converted both to single-level models using duality and a logarithmic transformation, and solved them in Gurobi.",
+   "Built a 29-node, 68-edge case study based on the geography of Bandhavgarh Tiger Reserve in Python with NetworkX and Matplotlib."],
+  ["Compared which routes were blocked and the resulting objective values as the interdiction budget increased."],
+  "Python, NetworkX, Matplotlib, Gurobi",
+  [("images/interdiction.jpg", "Case-study network; blocked arcs shown in red.")],
+  [("Project report (PDF)", "docs/Network_Interdiction_Report.pdf")],
+  ["Bilevel Optimization", "Duality", "Network Interdiction", "Gurobi", "NetworkX"],
+  "Bilevel models choose which routes to block, under a budget, to disrupt trafficking of poached tiger parts. Reformulated to single-level models with duality and compared across budgets on a case study based on Bandhavgarh Tiger Reserve."),
+ proj("facility-location-branch-and-bound", "Facility Location with a Custom Branch-and-Bound",
+  "Graduate class project · MATH 8120, Clemson University, Fall 2024",
+  "A branch-and-bound algorithm built from scratch and benchmarked against an integer solver and the LP relaxation.",
+  [("10–50", "facilities per instance"), ("5", "random instances"), ("3", "methods compared")],
+  "The uncapacitated facility location problem decides which facilities to open and how to assign customers to them, trading fixed opening costs against service costs. The project implemented the branch-and-bound algorithm itself to study how it searches.",
+  ["Implemented the integer model and its LP relaxation in MATLAB with Gurobi.",
+   "Wrote a custom branch-and-bound routine with fractional-variable branching, variable fixing, incumbent updates, and node counting.",
+   "Benchmarked five random instances with 10 to 50 facilities."],
+  ["Compared objective values, runtimes, and nodes visited for the integer solver, the LP relaxation, and the custom branch-and-bound."],
+  "MATLAB, Gurobi",
+  [], [], ["Branch and Bound", "Integer Programming", "LP Relaxation", "MATLAB", "Gurobi"],
+  "A branch-and-bound algorithm written from scratch for uncapacitated facility location in MATLAB with Gurobi, benchmarked against the integer solver and LP relaxation on instances with 10 to 50 facilities."),
+ proj("lagrangian-relaxation", "Lagrangian Relaxation with Subgradient Updates",
+  "Graduate class project · team project with J. Wu and M. Ren",
+  "Relaxing hard resource constraints and tuning a subgradient method to obtain bounds and feasible schedules.",
+  [("200", "subgradient iterations"), ("3", "bounds tracked"), ("Step size", "sensitivity studied")],
+  "Some scheduling models are hard because constraints link time periods through shared resources. Lagrangian relaxation moves those constraints into the objective with penalty multipliers, leaving a problem that is easier to solve and gives a bound on the optimum.",
+  ["Relaxed the time-indexed resource constraints with nonnegative multipliers.",
+   "Updated the multipliers with a subgradient method and a decreasing step size over 200 iterations, recovering a feasible schedule at each step.",
+   "Tracked the Lagrangian lower bound, the best feasible (upper) bound, and the gap, and compared them with the LP-relaxation bound."],
+  ["The step size controlled convergence: large steps oscillated, small steps converged slowly or found feasible solutions less often.",
+   "With a well-chosen step size the Lagrangian bound improved on the LP-relaxation bound."],
+  "Lagrangian relaxation, subgradient optimization, integer programming",
+  [("images/lagrangian_bounds.jpg", "Lower and upper bounds over subgradient iterations, with the LP-relaxation bound for comparison.")],
+  [("Project report (PDF)", "docs/Lagrangian_Relaxation_Report.pdf")],
+  ["Lagrangian Relaxation", "Subgradient Optimization", "Integer Programming", "Decomposition"],
+  "Relaxed hard resource constraints in a scheduling model with Lagrange multipliers updated by a subgradient method over 200 iterations, tracking lower and upper bounds against the LP relaxation."),
+ proj("fresenius-downtime", "Reducing Production Downtime at Fresenius Medical Care",
+  "Team project with Fresenius Medical Care",
+  "Production data analysis of automated dialysis-product lines, with a failure-reporting system and SOPs.",
+  [("74%", "overall equipment effectiveness at the start"), ("4", "months of production data"), ("36%", "of downtime from one failure mode")],
+  "Fresenius Medical Care's two fully automated lines for Bibag, a pouch used with hemodialysis equipment, had low overall equipment effectiveness (OEE). Breakdowns at one workstation were the main source of downtime, and failures were not recorded consistently.",
+  ["Analyzed four months of company production data, splitting OEE into availability, performance, and quality.",
+   "Traced downtime to individual workstations and failure modes; the touch test (36%) and vacuum issues (17%) were the largest.",
+   "Mapped root causes with the team and assessed employee motivation and engagement for the changes."],
+  ["Proposed an integrated failure-reporting system, standardized data entry, a supporting database, and standard operating procedures for the bottleneck workstation, with a phased action plan."],
+  "Production data analysis, OEE, root-cause analysis",
+  [("images/fresenius_failure_modes.jpg", "Share of downtime by failure mode over four months of production data.")],
+  [("Poster (PDF)", "docs/Fresenius_Downtime_Poster.pdf")],
+  ["Production Data Analysis", "OEE", "Root-Cause Analysis", "Process Improvement", "Standard Operating Procedures"],
+  "Analyzed four months of data from two automated dialysis-product lines with about 74% OEE; the touch test and vacuum issues caused over half of downtime. Proposed a failure-reporting system, database, and SOPs."),
+ proj("ludo-dqn", "Deep Q-Network Agent for the Board Game Ludo",
+  "Team project · University of Tennessee, Knoxville",
+  "A Deep Q-Network agent that learned to beat a computer opponent in about 61% of games.",
+  [("61.4%", "average win rate over 5 × 1,000 games"), ("27%", "win rate of the first model"), ("16", "state variables")],
+  "Ludo combines chance, from the dice, with strategy: which piece to move, when to stay safe, and when to capture. That makes it a useful test for reinforcement learning, and little prior work has studied it.",
+  ["Built a Ludo environment and a Deep Q-Network agent with epsilon-greedy exploration, experience replay, and separate local and target networks.",
+   "Encoded each of the four pieces with four state variables (home, safe, danger, goal), giving 16 inputs.",
+   "Tuned the discount factor, learning rate, state representation, network depth, batch size, and buffer size for the first model.",
+   "Redesigned the agent with five actions (move one of four pieces or none) and shaped rewards: +100 for winning, −100 for losing, ±50 for capturing or being captured, and −10 for overshooting."],
+  ["The first DQN won about 27% of games, rising to 35% after tuning.",
+   "The redesigned DQN won 61.9%, 61.7%, 61.3%, 60.8%, and 61.3% in five runs of 1,000 games, an average of 61.4%."],
+  "Python, deep Q-learning",
+  [("images/ludo_winrate.jpg", "Win rate against the computer opponent for each version of the agent (from the project report)."),
+   ("images/ludo_dqn.jpg", "Structure of the redesigned Deep Q-Network with five output actions.")],
+  [("Project report (PDF)", "docs/Ludo_DQN_Report.pdf")],
+  ["Deep Q-Learning", "Reinforcement Learning", "Reward Shaping", "Hyperparameter Tuning", "Python"],
+  "A Deep Q-Network agent for Ludo. Tuning lifted the first model from 27% to 35% wins; a redesigned five-action network with shaped rewards won 61.4% of games on average across five 1,000-game runs.",
+  thumb="images/ludo_winrate.jpg"),
+]
+PROJECTS = [x[0] for x in _PJ]
+for x in _PJ:
+    SKILLS[x[0]["slug"]] = x[1]
+    BLURB[x[0]["slug"]] = x[2]
+
+
+def thumb_html(p):
+    src = p.get("thumb") or (p["figures"][0][0] if p.get("figures") else None) or _ILL.get(p["slug"])
+    return f'<div class="thumb"><img src="{{up}}{src}" alt="" loading="lazy"></div>' if src else ""
+
+
+def short_label(p):
+    if p["slug"] in SHORT:
+        return SHORT[p["slug"]]
+    return p["label"].split(" · ")[0]
+
+
+def project_page(p):
+    facts = '<div class="facts">' + "".join(f'<div class="stat"><b>{E(v)}</b><span>{E(l)}</span></div>' for v, l in p["facts"]) + "</div>" if p.get("facts") else ""
+    figs = "".join(f'<figure><img src="{{up}}{src}" alt="{E(cap)}"><figcaption>{E(cap)}</figcaption></figure>' for src, cap in p.get("figures", []))
+    docs = ("<h2>Documents</h2>" + badges([(l, (u if u.startswith("http") else "{up}" + u)) for l, u in p["docs"]])) if p.get("docs") else ""
+    body = band(p["title"], E(p["label"]), '<a href="{up}projects.html">← All projects</a>') + f"""
+<div class="wrap doc">{facts}
+<h2>Problem</h2><p>{E(p['overview'])}</p>
+<h2>Approach</h2><ul>{''.join(f'<li>{E(x)}</li>' for x in p['approach'])}</ul>
+<h2>Results</h2><ul>{''.join(f'<li>{E(x)}</li>' for x in p['results'])}</ul>
+{figs}
+<h2>Skills</h2>{skills_html(SKILLS[p['slug']])}
+<p class="small muted" style="margin-top:14px"><b>Tools:</b> {E(p['tools'])}</p>
+{docs}</div>"""
+    page(f"projects/{p['slug']}.html", f"{p['title']} | Md Zahidul Islam", body, "projects.html", p["line"])
+
+# home "at a glance"
+HOME = _re.sub(r'<div class="glance">.*?</div>\n</div>\n', lambda m: """<div class="glance">
+<div class="gl"><h3>Optimization and scheduling</h3><p>Mixed-integer and constraint programming, multi-objective models, and decomposition for workforce scheduling, routing, and network design, solved at scale on HPC.</p></div>
+<div class="gl"><h3>Machine learning and AI</h3><p>Supervised learning, gradient boosting, deep learning, and reinforcement learning for prediction and decisions, plus evaluation of large language models.</p></div>
+<div class="gl"><h3>Stochastic modeling and simulation</h3><p>Markov decision processes, queueing models, and agent-based simulation for operations under uncertainty, backed by statistical analysis.</p></div>
+</div>
+""", HOME, count=1, flags=_re.S)
+assert "Stochastic modeling and simulation" in HOME
+
+# publications: DOI for the lawn mower paper, open-access PDFs
+_PDF = {"Stature estimation": "docs/papers/Asadujjaman_2021_Stature_Estimation_EJFS.pdf",
+        "Cost-effective decisions": "docs/papers/Nahar_2016_Queuing_Service_Rate_JMST.pdf",
+        "Time befitting supply chain": "docs/papers/Fahim_2020_Apparel_Supply_Chain_ICMIEE.pdf"}
+PUBS = [(k, y, t, a, v, (d or ("https://doi.org/10.1109/ACMI53878.2021.9528175" if t.startswith("Design and re-engineering") else None))) for k, y, t, a, v, d in PUBS]
+
+
+def pub_html(p):
+    kind, year, title, authors, venue, doi = p
+    links = [("DOI", doi)] if doi else []
+    for k, u in _PDF.items():
+        if title.startswith(k):
+            links.append(("PDF", "{up}" + u))
+    return f'<div class="pub"><div class="t">{E(title)}</div><div class="a">{authors} ({year}). {venue}.</div>{badges(links)}</div>'
+
 # ================================================================ v10c: final pass
 _main_v9 = main
 
@@ -1479,13 +1732,12 @@ def main():
                       '<footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:' + EMAIL + '">' + EMAIL + '</a> · Updated October 2026</span></div></footer>')
         up = "../" if os.sep + "projects" + os.sep in f else ""
         t = t.replace('<link rel="icon"', '<meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">\n<meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">\n<link rel="icon"', 1)
-        if f.endswith("ed-admission-prediction.html"):
+        if f.endswith("ed-admission-prediction.html") and _EXTRA.get("ed-admission-prediction") and False:
             src, cap = _EXTRA["ed-admission-prediction"]
             t = t.replace("</figure>", f'</figure><figure><img src="../{src}" alt="{cap}"><figcaption>{cap}</figcaption></figure>', 1)
         open(f, "w").write(t)
     lp = os.path.join(ROOT, "projects", "ludo-dqn.html")
-    if os.path.exists(lp):
-        os.remove(lp)
+    pass
 
 if __name__ == "__main__":
     main()

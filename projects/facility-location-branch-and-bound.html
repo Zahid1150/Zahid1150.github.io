@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Facility Location with a Custom Branch-and-Bound | Md Zahidul Islam</title>
-<meta name="description" content="Built a branch-and-bound solver from scratch and benchmarked it against an integer solver and the LP relaxation.">
+<meta name="description" content="A branch-and-bound algorithm built from scratch and benchmarked against an integer solver and the LP relaxation.">
 <meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">
 <meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">
 <link rel="icon" href="../images/photo.jpg">
@@ -199,12 +199,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 </head><body>
 <header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Facility Location with a Custom Branch-and-Bound</h1><p class="role" style="margin:0">Graduate class project · MATH 8120, Clemson University, Fall 2024</p></div></div>
-<div class="wrap doc">
-<h2>Problem</h2><p>The uncapacitated facility location problem decides which facilities to open and how to assign customers to them. The goal of the project was to implement and study the branch-and-bound algorithm itself.</p>
-<h2>What I did</h2><ul><li>Implemented the integer model, its LP relaxation, and a custom branch-and-bound routine in MATLAB with Gurobi.</li><li>Included fractional-variable branching, variable fixing, incumbent comparison, and node counting.</li></ul>
-<h2>Results</h2><ul><li>Benchmarked five random instances from 10 to 50 facilities, comparing objective values, runtimes, and nodes visited.</li></ul>
-<div class="note">A study in algorithm design and benchmarking, not a claim of beating a commercial solver.</div>
-<p class="small muted"><b>Tools:</b> MATLAB, Gurobi</p><h2>Skills</h2><div class="skills"><span class="sk">Branch and Bound</span><span class="sk">Integer Programming</span><span class="sk">LP Relaxation</span><span class="sk">MATLAB</span><span class="sk">Gurobi</span></div>
+<div class="wrap doc"><div class="facts"><div class="stat"><b>10–50</b><span>facilities per instance</span></div><div class="stat"><b>5</b><span>random instances</span></div><div class="stat"><b>3</b><span>methods compared</span></div></div>
+<h2>Problem</h2><p>The uncapacitated facility location problem decides which facilities to open and how to assign customers to them, trading fixed opening costs against service costs. The project implemented the branch-and-bound algorithm itself to study how it searches.</p>
+<h2>Approach</h2><ul><li>Implemented the integer model and its LP relaxation in MATLAB with Gurobi.</li><li>Wrote a custom branch-and-bound routine with fractional-variable branching, variable fixing, incumbent updates, and node counting.</li><li>Benchmarked five random instances with 10 to 50 facilities.</li></ul>
+<h2>Results</h2><ul><li>Compared objective values, runtimes, and nodes visited for the integer solver, the LP relaxation, and the custom branch-and-bound.</li></ul>
+
+<h2>Skills</h2><div class="skills"><span class="sk">Branch and Bound</span><span class="sk">Integer Programming</span><span class="sk">LP Relaxation</span><span class="sk">MATLAB</span><span class="sk">Gurobi</span></div>
+<p class="small muted" style="margin-top:14px"><b>Tools:</b> MATLAB, Gurobi</p>
 </div>
 <footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>
