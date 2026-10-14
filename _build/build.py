@@ -133,7 +133,7 @@ TALKS = [
      "INFORMS Annual Meeting, San Francisco, CA", "Accepted talk"),
     ("Oct 2026", "Preferences, alignment, fatigue, and burnout: A cross-sectional shift-schedule survey of emergency department nurses and attending physicians",
      "Prisma Health Education and Research Institute Research Showcase", "Accepted poster"),
-    ("Oct 2026", "Shift preference alignment, workload, and fatigue in emergency medicine clinicians (with C. Norton, first author)",
+    ("Oct 2026", "Shift preference alignment, workload, and fatigue in emergency medicine clinicians (C. Norton, M. Z. Islam, et al.)",
      "Prisma Health Education and Research Institute Research Showcase", "Accepted poster"),
     ("May 2026", "Multi-site physician scheduling incorporating work-related fatigue and individual preferences",
      "IISE Annual Conference &amp; Expo, Arlington, TX", "Talk"),
@@ -377,7 +377,6 @@ HOME = f"""<div class="hero">
 <a href="{{up}}Zahid_Islam_Academic_CV.pdf">Academic CV</a>
 <a href="{SCHOLAR}">Google Scholar</a>
 <a href="{LINKEDIN}">LinkedIn</a>
-<a href="{GITHUB}">GitHub</a>
 <a href="mailto:{EMAIL}">{EMAIL}</a>
 </div>
 </div></div>
@@ -655,7 +654,6 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 <a class="btn primary" href="{{up}}Zahid_Islam_Academic_CV.pdf">Academic CV</a>
 <a class="btn" href="{SCHOLAR}">Google Scholar</a>
 <a class="btn" href="{LINKEDIN}">LinkedIn</a>
-<a class="btn" href="{GITHUB}">GitHub</a>
 <a class="btn" href="mailto:{EMAIL}">Email</a>
 </div></div></div></div></div>
 
@@ -995,7 +993,7 @@ JOBS = [
     "Supported chapter programming, professional-development events, and outreach; co-host and producer of the Optimality Gap podcast.",
     "The chapter received the INFORMS Student Chapter Annual Award at the Magna Cum Laude level in 2025 during this term."],
    ["Leadership"], None),
-  ("Undergraduate Research Mentor", "Clemson University Creative Inquiry", "Fall 2025 – Present", [
+  ("Undergraduate Research Mentor", "Clemson University Creative Inquiry", "Aug 2025 – Present", [
     "Mentor twelve undergraduates from industrial engineering, biological sciences, bioengineering, health science, and nursing in field data collection, data-quality checks, analysis, and research presentation."],
    ["Mentoring", "Research Supervision"], None),
  ]),
@@ -1038,15 +1036,16 @@ RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor
 <p><b>What makes this different.</b> Many scheduling models let physicians say <i>what</i> they prefer, such as fewer nights or a free weekend, and then treat every preference as equally important for everyone. In practice people care about different things: a physician with young children may care a great deal about avoiding nights, while a colleague barely minds. In our model each physician spends a fixed budget of points across the things that matter to them, and the model uses those points as that physician's own weights. Because everyone has the same budget, no one can mark everything as top priority, and fairness limits keep any one physician from carrying too much of the load.</p>
 <figure><img src="{{up}}images/sched_preferences.png" alt="Comparison: equal weights give both physicians three nights; personal weights give one night to the physician who cares most"><figcaption>Illustrative example: with personal weights, nights go to the physician who minds them least, with the same coverage.</figcaption></figure>
 <ul>
-<li><b>Rules that must hold:</b> every shift at every hospital is covered, no physician works at two sites on the same day, workload limits are met, and there is enough rest between shifts.</li>
-<li><b>Goals to balance:</b> each physician's weighted preferences, time-off requests, healthy work patterns, and fairness across the group.</li>
-<li><b>Finding the hard part:</b> removing one rule group at a time showed that the rules on work stretches and rest days make the problem far harder than everything else combined.</li>
-<li><b>A month as a path:</b> to handle those rules better, each physician's month is modeled as a chain of work blocks and rest periods, with penalties for blocks that run too long or rest that is too short.</li>
-<li><b>Fairer nights:</b> a new fairness design cut the imbalance in night shifts between physicians by about half, with no loss in coverage.</li>
-<li><b>Testing at scale:</b> an automated pipeline runs day-long experiments on Clemson's Palmetto supercomputer, checks every schedule against the rules, and compares model versions side by side.</li>
+<li>Rules that must hold: every shift at every hospital is covered, no physician works at two sites on the same day, workload limits are met, and there is enough rest between shifts.</li>
+<li>Goals to balance: each physician's weighted preferences, time-off requests, healthy work patterns, and fairness across the group.</li>
+<li>Finding the hard part: removing one rule group at a time showed that the rules on work stretches and rest days make the problem far harder than everything else combined.</li>
+<li>A month as a path: to handle those rules better, each physician's month is modeled as a chain of work blocks and rest periods, with penalties for blocks that run too long or rest that is too short.</li>
+<li>Fairer nights: a new fairness design cut the imbalance in night shifts between physicians by about half, with no loss in coverage.</li>
+<li>Results so far: on synthetic benchmarks with 25 to 75 physicians, schedules met an average of 84–87% of each physician's weighted preference categories while satisfying all hard staffing rules.</li>
+<li>Testing at scale: an automated pipeline runs day-long experiments on Clemson's Palmetto supercomputer, checks every schedule against the rules, and compares model versions side by side.</li>
 </ul>
 <figure><img src="{{up}}images/sched_work_rest.png" alt="One physician's month shown as alternating work blocks and rest periods"><figcaption>One physician's month as a path of work blocks and rest periods; a block that runs too long is penalized.</figcaption></figure>
-<p><b>Key insight and next steps.</b> Longer runs kept finding better schedules, but the solver's proof of how good they are stopped improving after a few hours, so more computing time alone will not solve larger systems. The next step is decomposition (column generation): build good schedules for each physician separately, then combine them. In parallel I am solving the same problem with Google's CP-SAT constraint programming solver to see whether it reaches schedules of the same quality in less time.</p>
+<p><b>Next steps.</b> Longer runs keep finding better schedules, so the next stage is decomposition (column generation): build good schedules for each physician separately, then combine them, to schedule larger health systems faster. In parallel I am solving the same problem with Google's CP-SAT constraint programming solver to compare solution quality and speed.</p>
 <p class="small muted">Accepted talk, INFORMS Annual Meeting, November 2026 · manuscript in preparation.</p>
 {{skills1}}
 
@@ -1054,10 +1053,10 @@ RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor
 <p>Physicians in a hospital network rotate across sites, nights, and weekends, and the same shift can tire people differently depending on their body clock. With Dr. Kevin Taaffe and the project team, I built a mixed-integer model in Python and Gurobi for 90-day schedules across four hospitals. It scores each physician–shift pair with a Shift Fatigue Index (chronotype mismatch, shift end time, and shift length) and penalizes uneven sharing of nights, weekends, and distant-site shifts. Themes from the interview study shaped these penalties. Tests use synthetic instances.</p>
 <figure><img src="{{up}}images/rostering_design.png" alt="Diagram: inputs feed a Shift Fatigue Index and a mixed-integer model that produces a roster; post-shift surveys, a wrist-worn sleep tracker, and saliva cortisol will calibrate the index"><figcaption>How the model works, and the field data that will calibrate its fatigue score.</figcaption></figure>
 <ul>
-<li><b>Fatigue drops by almost half at a modest cost.</b> On a 40-physician instance, a balanced weighting cut total modeled fatigue by 45% (6,893 to 3,777) and the highest individual score by 27%, while other schedule penalties rose 12%.</li>
-<li><b>Fatigue alone is the wrong target.</b> Weighting only fatigue lowered it just 2% more, nearly doubled other penalties, and cut mean recovery after work blocks from 2.9 to 1.7 days.</li>
-<li><b>Results are stable across instances.</b> Four random seeds gave feasible rosters with optimality gaps below 4%; distant-site counts differed by at most two.</li>
-<li><b>Size is the bottleneck.</b> Rosters for 40 and 70 physicians were found within six hours; at 100 or more physicians, none was found.</li>
+<li>On a 40-physician instance, a balanced weighting cut total modeled fatigue by 45% (6,893 to 3,777) and the highest individual score by 27%, while other schedule penalties rose 12%.</li>
+<li>Weighting only fatigue lowered it just 2% more, nearly doubled other penalties, and cut mean recovery after work blocks from 2.9 to 1.7 days.</li>
+<li>Results held across four randomly generated test instances, with distant-site assignments differing by at most two shifts per physician.</li>
+<li>The model produced rosters for networks of 40 and 70 physicians; the next step is scaling to larger systems.</li>
 </ul>
 <figure style="max-width:640px"><img src="{{up}}images/rostering_tradeoff.png" alt="Trade-off between total modeled fatigue and schedule-quality penalty for four weightings"><figcaption>Fatigue versus other schedule penalties for four objective weightings (40 physicians, 4 hospitals, 90 days; synthetic instance).</figcaption></figure>
 <p>The index is a transparent proxy, not yet a validated measure. A 2026 shift study pairs post-shift surveys of fatigue and workload with wrist-worn sleep tracking and before-and-after-shift saliva cortisol; these data will calibrate it.</p>
@@ -1068,41 +1067,41 @@ RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor
 <p>To ground the models in clinicians' experience, I led a comparative interview study with 18 emergency nurses and 13 attending emergency physicians at Prisma Health. I co-designed the interview guide and conducted semi-structured interviews on Microsoft Teams (April–June 2025). The team analyzed the transcripts in ATLAS.ti with a separate codebook for each profession and checked intercoder agreement on double-coded transcripts. Each clinician described two schedules: the one they would choose overall, and the one best for their fatigue and daily functioning.</p>
 <figure><img src="{{up}}images/interview_study_design.png" alt="Study design: 31 clinicians, profession-specific codebooks leading to six cross-professional themes, and a within-person comparison of two elicited schedules"><figcaption>Study design. Every clinician described both schedules, so the two could be compared within the same person.</figcaption></figure>
 <ul>
-<li><b>Preference and fatigue often differ.</b> For 18 of 31 clinicians, the schedule best for fatigue differed from the one they preferred overall: in timing for nine and in structure (shift length, spacing, or blocks) for nine. When timing differed, family obligations, especially childcare, most often pulled the preferred schedule earlier than the hours when clinicians felt they functioned best.</li>
-<li><b>Shared goals, different fatigue drivers.</b> Both groups valued recovery, predictability, and long stretches off, and grouped shifts to get them. Nurses linked fatigue to consecutive 12-hour shifts, patient volume, and missed breaks; physicians linked it to night work and rapid switches between shift types.</li>
-<li><b>Control is not the same as recovery.</b> Nurses valued the flexibility of self-scheduling yet still reported fatigue; physicians could state preferences before the schedule was published but had little flexibility afterward.</li>
-<li><b>Implication for the models.</b> Preference satisfaction and fatigue should be treated as separate objectives rather than one "preference" term. These findings informed the survey questions and the scheduling models.</li>
+<li>For 18 of 31 clinicians, the schedule best for fatigue differed from the one they preferred overall: in timing for nine and in structure (shift length, spacing, or blocks) for nine. When timing differed, family obligations, especially childcare, most often pulled the preferred schedule earlier than the hours when clinicians felt they functioned best.</li>
+<li>Both groups valued recovery, predictability, and long stretches off, and grouped shifts to get them. Nurses linked fatigue to consecutive 12-hour shifts, patient volume, and missed breaks; physicians linked it to night work and rapid switches between shift types.</li>
+<li>Nurses valued the flexibility of self-scheduling yet still reported fatigue; physicians could state preferences before the schedule was published but had little flexibility afterward.</li>
+<li>Preference satisfaction and fatigue should be treated as separate objectives rather than one "preference" term. These findings informed the survey questions and the scheduling models.</li>
 </ul>
 <figure style="max-width:720px"><img src="{{up}}images/interview_paired_comparison.png" alt="Bar chart: 11 clinicians described the same schedule, 9 differed in structure, 9 differed in timing, and 2 could not be classified"><figcaption>How each clinician's schedule for life compared with their schedule for fatigue (N = 31).</figcaption></figure>
-<p class="small muted">Early results were presented as a poster at the Prisma Health Research Showcase (November 2025). The full manuscript is in preparation.</p>
+<p class="small muted">Poster, Prisma Health Education and Research Institute Research Showcase, November 2025 · manuscript in preparation.</p>
 <div class="badges"><a class="badge" href="{{up}}docs/Interview_Study_Poster_2025.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
 {{skills3}}
 
-<h2 id="survey">Survey study: does schedule fit matter for burnout?</h2>
-<p>Burnout is common among emergency department clinicians, and shift scheduling is one factor health systems can change. I analyzed a cross-sectional survey of 103 nurses and 57 attending physicians at seven Prisma Health emergency departments (March–May 2026). It asked about preferred shift length, consecutive shifts, and night work; how many hours into a shift clinicians begin to feel tired; how much time off they need to recover; and how well their most recent schedule matched their preferences (0–10). I ran the analysis in Python (pandas, SciPy, statsmodels) using group comparisons, mixed models, and robust regression with false discovery rate control.</p>
+<h2 id="survey">Survey study: schedule fit and burnout among 160 ED clinicians</h2>
+<p>Burnout is common among emergency department clinicians, and shift scheduling is one factor health systems can change. I helped design and analyzed a cross-sectional survey of 103 nurses and 57 attending physicians at seven Prisma Health emergency departments (March–May 2026). It asked about preferred shift length, consecutive shifts, and night work; how many hours into a shift clinicians begin to feel tired; how much time off they need to recover; and how well their most recent schedule matched their preferences (0–10). I ran the analysis in Python (pandas, SciPy, statsmodels) using group comparisons, mixed models, and robust regression with false discovery rate control.</p>
 <figure><img src="{{up}}images/survey_design.png" alt="Study design: participants, survey measures, and analyses"><figcaption>Participants, survey measures, and analyses.</figcaption></figure>
 <ul>
-<li><b>Different preferences.</b> Nurses most often preferred 12-hour shifts (67%); physicians most often preferred 9-hour shifts (49%).</li>
-<li><b>Shifts outlast tiredness.</b> 76% preferred shifts longer than the point at which they begin to feel tired (a median of 2 hours longer).</li>
-<li><b>More recovery after long runs and nights.</b> Days off needed after five or more consecutive shifts including a night were 2.0 times (nurses) and 2.5 times (physicians) those needed after two to four shifts.</li>
-<li><b>Schedule fit and burnout.</b> Clinicians who rated their schedule a better match to their preferences reported lower burnout (standardized β = −0.40); the association held after also adjusting for sleep, chronotype, and shift type.</li>
+<li>Nurses most often preferred 12-hour shifts (67%); physicians most often preferred 9-hour shifts (49%).</li>
+<li>76% preferred shifts longer than the point at which they begin to feel tired (a median of 2 hours longer).</li>
+<li>Days off needed after five or more consecutive shifts including a night were 2.0 times (nurses) and 2.5 times (physicians) those needed after two to four shifts.</li>
+<li>Clinicians who rated their schedule a better match to their preferences reported lower burnout (standardized β = −0.40); the association held after also adjusting for sleep, chronotype, and shift type.</li>
 </ul>
 <figure style="max-width:720px"><img src="{{up}}images/survey_alignment.png" alt="Association of self-reported schedule alignment with burnout and fatigue"><figcaption>Self-reported schedule alignment and well-being, adjusted for profession, age, and FTE.</figcaption></figure>
 <p>These results link schedule fit to burnout and inform the preference-weighted scheduling models above. Next, we are comparing self-reported alignment with the shifts clinicians actually worked before the survey.</p>
-<p class="small muted">Poster, Prisma Health Research Showcase, October 2026 · manuscript in preparation.</p>
+<p class="small muted">Accepted poster, Prisma Health Education and Research Institute Research Showcase, October 2026 · manuscript in preparation.</p>
 <div class="badges"><a class="badge" href="{{up}}docs/Survey_Study_Poster_2026.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
 {{skills4}}
 
-<h2 id="llm">Can large language models reproduce human thematic analysis?</h2>
+<h2 id="llm">Evaluating large language models for thematic analysis of clinician interviews</h2>
 <p class="small muted">With S. V. Abrol, V. Prabhu, and K. M. Taaffe · ongoing research</p>
 <p>This study examines how well large language models perform inductive thematic analysis of qualitative healthcare interviews, and how their interpretations compare with those of human researchers. Using 18 emergency department nurse interviews and a human-developed reference codebook of 47 codes, we evaluate Claude Sonnet and Opus at medium and high reasoning-effort settings on conceptual alignment, code coverage, coding specificity, and the ability to reproduce higher-order human interpretations.</p>
 <figure><img src="{{up}}images/llm_workflow_v2.png" alt="Study design: 18 nurse transcripts coded by human researchers and by four Claude configurations; codebooks compared on alignment, coverage, specificity, and higher-order themes"><figcaption>Study design: the same transcripts are coded by human researchers and by four model configurations, and the codebooks are compared.</figcaption></figure>
 <ul>
-<li><b>Model family mattered more than reasoning effort.</b> Sonnet captured 33 (medium) and 32 (high) of the 47 human codes; Opus captured 38 (medium) and 39 (high). Raising reasoning effort barely changed coverage, but it changed which concepts were recovered.</li>
-<li><b>Together the models covered most of the human analysis.</b> At least one configuration represented 44 of 47 human codes (93.6%); the best single configuration, Opus at high effort, represented 39 (83.0%).</li>
-<li><b>More granular than the humans.</b> The models produced 10–15 themes against 4 human themes, splitting broad human themes into narrower ones, and their codes often kept the nurse's stated reason (for example, preferring 12-hour shifts to work fewer days). Sonnet kept more narrow, one- or two-nurse codes; Opus more often grouped experiences shared across nurses.</li>
-<li><b>Weaker on big-picture judgments.</b> No configuration reproduced the human theme on schedule alignment and satisfaction; its pieces appeared scattered across other themes. All four missed three codes, including current-versus-ideal schedule misalignment.</li>
-<li><b>Takeaway.</b> LLM-assisted analysis looks most useful for identifying detailed scheduling features, mechanisms, and reasons, while human interpretation remains important for higher-order synthesis.</li>
+<li>Sonnet captured 33 (medium) and 32 (high) of the 47 human codes; Opus captured 38 (medium) and 39 (high). Raising reasoning effort barely changed coverage, but it changed which concepts were recovered.</li>
+<li>At least one configuration represented 44 of 47 human codes (93.6%); the best single configuration, Opus at high effort, represented 39 (83.0%).</li>
+<li>The models produced 10–15 themes against 4 human themes, splitting broad human themes into narrower ones, and their codes often kept the nurse's stated reason (for example, preferring 12-hour shifts to work fewer days). Sonnet kept more narrow, one- or two-nurse codes; Opus more often grouped experiences shared across nurses.</li>
+<li>No configuration reproduced the human theme on schedule alignment and satisfaction; its pieces appeared scattered across other themes. All four missed three codes, including current-versus-ideal schedule misalignment.</li>
+<li>LLM-assisted analysis looks most useful for identifying detailed scheduling features, mechanisms, and reasons, while human interpretation remains important for higher-order synthesis.</li>
 </ul>
 <figure><img src="{{up}}images/llm_results.png" alt="Bar charts: human codes captured by each configuration (Sonnet medium 33, Sonnet high 32, Opus medium 38, Opus high 39, combined 44 of 47) and number of themes (human 4; models 15, 12, 11, 10)"><figcaption>Human codes captured and number of themes for each configuration. Each configuration was evaluated in one analytic run; results are preliminary and specific to this dataset and prompt.</figcaption></figure>
 <p><b>My role:</b> reviewing and refining human–model code mappings, evaluating prompting and analysis strategies, developing the inter-rater reliability assessment, calculating agreement statistics, and contributing to adjudication, interpretation, and the manuscript.</p>
@@ -1113,7 +1112,7 @@ RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor
 <p>At the University of Tennessee Space Institute (2021–2022) I worked on supply chain simulation, learning-based routing, perishable inventory, and production scheduling. See the <a href="{{up}}projects.html">projects page</a>.</p>
 """
 RSK = {
- "skills1": ["Mixed-Integer Programming", "Preference Modeling", "Constraint Programming (CP-SAT)", "Network Models", "Gurobi", "Google OR-Tools", "Python", "High-Performance Computing"],
+ "skills1": ["Mixed-Integer Linear Programming", "Preference Modeling", "Constraint Programming (CP-SAT)", "Network Models", "Gurobi", "Google OR-Tools", "Python", "High-Performance Computing"],
  "skills2": ["Mixed-Integer Linear Programming", "Bi-Objective Optimization", "Fatigue Modeling", "Chronotype", "Gurobi", "Python"],
  "skills3": ["Qualitative Research", "Semi-Structured Interviews", "Thematic Analysis", "Intercoder Reliability", "ATLAS.ti", "Clinician Fatigue"],
  "skills4": ["Survey Research", "Multiple Regression", "Mixed-Effects Models", "Multiple-Testing Correction", "Python (statsmodels, SciPy)", "Clinician Burnout"],
@@ -1138,10 +1137,10 @@ RCARDS = "".join([
     rcard("interviews", "Qualitative study", "Schedules for life vs. schedules for fatigue",
           "Interviews with 18 nurses and 13 physicians, each describing the schedule they prefer and the one best for their fatigue. For 18 of 31 clinicians the two differed, often because family obligations pulled their preferred hours earlier.",
           RSK["skills3"][:4], img="images/thumb_interview_paired_comparison.jpg"),
-    rcard("survey", "Survey study", "Does schedule fit matter for burnout?",
+    rcard("survey", "Survey study", "Schedule fit and burnout",
           "A survey of 160 nurses and attending physicians at seven emergency departments. Nurses most often preferred 12-hour shifts and physicians 9-hour shifts, and clinicians who rated their schedule a better match to their preferences reported lower burnout (β = −0.40).",
           RSK["skills4"][:4], img="images/thumb_survey_alignment.jpg"),
-    rcard("llm", "Large language models", "Can LLMs reproduce human thematic analysis?",
+    rcard("llm", "Large language models", "LLMs for qualitative analysis",
           "Using 18 nurse interviews and a 47-code human codebook, we compare four Claude configurations. Opus captured more human codes than Sonnet (up to 39 of 47), and together they covered 93.6%, but none reproduced the human theme on schedule satisfaction.",
           RSK["skills5"][:4], img="images/thumb_llm_results.jpg"),
 ])
@@ -1276,7 +1275,7 @@ EXP_HOME = """<section><h2>Experience</h2>
 <div class="xgroup">Research</div>""" + xrow("clemson-gra", "Graduate Research Assistant", "Clemson University · Department of Industrial Engineering", "2025 – Present", 10) + xrow("utsi-gra", "Graduate Research Assistant", "University of Tennessee Space Institute", "2021 – 2022", 9) + """
 <div class="xgroup">Teaching</div>""" + xrow("ruet", "Lecturer and Assistant Professor", "Rajshahi University of Engineering & Technology (RUET), Bangladesh", "2019 – 2021") + xrow("aust", "Lecturer", "Ahsanullah University of Science and Technology, Bangladesh", "2017 – 2018", 6) + xrow("clemson-ta", "Graduate Teaching Assistant", "Clemson University and University of Tennessee, Knoxville", "2022 – 2024", 5) + """
 <div class="xgroup">Industry</div>""" + xrow("energypack", "Intern", "Energypack Engineering Limited, Bangladesh", "2015") + """
-<div class="xgroup">Leadership</div>""" + xrow("informs-pres", "President (Vice President 2024–25)", "Clemson University INFORMS Student Chapter", "2024 – 2026", 7) + xrow("mentor", "Undergraduate Research Mentor", "Clemson University Creative Inquiry", "2025 – Present", 5) + """
+<div class="xgroup">Leadership</div>""" + xrow("informs-pres", "Vice President, then President", "Clemson University INFORMS Student Chapter", "2024 – 2026", 7) + xrow("mentor", "Undergraduate Research Mentor", "Clemson University Creative Inquiry", "2025 – Present", 5) + """
 </div>
 <p style="margin-top:16px"><a href="{up}experience.html"><b>Full experience →</b></a></p></section>
 """
@@ -1330,7 +1329,12 @@ CSS += """
 
 
 def fcard(href, img, tag, title, text, tags):
-    return f'<a class="card" href="{{up}}{href}"><div class="thumb wide"><img src="{{up}}{img}" alt="" loading="lazy"></div><div class="cbody"><span class="tag">{tag}</span><h3>{title}</h3><p class="long">{text}</p>{skills_html(tags)}<span class="go">Details →</span></div></a>'
+    if img and img.startswith("STAT:"):
+        a, b = img[5:].split("|")
+        th = f'<div class="thumb wide statbox"><div><b>{a.split("~")[0]}</b><span>{a.split("~")[1]}</span></div><div><b>{b.split("~")[0]}</b><span>{b.split("~")[1]}</span></div></div>'
+    else:
+        th = f'<div class="thumb wide"><img src="{{up}}{img}" alt="" loading="lazy"></div>' if img else ''
+    return f'<a class="card" href="{{up}}{href}">{th}<div class="cbody"><span class="tag">{tag}</span><h3>{title}</h3><p class="long">{text}</p><span class="go">Details →</span></div></a>'
 
 
 HOME = f"""<div class="band"><div class="wrap"><div class="hero">
@@ -1339,28 +1343,27 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 <span class="seek">Seeking <b>2027 internships</b> in operations research and data science</span>
 <h1>Md Zahidul Islam</h1>
 <p class="role">Ph.D. Candidate, Industrial Engineering (Operations Research) · Clemson University</p>
-<p>I turn operational requirements and data into decisions with optimization, simulation, and machine learning. My doctoral research builds scheduling models for a seven-site emergency department network that balance coverage, fatigue, fairness, and each physician's preferences.</p>
+<p>I turn operational requirements and data into decisions with optimization, simulation, and machine learning. My doctoral research builds scheduling models for a multi-hospital emergency department network that balance coverage, fatigue, fairness, and each physician's preferences.</p>
 <div class="btns">
 <a class="btn primary" href="{{up}}Zahid_Islam_Resume.pdf">Resume</a>
 <a class="btn primary" href="{{up}}Zahid_Islam_Academic_CV.pdf">Academic CV</a>
 <a class="btn" href="mailto:{EMAIL}">Email</a>
 <a class="btn" href="{LINKEDIN}">LinkedIn</a>
 <a class="btn" href="{SCHOLAR}">Google Scholar</a>
-<a class="btn" href="{GITHUB}">GitHub</a>
 </div></div></div></div></div>
 
 <div class="wrap">
 <div class="glance">
 <div class="gl"><h3>Optimization</h3><p>Mixed-integer and constraint programming for scheduling, routing, and network problems, solved at scale on HPC.</p>{skills_html(["MILP", "CP-SAT", "Multi-Objective", "Gurobi", "OR-Tools"])}</div>
 <div class="gl"><h3>Data science and ML</h3><p>Predictive models, forecasting, and statistical analysis on healthcare, operations, and survey data.</p>{skills_html(["Python", "scikit-learn", "XGBoost", "PyTorch", "Regression"])}</div>
-<div class="gl"><h3>Simulation and research</h3><p>Agent-based simulation, plus interviews, surveys, and LLM evaluation that ground models in real users.</p>{skills_html(["AnyLogic", "Survey Analysis", "Thematic Analysis", "LLMs"])}</div>
+<div class="gl"><h3>Simulation and research</h3><p>Agent-based simulation, plus interviews, surveys, and LLM evaluation that ground the models in clinicians' experience.</p>{skills_html(["AnyLogic", "Survey Analysis", "Thematic Analysis", "LLMs"])}</div>
 </div>
 
 <section><h2>Featured work</h2>
 <div class="feat">
-{fcard("research.html#preferences", "images/thumb_sched_overview.jpg", "Doctoral research · Optimization", "Personalized physician scheduling", "Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. A new fairness design halved night-shift imbalance.", ["MILP", "Gurobi", "CP-SAT"])}
-{fcard("projects/ed-admission-prediction.html", "images/ed_roc.jpg", "Machine learning", "Predicting ED admissions", "Five classifiers on 347,360 emergency visits, combining triage data with chief-complaint text. CatBoost reached the best ROC-AUC (0.863).", ["Python", "Gradient Boosting", "NLP"])}
-{fcard("projects/learning-tsp.html", "images/thumb_tsp.jpg", "IEEE T-ITS journal article", "Learning-based routing optimization", "Supervised learning guides exact and heuristic solvers on large traveling salesman problems: 28% shorter tours with 59% less runtime on 1,000-node instances.", ["Supervised Learning", "Routing", "Optimization"])}
+{fcard("research.html#preferences", "images/thumb_sched_pref.jpg", "Doctoral research · Optimization", "Personalized physician scheduling", "Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. A new fairness design cut night-shift imbalance by about half.", ["MILP", "Gurobi", "CP-SAT"])}
+{fcard("projects/ed-admission-prediction.html", "images/thumb_ed_importance.jpg", "Machine learning", "Predicting ED admissions", "Five classifiers on 347,360 emergency visits, combining triage data with chief-complaint text. CatBoost reached the best ROC-AUC (0.863).", ["Python", "Gradient Boosting", "NLP"])}
+{fcard("projects/learning-tsp.html", "STAT:28%~shorter tours|59%~less runtime", "IEEE T-ITS journal article", "Learning-based routing optimization", "Supervised learning guides exact and heuristic solvers on large traveling salesman problems: 28% shorter tours with 59% less runtime on 1,000-node instances.", ["Supervised Learning", "Routing", "Optimization"])}
 </div>
 <div class="more2"><a href="{{up}}research.html">All research →</a><a href="{{up}}projects.html">All 12 projects →</a><a href="{{up}}publications.html">Publications →</a></div>
 </section>
@@ -1368,19 +1371,19 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 <section><h2>Experience and education</h2>
 <div class="cols">
 <div class="panel"><h3>Experience <a class="lk" href="{{up}}experience.html">Details →</a></h3><ul class="tl2">
-<li><span class="y">2025 – now</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, CDC/NIOSH-funded</span></div></li>
+<li><span class="y">2025 – Present</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, CDC/NIOSH-funded</span></div></li>
 <li><span class="y">2021 – 2022</span><div><b>Graduate Research Assistant</b><span class="d">University of Tennessee Space Institute · simulation, routing, ML</span></div></li>
 <li><span class="y">2019 – 2021</span><div><b>Lecturer and Assistant Professor</b><span class="d">RUET, Bangladesh · statistics, operations, simulation</span></div></li>
 <li><span class="y">2017 – 2018</span><div><b>Lecturer</b><span class="d">Ahsanullah University of Science and Technology</span></div></li>
-<li><span class="y">2024 – 2026</span><div><b>President, INFORMS Student Chapter</b><span class="d">Clemson University · two Magna Cum Laude chapter awards</span></div></li>
+<li><span class="y">2024 – 2026</span><div><b>Vice President, then President, INFORMS Student Chapter</b><span class="d">Clemson University · two Magna Cum Laude chapter awards</span></div></li>
 </ul></div>
 <div class="panel"><h3>Education</h3><ul class="tl2">
-<li><span class="y">Dec 2027</span><div><b>Ph.D., Industrial Engineering (Operations Research)</b><span class="d">Clemson University · GPA 3.90/4.00</span></div></li>
+<li><span class="y">Expected Dec 2027</span><div><b>Ph.D., Industrial Engineering (Operations Research)</b><span class="d">Clemson University · GPA 3.90/4.00</span></div></li>
 <li><span class="y">2023</span><div><b>M.S., Industrial Engineering</b><span class="d">University of Tennessee, Knoxville · GPA 4.00/4.00</span></div></li>
 <li><span class="y">2016</span><div><b>B.Sc., Industrial &amp; Production Engineering</b><span class="d">RUET · first in class, University and Prime Minister Gold Medals</span></div></li>
 </ul>
 <h3 style="margin-top:20px">Recognition</h3><ul class="tl2">
-<li><span class="y">8</span><div><b>Peer-reviewed publications</b><span class="d">incl. IEEE T-ITS and Winter Simulation Conference</span></div></li>
+<li><span class="y">2016–2024</span><div><b>Eight peer-reviewed publications</b><span class="d">Including IEEE T-ITS and the Winter Simulation Conference</span></div></li>
 <li><span class="y">2021</span><div><b>Dr. Lloyd W. Crawford Fellowship</b><span class="d">UT Space Institute</span></div></li>
 <li><span class="y">Ongoing</span><div><b>Peer reviewer</b><span class="d">Journal of Big Data · Scientific Reports · BMC Medical Imaging</span></div></li>
 </ul></div>
@@ -1390,5 +1393,75 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 <div class="btns" style="margin:0"><a class="btn primary" href="mailto:{EMAIL}">{EMAIL}</a><a class="btn" href="{{up}}Zahid_Islam_Resume.pdf">Download resume</a></div></div>
 </div>
 """
+
+# ================================================================ v10: professional cleanup (Oct 14, 2026)
+RESEARCH_INTRO = """<p>I build optimization models for healthcare workforce scheduling, focused on emergency department physicians and nurses. The models are grounded in evidence from the clinicians themselves: interviews, surveys, work schedules, sleep tracking, and physiological measures.</p>
+<p>The goal is schedules that meet staffing requirements while balancing individual preferences, fairness, and fatigue. This work is part of a CDC/NIOSH-funded project with Prisma Health, Wake Forest University School of Medicine, and the University of Central Florida.</p>"""
+RESEARCH = _re.sub(r'<div class="intro">.*?<p class="small muted">Advisor', lambda m: '<div class="intro">' + RESEARCH_INTRO + '<p class="small muted">Advisor', RESEARCH, count=1, flags=_re.S)
+
+# Experience: keep 8-10 tags per role
+for k in SK:
+    SK[k] = SK[k][:10]
+
+# Projects: drop Ludo from listings
+PROJECTS = [p for p in PROJECTS if p["slug"] != "ludo-dqn"]
+
+# Calmer design: solid navy header, fewer pills, cards without tag clutter on home
+CSS += """
+.band{background:var(--navy)!important}
+.seek{background:transparent;border:none;padding:0;color:#ffb38a;font-weight:600;letter-spacing:.02em}
+.seek b{color:#ffb38a}
+.tag{background:none;padding:0;border-radius:0;color:var(--muted);letter-spacing:.05em}
+@media (prefers-color-scheme:dark){.tag{color:var(--muted)}}
+.feat .skills,.gl .skills{display:none}
+.thumb.art{display:none}
+.card .thumb + .cbody{border-top:0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+"""
+NAV = [(h, ("CV (PDF)" if t == "CV" else t)) for h, t in NAV]
+
+# ================================================================ v10b: real figures
+_FIG = {
+ "ed-admission-prediction": ("images/ed_feature_importance.jpg", "CatBoost feature importance: triage acuity and age were the strongest predictors of admission."),
+ "bike-demand-forecasting": ("images/bike_fit_clean.jpg", "Predicted versus actual hourly demand on the test set."),
+ "lagrangian-relaxation": ("images/lagrangian_bounds.jpg", "Lower and upper bounds over subgradient iterations, with the LP-relaxation bound for comparison."),
+ "fresenius-downtime": ("images/fresenius_failure_modes.jpg", "Share of downtime by failure mode over four months of production data."),
+}
+for _p in PROJECTS:
+    if _p["slug"] in _FIG:
+        _p["figure"] = _FIG[_p["slug"]]
+_EXTRA = {"ed-admission-prediction": ("images/ed_roc.jpg", "ROC curves for the five tuned models.")}
+
+
+
+CSS += """
+.statbox{display:flex;gap:34px;justify-content:center;align-items:center;background:#f5f6fa}
+.statbox b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:2.4rem;color:var(--purple);line-height:1}
+.statbox span{color:var(--muted);font-size:.9rem}
+@media (prefers-color-scheme:dark){.statbox{background:#1d2335}.statbox b{color:#c9b5f5}}
+.tl2 li{grid-template-columns:112px 1fr}
+.cta{background:var(--navy)}
+"""
+# ================================================================ v10c: final pass
+_main_v9 = main
+
+
+def main():
+    _main_v9()
+    import glob
+    for f in glob.glob(os.path.join(ROOT, "*.html")) + glob.glob(os.path.join(ROOT, "projects", "*.html")):
+        t = open(f).read()
+        t = t.replace('<footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:' + EMAIL + '">' + EMAIL + '</a></div></footer>',
+                      '<footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:' + EMAIL + '">' + EMAIL + '</a> · Updated October 2026</span></div></footer>')
+        up = "../" if os.sep + "projects" + os.sep in f else ""
+        t = t.replace('<link rel="icon"', '<meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">\n<meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">\n<link rel="icon"', 1)
+        if f.endswith("ed-admission-prediction.html"):
+            src, cap = _EXTRA["ed-admission-prediction"]
+            t = t.replace("</figure>", f'</figure><figure><img src="../{src}" alt="{cap}"><figcaption>{cap}</figcaption></figure>', 1)
+        open(f, "w").write(t)
+    lp = os.path.join(ROOT, "projects", "ludo-dqn.html")
+    if os.path.exists(lp):
+        os.remove(lp)
+
 if __name__ == "__main__":
     main()

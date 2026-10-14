@@ -3,6 +3,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Md Zahidul Islam | Operations Research &amp; Data Science</title>
 <meta name="description" content="Md Zahidul Islam, Ph.D. candidate in Industrial Engineering (Operations Research), Clemson University.">
+<meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">
+<meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">
 <link rel="icon" href="images/photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
@@ -176,37 +178,53 @@ a.xrow:hover{text-decoration:none;background:var(--bg)}
 .cta h2{margin:0 0 4px;font-size:1.45rem;color:#fff}
 .cta p{margin:0;color:#dfe1f2}
 @media (max-width:860px){.glance,.feat{grid-template-columns:1fr}.glance{margin-top:20px}}
+
+.band{background:var(--navy)!important}
+.seek{background:transparent;border:none;padding:0;color:#ffb38a;font-weight:600;letter-spacing:.02em}
+.seek b{color:#ffb38a}
+.tag{background:none;padding:0;border-radius:0;color:var(--muted);letter-spacing:.05em}
+@media (prefers-color-scheme:dark){.tag{color:var(--muted)}}
+.feat .skills,.gl .skills{display:none}
+.thumb.art{display:none}
+.card .thumb + .cbody{border-top:0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+.statbox{display:flex;gap:34px;justify-content:center;align-items:center;background:#f5f6fa}
+.statbox b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:2.4rem;color:var(--purple);line-height:1}
+.statbox span{color:var(--muted);font-size:.9rem}
+@media (prefers-color-scheme:dark){.statbox{background:#1d2335}.statbox b{color:#c9b5f5}}
+.tl2 li{grid-template-columns:112px 1fr}
+.cta{background:var(--navy)}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html" class=on>About</a><a href="research.html">Research</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html" class=on>About</a><a href="research.html">Research</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
 <div class="band"><div class="wrap"><div class="hero">
 <img src="images/photo.jpg" alt="Md Zahidul Islam">
 <div>
 <span class="seek">Seeking <b>2027 internships</b> in operations research and data science</span>
 <h1>Md Zahidul Islam</h1>
 <p class="role">Ph.D. Candidate, Industrial Engineering (Operations Research) · Clemson University</p>
-<p>I turn operational requirements and data into decisions with optimization, simulation, and machine learning. My doctoral research builds scheduling models for a seven-site emergency department network that balance coverage, fatigue, fairness, and each physician's preferences.</p>
+<p>I turn operational requirements and data into decisions with optimization, simulation, and machine learning. My doctoral research builds scheduling models for a multi-hospital emergency department network that balance coverage, fatigue, fairness, and each physician's preferences.</p>
 <div class="btns">
 <a class="btn primary" href="Zahid_Islam_Resume.pdf">Resume</a>
 <a class="btn primary" href="Zahid_Islam_Academic_CV.pdf">Academic CV</a>
 <a class="btn" href="mailto:mdzahii@clemson.edu">Email</a>
 <a class="btn" href="https://www.linkedin.com/in/md-zahidul-islam-9a0a68129/">LinkedIn</a>
 <a class="btn" href="https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&hl=en">Google Scholar</a>
-<a class="btn" href="https://github.com/Zahid1150">GitHub</a>
 </div></div></div></div></div>
 
 <div class="wrap">
 <div class="glance">
 <div class="gl"><h3>Optimization</h3><p>Mixed-integer and constraint programming for scheduling, routing, and network problems, solved at scale on HPC.</p><div class="skills"><span class="sk">MILP</span><span class="sk">CP-SAT</span><span class="sk">Multi-Objective</span><span class="sk">Gurobi</span><span class="sk">OR-Tools</span></div></div>
 <div class="gl"><h3>Data science and ML</h3><p>Predictive models, forecasting, and statistical analysis on healthcare, operations, and survey data.</p><div class="skills"><span class="sk">Python</span><span class="sk">scikit-learn</span><span class="sk">XGBoost</span><span class="sk">PyTorch</span><span class="sk">Regression</span></div></div>
-<div class="gl"><h3>Simulation and research</h3><p>Agent-based simulation, plus interviews, surveys, and LLM evaluation that ground models in real users.</p><div class="skills"><span class="sk">AnyLogic</span><span class="sk">Survey Analysis</span><span class="sk">Thematic Analysis</span><span class="sk">LLMs</span></div></div>
+<div class="gl"><h3>Simulation and research</h3><p>Agent-based simulation, plus interviews, surveys, and LLM evaluation that ground the models in clinicians' experience.</p><div class="skills"><span class="sk">AnyLogic</span><span class="sk">Survey Analysis</span><span class="sk">Thematic Analysis</span><span class="sk">LLMs</span></div></div>
 </div>
 
 <section><h2>Featured work</h2>
 <div class="feat">
-<a class="card" href="research.html#preferences"><div class="thumb wide"><img src="images/thumb_sched_overview.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Doctoral research · Optimization</span><h3>Personalized physician scheduling</h3><p class="long">Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. A new fairness design halved night-shift imbalance.</p><div class="skills"><span class="sk">MILP</span><span class="sk">Gurobi</span><span class="sk">CP-SAT</span></div><span class="go">Details →</span></div></a>
-<a class="card" href="projects/ed-admission-prediction.html"><div class="thumb wide"><img src="images/ed_roc.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Machine learning</span><h3>Predicting ED admissions</h3><p class="long">Five classifiers on 347,360 emergency visits, combining triage data with chief-complaint text. CatBoost reached the best ROC-AUC (0.863).</p><div class="skills"><span class="sk">Python</span><span class="sk">Gradient Boosting</span><span class="sk">NLP</span></div><span class="go">Details →</span></div></a>
-<a class="card" href="projects/learning-tsp.html"><div class="thumb wide"><img src="images/thumb_tsp.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">IEEE T-ITS journal article</span><h3>Learning-based routing optimization</h3><p class="long">Supervised learning guides exact and heuristic solvers on large traveling salesman problems: 28% shorter tours with 59% less runtime on 1,000-node instances.</p><div class="skills"><span class="sk">Supervised Learning</span><span class="sk">Routing</span><span class="sk">Optimization</span></div><span class="go">Details →</span></div></a>
+<a class="card" href="research.html#preferences"><div class="thumb wide"><img src="images/thumb_sched_pref.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Doctoral research · Optimization</span><h3>Personalized physician scheduling</h3><p class="long">Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. A new fairness design cut night-shift imbalance by about half.</p><span class="go">Details →</span></div></a>
+<a class="card" href="projects/ed-admission-prediction.html"><div class="thumb wide"><img src="images/thumb_ed_importance.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Machine learning</span><h3>Predicting ED admissions</h3><p class="long">Five classifiers on 347,360 emergency visits, combining triage data with chief-complaint text. CatBoost reached the best ROC-AUC (0.863).</p><span class="go">Details →</span></div></a>
+<a class="card" href="projects/learning-tsp.html"><div class="thumb wide statbox"><div><b>28%</b><span>shorter tours</span></div><div><b>59%</b><span>less runtime</span></div></div><div class="cbody"><span class="tag">IEEE T-ITS journal article</span><h3>Learning-based routing optimization</h3><p class="long">Supervised learning guides exact and heuristic solvers on large traveling salesman problems: 28% shorter tours with 59% less runtime on 1,000-node instances.</p><span class="go">Details →</span></div></a>
 </div>
 <div class="more2"><a href="research.html">All research →</a><a href="projects.html">All 12 projects →</a><a href="publications.html">Publications →</a></div>
 </section>
@@ -214,19 +232,19 @@ a.xrow:hover{text-decoration:none;background:var(--bg)}
 <section><h2>Experience and education</h2>
 <div class="cols">
 <div class="panel"><h3>Experience <a class="lk" href="experience.html">Details →</a></h3><ul class="tl2">
-<li><span class="y">2025 – now</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, CDC/NIOSH-funded</span></div></li>
+<li><span class="y">2025 – Present</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, CDC/NIOSH-funded</span></div></li>
 <li><span class="y">2021 – 2022</span><div><b>Graduate Research Assistant</b><span class="d">University of Tennessee Space Institute · simulation, routing, ML</span></div></li>
 <li><span class="y">2019 – 2021</span><div><b>Lecturer and Assistant Professor</b><span class="d">RUET, Bangladesh · statistics, operations, simulation</span></div></li>
 <li><span class="y">2017 – 2018</span><div><b>Lecturer</b><span class="d">Ahsanullah University of Science and Technology</span></div></li>
-<li><span class="y">2024 – 2026</span><div><b>President, INFORMS Student Chapter</b><span class="d">Clemson University · two Magna Cum Laude chapter awards</span></div></li>
+<li><span class="y">2024 – 2026</span><div><b>Vice President, then President, INFORMS Student Chapter</b><span class="d">Clemson University · two Magna Cum Laude chapter awards</span></div></li>
 </ul></div>
 <div class="panel"><h3>Education</h3><ul class="tl2">
-<li><span class="y">Dec 2027</span><div><b>Ph.D., Industrial Engineering (Operations Research)</b><span class="d">Clemson University · GPA 3.90/4.00</span></div></li>
+<li><span class="y">Expected Dec 2027</span><div><b>Ph.D., Industrial Engineering (Operations Research)</b><span class="d">Clemson University · GPA 3.90/4.00</span></div></li>
 <li><span class="y">2023</span><div><b>M.S., Industrial Engineering</b><span class="d">University of Tennessee, Knoxville · GPA 4.00/4.00</span></div></li>
 <li><span class="y">2016</span><div><b>B.Sc., Industrial &amp; Production Engineering</b><span class="d">RUET · first in class, University and Prime Minister Gold Medals</span></div></li>
 </ul>
 <h3 style="margin-top:20px">Recognition</h3><ul class="tl2">
-<li><span class="y">8</span><div><b>Peer-reviewed publications</b><span class="d">incl. IEEE T-ITS and Winter Simulation Conference</span></div></li>
+<li><span class="y">2016–2024</span><div><b>Eight peer-reviewed publications</b><span class="d">Including IEEE T-ITS and the Winter Simulation Conference</span></div></li>
 <li><span class="y">2021</span><div><b>Dr. Lloyd W. Crawford Fellowship</b><span class="d">UT Space Institute</span></div></li>
 <li><span class="y">Ongoing</span><div><b>Peer reviewer</b><span class="d">Journal of Big Data · Scientific Reports · BMC Medical Imaging</span></div></li>
 </ul></div>
@@ -236,5 +254,5 @@ a.xrow:hover{text-decoration:none;background:var(--bg)}
 <div class="btns" style="margin:0"><a class="btn primary" href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a><a class="btn" href="Zahid_Islam_Resume.pdf">Download resume</a></div></div>
 </div>
 
-<footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
+<footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>

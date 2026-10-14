@@ -3,6 +3,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bike-Sharing Demand Forecasting | Md Zahidul Islam</title>
 <meta name="description" content="Forecast hourly bike rentals in Seoul with neural networks, an LSTM, XGBoost, and random forest.">
+<meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">
+<meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">
 <link rel="icon" href="../images/photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
@@ -176,16 +178,33 @@ a.xrow:hover{text-decoration:none;background:var(--bg)}
 .cta h2{margin:0 0 4px;font-size:1.45rem;color:#fff}
 .cta p{margin:0;color:#dfe1f2}
 @media (max-width:860px){.glance,.feat{grid-template-columns:1fr}.glance{margin-top:20px}}
+
+.band{background:var(--navy)!important}
+.seek{background:transparent;border:none;padding:0;color:#ffb38a;font-weight:600;letter-spacing:.02em}
+.seek b{color:#ffb38a}
+.tag{background:none;padding:0;border-radius:0;color:var(--muted);letter-spacing:.05em}
+@media (prefers-color-scheme:dark){.tag{color:var(--muted)}}
+.feat .skills,.gl .skills{display:none}
+.thumb.art{display:none}
+.card .thumb + .cbody{border-top:0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+.statbox{display:flex;gap:34px;justify-content:center;align-items:center;background:#f5f6fa}
+.statbox b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:2.4rem;color:var(--purple);line-height:1}
+.statbox span{color:var(--muted);font-size:.9rem}
+@media (prefers-color-scheme:dark){.statbox{background:#1d2335}.statbox b{color:#c9b5f5}}
+.tl2 li{grid-template-columns:112px 1fr}
+.cta{background:var(--navy)}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Bike-Sharing Demand Forecasting</h1><p class="role" style="margin:0">Graduate class project · team project with A. Hines</p></div></div>
 <div class="wrap doc"><div class="facts"><div class="stat"><b>≈0.96</b><span>test R² for the tuned neural network</span></div><div class="stat"><b>0.91</b><span>test R² before tuning</span></div><div class="stat"><b>4</b><span>model families compared</span></div></div>
 <h2>Problem</h2><p>Bike-sharing systems need to know how many bikes will be rented each hour. This project forecast hourly demand in Seoul from weather, time of day, season, holidays, and whether the system was operating.</p>
 <h2>What I did</h2><ul><li>Compared an artificial neural network, a PyTorch LSTM on sliding-window sequences, XGBoost, and random forest.</li><li>Tuned the neural network with Ray Tune, XGBoost with staged grid search, and random forest with GridSearchCV.</li><li>Used correlation and feature-importance analysis to identify what drives demand.</li></ul>
 <h2>Results</h2><ul><li>Tuning raised the neural network&#x27;s test R² from 0.91 to about 0.96.</li></ul>
-<div class="note">Team project; results reflect the team&#x27;s work.</div><figure><img src="../images/bike_fit.jpg" alt="Predicted versus actual hourly demand on the test set."><figcaption>Predicted versus actual hourly demand on the test set.</figcaption></figure>
+<div class="note">Team project; results reflect the team&#x27;s work.</div><figure><img src="../images/bike_fit_clean.jpg" alt="Predicted versus actual hourly demand on the test set."><figcaption>Predicted versus actual hourly demand on the test set.</figcaption></figure>
 <p class="small muted"><b>Tools:</b> Python, PyTorch, Ray Tune, XGBoost, scikit-learn</p><h2>Skills</h2><div class="skills"><span class="sk">Time-Series Forecasting</span><span class="sk">PyTorch</span><span class="sk">LSTM</span><span class="sk">XGBoost</span><span class="sk">Hyperparameter Tuning</span><span class="sk">Ray Tune</span></div>
 <h2>Documents</h2><div class="badges"><a class="badge" href="../docs/Bike_Sharing_Forecasting_Presentation.pdf" target="_blank" rel="noopener">Final presentation (PDF)</a></div></div>
-<footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
+<footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>

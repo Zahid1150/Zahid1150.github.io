@@ -3,6 +3,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lagrangian Relaxation with Subgradient Updates | Md Zahidul Islam</title>
 <meta name="description" content="Relaxed hard resource constraints and tuned a subgradient method to get bounds and feasible schedules.">
+<meta property="og:title" content="Md Zahidul Islam | Operations Research &amp; Data Science">
+<meta property="og:image" content="https://zahid1150.github.io/images/photo.jpg">
 <link rel="icon" href="../images/photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
@@ -176,16 +178,33 @@ a.xrow:hover{text-decoration:none;background:var(--bg)}
 .cta h2{margin:0 0 4px;font-size:1.45rem;color:#fff}
 .cta p{margin:0;color:#dfe1f2}
 @media (max-width:860px){.glance,.feat{grid-template-columns:1fr}.glance{margin-top:20px}}
+
+.band{background:var(--navy)!important}
+.seek{background:transparent;border:none;padding:0;color:#ffb38a;font-weight:600;letter-spacing:.02em}
+.seek b{color:#ffb38a}
+.tag{background:none;padding:0;border-radius:0;color:var(--muted);letter-spacing:.05em}
+@media (prefers-color-scheme:dark){.tag{color:var(--muted)}}
+.feat .skills,.gl .skills{display:none}
+.thumb.art{display:none}
+.card .thumb + .cbody{border-top:0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+.statbox{display:flex;gap:34px;justify-content:center;align-items:center;background:#f5f6fa}
+.statbox b{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-size:2.4rem;color:var(--purple);line-height:1}
+.statbox span{color:var(--muted);font-size:.9rem}
+@media (prefers-color-scheme:dark){.statbox{background:#1d2335}.statbox b{color:#c9b5f5}}
+.tl2 li{grid-template-columns:112px 1fr}
+.cta{background:var(--navy)}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Lagrangian Relaxation with Subgradient Updates</h1><p class="role" style="margin:0">Graduate class project · team project</p></div></div>
 <div class="wrap doc">
 <h2>Problem</h2><p>Some scheduling models are hard because of constraints that link time periods through shared resources. Lagrangian relaxation moves those constraints into the objective with penalty multipliers, making the rest of the problem easier.</p>
 <h2>What I did</h2><ul><li>Relaxed time-indexed resource constraints with nonnegative multipliers.</li><li>Updated the multipliers with a subgradient method and decreasing step size over 200 iterations, tracking bounds and recovered feasible solutions.</li></ul>
 <h2>Results</h2><ul><li>Showed how step size affects convergence: some settings failed to converge, others slowed progress or produced feasible solutions less often.</li><li>Benchmarked against the original formulation and an LP-relaxation bound.</li></ul>
-<div class="note">Team project with J. Wu and M. Ren.</div>
+<div class="note">Team project with J. Wu and M. Ren.</div><figure><img src="../images/lagrangian_bounds.jpg" alt="Lower and upper bounds over subgradient iterations, with the LP-relaxation bound for comparison."><figcaption>Lower and upper bounds over subgradient iterations, with the LP-relaxation bound for comparison.</figcaption></figure>
 <p class="small muted"><b>Tools:</b> Lagrangian relaxation, subgradient optimization</p><h2>Skills</h2><div class="skills"><span class="sk">Lagrangian Relaxation</span><span class="sk">Subgradient Optimization</span><span class="sk">Integer Programming</span></div>
 <h2>Documents</h2><div class="badges"><a class="badge" href="../docs/Lagrangian_Relaxation_Report.pdf" target="_blank" rel="noopener">Project report (PDF)</a></div></div>
-<footer><div class="wrap">Md Zahidul Islam · Department of Industrial Engineering, Clemson University · <a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a></div></footer>
+<footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>
