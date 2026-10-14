@@ -1150,5 +1150,63 @@ HOME = _re.sub(r'<div class="grid">\s*<a class="card" href="\{up\}research\.html
                lambda m: '<div class="grid">' + RCARDS + '</div>' + m.group(1), HOME, count=1, flags=_re.S)
 TALKS = [(d, ("Fatigue-aware multi-site rostering model for emergency department physicians with fairness and preference constraints" if t.startswith("Fatigue-aware multi-site rostering model") else t), v, k) for d, t, v, k in TALKS]
 
+
+# ================================================================ v7: education / honors section
+CSS += """
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.deg{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;border-top:4px solid var(--purple);display:flex;flex-direction:column}
+.deg.now{border-top-color:var(--orange)}
+.deg .yr{color:var(--purple);font-weight:600;font-size:.88rem}
+@media (prefers-color-scheme:dark){.deg .yr{color:#c9b5f5}}
+.deg h3{font-size:1.12rem;margin:6px 0 2px}
+.deg .fld{color:var(--muted);font-size:.93rem}
+.deg .sch{font-weight:600;margin-top:12px}
+.deg .loc{color:var(--muted);font-size:.88rem}
+.deg .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:14px}
+.pill{font-size:.78rem;font-weight:600;border-radius:999px;padding:3px 10px;background:var(--orange-soft);color:var(--orange)}
+.hl{list-style:none;padding:0;margin:0}
+.hl li{display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.hl li:last-child{border-bottom:0}
+.hl .y{color:var(--purple);font-weight:700;font-size:.92rem}
+@media (prefers-color-scheme:dark){.hl .y{color:#c9b5f5}}
+.hl b{display:block}
+.hl span.d{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+"""
+
+EDU_SECTION = """<section><h2>Education</h2>
+<div class="edu">
+<div class="deg now"><span class="yr">2023 – Dec 2027 (expected)</span><h3>Ph.D., Industrial Engineering</h3><div class="fld">Operations Research</div>
+<div class="sch">Clemson University</div><div class="loc">Clemson, SC · Advisor: Dr. Kevin M. Taaffe</div>
+<div class="pills"><span class="pill">GPA 3.90 / 4.00</span><span class="pill">Ph.D. candidate</span></div></div>
+<div class="deg"><span class="yr">2021 – 2023</span><h3>M.S., Industrial Engineering</h3><div class="fld">Research assistant, UT Space Institute</div>
+<div class="sch">University of Tennessee, Knoxville</div><div class="loc">Knoxville, TN</div>
+<div class="pills"><span class="pill">GPA 4.00 / 4.00</span><span class="pill">Crawford Fellow</span></div></div>
+<div class="deg"><span class="yr">2012 – 2016</span><h3>B.Sc., Industrial &amp; Production Engineering</h3><div class="fld">First in class</div>
+<div class="sch">Rajshahi University of Engineering &amp; Technology</div><div class="loc">Rajshahi, Bangladesh</div>
+<div class="pills"><span class="pill">CGPA 3.90 / 4.00</span><span class="pill">Two gold medals</span></div></div>
+</div></section>
+
+<section><h2>Honors and service</h2>
+<div class="cols">
+<div class="panel"><h3>Honors and awards</h3><ul class="hl">
+<li><span class="y">2026</span><div><b>CECAS GSAB Travel Grant</b><span class="d">College of Engineering, Computing and Applied Sciences, Clemson University</span></div></li>
+<li><span class="y">2026</span><div><b>Graduate Student Government Travel Grant</b><span class="d">Clemson University</span></div></li>
+<li><span class="y">2025, 2026</span><div><b>INFORMS Student Chapter Award, Magna Cum Laude</b><span class="d">Received by the Clemson chapter during my terms as vice president and president</span></div></li>
+<li><span class="y">2021</span><div><b>Dr. Lloyd W. Crawford Fellowship</b><span class="d">University of Tennessee Space Institute</span></div></li>
+<li><span class="y">2019</span><div><b>University Gold Medal</b><span class="d">RUET · highest CGPA in Industrial &amp; Production Engineering</span></div></li>
+<li><span class="y">2018</span><div><b>Prime Minister Gold Medal</b><span class="d">University Grants Commission of Bangladesh · highest CGPA among faculty graduates</span></div></li>
+</ul></div>
+<div class="panel"><h3>Service and leadership</h3><ul class="hl">
+<li><span class="y">2025–26</span><div><b>President, Clemson INFORMS Student Chapter</b><span class="d">Seminars, professional development, outreach; co-host of the <i>Optimality Gap</i> podcast (vice president 2024–25)</span></div></li>
+<li><span class="y">2025–</span><div><b>Undergraduate research mentor</b><span class="d">Twelve students across five disciplines, Clemson Creative Inquiry</span></div></li>
+<li><span class="y">Ongoing</span><div><b>Peer reviewer</b><span class="d"><i>Journal of Big Data</i> · <i>Scientific Reports</i> · <i>BMC Medical Imaging</i></span></div></li>
+<li><span class="y">2017–24</span><div><b>University teaching</b><span class="d">Lecturer and assistant professor in Bangladesh; graduate teaching assistant at Clemson and Tennessee</span></div></li>
+</ul><p style="margin:12px 0 0"><a href="{up}experience.html"><b>Full teaching and leadership history →</b></a></p></div>
+</div></section>
+"""
+HOME = _re.sub(r'<section><h2>Teaching, service, and education</h2>.*?</section>', lambda m: EDU_SECTION, HOME, count=1, flags=_re.S)
+assert "Honors and service" in HOME
+
 if __name__ == "__main__":
     main()

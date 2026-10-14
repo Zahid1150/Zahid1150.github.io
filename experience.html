@@ -122,6 +122,26 @@ footer a{color:#fff}
 .doc ul li b{color:var(--fg)}
 .thumb.wide{height:200px;padding:10px 12px}
 .thumb.wide img{max-height:180px;width:100%;object-fit:contain}
+
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.deg{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;border-top:4px solid var(--purple);display:flex;flex-direction:column}
+.deg.now{border-top-color:var(--orange)}
+.deg .yr{color:var(--purple);font-weight:600;font-size:.88rem}
+@media (prefers-color-scheme:dark){.deg .yr{color:#c9b5f5}}
+.deg h3{font-size:1.12rem;margin:6px 0 2px}
+.deg .fld{color:var(--muted);font-size:.93rem}
+.deg .sch{font-weight:600;margin-top:12px}
+.deg .loc{color:var(--muted);font-size:.88rem}
+.deg .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:14px}
+.pill{font-size:.78rem;font-weight:600;border-radius:999px;padding:3px 10px;background:var(--orange-soft);color:var(--orange)}
+.hl{list-style:none;padding:0;margin:0}
+.hl li{display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.hl li:last-child{border-bottom:0}
+.hl .y{color:var(--purple);font-weight:700;font-size:.92rem}
+@media (prefers-color-scheme:dark){.hl .y{color:#c9b5f5}}
+.hl b{display:block}
+.hl span.d{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
 </style>
 </head><body>
 <header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html">About</a><a href="research.html">Research</a><a href="experience.html" class=on>Experience</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
