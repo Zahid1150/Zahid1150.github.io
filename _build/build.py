@@ -1301,5 +1301,94 @@ HONORS = """<section><h2>Honors and service</h2>
 HOME = _re.sub(r'<section><h2>Honors and service</h2>.*?</section>\n', lambda m: EXP_HOME + HONORS, HOME, count=1, flags=_re.S)
 assert "Full experience" in HOME
 
+
+# ================================================================ v9: hiring-focused home page
+CSS += """
+.seek{display:inline-block;margin:0 0 14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 14px;font-size:.88rem;color:#fff}
+.seek b{color:#ffb38a}
+.glance{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:-34px;position:relative}
+.gl{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:0 6px 20px rgba(22,33,62,.07)}
+.gl h3{margin:0 0 6px;font-size:1.08rem}
+.gl p{margin:0 0 10px;color:var(--muted);font-size:.94rem}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat .thumb{height:150px}
+.feat .card p{font-size:.93rem}
+.more2{display:flex;gap:22px;margin-top:16px;font-weight:600}
+.tl2{list-style:none;margin:0;padding:0}
+.tl2 li{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.tl2 li:last-child{border-bottom:0}
+.tl2 .y{color:var(--purple);font-weight:600;font-size:.88rem}
+@media (prefers-color-scheme:dark){.tl2 .y{color:#c9b5f5}}
+.tl2 b{display:block;font-size:.98rem}
+.tl2 span.d{color:var(--muted);font-size:.89rem}
+.panel h3 .lk{float:right;font-size:.85rem;font-weight:600}
+.cta{margin-top:56px;background:linear-gradient(120deg,var(--navy),var(--purple));color:#fff;border-radius:14px;padding:30px 32px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.cta h2{margin:0 0 4px;font-size:1.45rem;color:#fff}
+.cta p{margin:0;color:#dfe1f2}
+@media (max-width:860px){.glance,.feat{grid-template-columns:1fr}.glance{margin-top:20px}}
+"""
+
+
+def fcard(href, img, tag, title, text, tags):
+    return f'<a class="card" href="{{up}}{href}"><div class="thumb wide"><img src="{{up}}{img}" alt="" loading="lazy"></div><div class="cbody"><span class="tag">{tag}</span><h3>{title}</h3><p class="long">{text}</p>{skills_html(tags)}<span class="go">Details →</span></div></a>'
+
+
+HOME = f"""<div class="band"><div class="wrap"><div class="hero">
+<img src="{{up}}images/photo.jpg" alt="Md Zahidul Islam">
+<div>
+<span class="seek">Seeking <b>2027 internships</b> in operations research and data science</span>
+<h1>Md Zahidul Islam</h1>
+<p class="role">Ph.D. Candidate, Industrial Engineering (Operations Research) · Clemson University</p>
+<p>I turn operational requirements and data into decisions with optimization, simulation, and machine learning. My doctoral research builds scheduling models for a seven-site emergency department network that balance coverage, fatigue, fairness, and each physician's preferences.</p>
+<div class="btns">
+<a class="btn primary" href="{{up}}Zahid_Islam_Resume.pdf">Resume</a>
+<a class="btn primary" href="{{up}}Zahid_Islam_Academic_CV.pdf">Academic CV</a>
+<a class="btn" href="mailto:{EMAIL}">Email</a>
+<a class="btn" href="{LINKEDIN}">LinkedIn</a>
+<a class="btn" href="{SCHOLAR}">Google Scholar</a>
+<a class="btn" href="{GITHUB}">GitHub</a>
+</div></div></div></div></div>
+
+<div class="wrap">
+<div class="glance">
+<div class="gl"><h3>Optimization</h3><p>Mixed-integer and constraint programming for scheduling, routing, and network problems, solved at scale on HPC.</p>{skills_html(["MILP", "CP-SAT", "Multi-Objective", "Gurobi", "OR-Tools"])}</div>
+<div class="gl"><h3>Data science and ML</h3><p>Predictive models, forecasting, and statistical analysis on healthcare, operations, and survey data.</p>{skills_html(["Python", "scikit-learn", "XGBoost", "PyTorch", "Regression"])}</div>
+<div class="gl"><h3>Simulation and research</h3><p>Agent-based simulation, plus interviews, surveys, and LLM evaluation that ground models in real users.</p>{skills_html(["AnyLogic", "Survey Analysis", "Thematic Analysis", "LLMs"])}</div>
+</div>
+
+<section><h2>Featured work</h2>
+<div class="feat">
+{fcard("research.html#preferences", "images/thumb_sched_overview.jpg", "Doctoral research · Optimization", "Personalized physician scheduling", "Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. A new fairness design halved night-shift imbalance.", ["MILP", "Gurobi", "CP-SAT"])}
+{fcard("projects/ed-admission-prediction.html", "images/ed_roc.jpg", "Machine learning", "Predicting ED admissions", "Five classifiers on 347,360 emergency visits, combining triage data with chief-complaint text. CatBoost reached the best ROC-AUC (0.863).", ["Python", "Gradient Boosting", "NLP"])}
+{fcard("projects/learning-tsp.html", "images/thumb_tsp.jpg", "IEEE T-ITS journal article", "Learning-based routing optimization", "Supervised learning guides exact and heuristic solvers on large traveling salesman problems: 28% shorter tours with 59% less runtime on 1,000-node instances.", ["Supervised Learning", "Routing", "Optimization"])}
+</div>
+<div class="more2"><a href="{{up}}research.html">All research →</a><a href="{{up}}projects.html">All 12 projects →</a><a href="{{up}}publications.html">Publications →</a></div>
+</section>
+
+<section><h2>Experience and education</h2>
+<div class="cols">
+<div class="panel"><h3>Experience <a class="lk" href="{{up}}experience.html">Details →</a></h3><ul class="tl2">
+<li><span class="y">2025 – now</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, CDC/NIOSH-funded</span></div></li>
+<li><span class="y">2021 – 2022</span><div><b>Graduate Research Assistant</b><span class="d">University of Tennessee Space Institute · simulation, routing, ML</span></div></li>
+<li><span class="y">2019 – 2021</span><div><b>Lecturer and Assistant Professor</b><span class="d">RUET, Bangladesh · statistics, operations, simulation</span></div></li>
+<li><span class="y">2017 – 2018</span><div><b>Lecturer</b><span class="d">Ahsanullah University of Science and Technology</span></div></li>
+<li><span class="y">2024 – 2026</span><div><b>President, INFORMS Student Chapter</b><span class="d">Clemson University · two Magna Cum Laude chapter awards</span></div></li>
+</ul></div>
+<div class="panel"><h3>Education</h3><ul class="tl2">
+<li><span class="y">Dec 2027</span><div><b>Ph.D., Industrial Engineering (Operations Research)</b><span class="d">Clemson University · GPA 3.90/4.00</span></div></li>
+<li><span class="y">2023</span><div><b>M.S., Industrial Engineering</b><span class="d">University of Tennessee, Knoxville · GPA 4.00/4.00</span></div></li>
+<li><span class="y">2016</span><div><b>B.Sc., Industrial &amp; Production Engineering</b><span class="d">RUET · first in class, University and Prime Minister Gold Medals</span></div></li>
+</ul>
+<h3 style="margin-top:20px">Recognition</h3><ul class="tl2">
+<li><span class="y">8</span><div><b>Peer-reviewed publications</b><span class="d">incl. IEEE T-ITS and Winter Simulation Conference</span></div></li>
+<li><span class="y">2021</span><div><b>Dr. Lloyd W. Crawford Fellowship</b><span class="d">UT Space Institute</span></div></li>
+<li><span class="y">Ongoing</span><div><b>Peer reviewer</b><span class="d">Journal of Big Data · Scientific Reports · BMC Medical Imaging</span></div></li>
+</ul></div>
+</div></section>
+
+<div class="cta"><div><h2>Let's talk</h2><p>Open to 2027 internships in operations research, optimization, and data science.</p></div>
+<div class="btns" style="margin:0"><a class="btn primary" href="mailto:{EMAIL}">{EMAIL}</a><a class="btn" href="{{up}}Zahid_Islam_Resume.pdf">Download resume</a></div></div>
+</div>
+"""
 if __name__ == "__main__":
     main()
