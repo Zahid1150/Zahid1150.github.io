@@ -1208,5 +1208,98 @@ EDU_SECTION = """<section><h2>Education</h2>
 HOME = _re.sub(r'<section><h2>Teaching, service, and education</h2>.*?</section>', lambda m: EDU_SECTION, HOME, count=1, flags=_re.S)
 assert "Honors and service" in HOME
 
+
+# ================================================================ v8: experience on home, exhaustive keywords
+SK = {
+ "clemson-gra": ["Mixed-Integer Linear Programming", "Constraint Programming (CP-SAT)", "Bi-Objective Optimization", "Workforce Scheduling", "Physician Rostering", "Preference Modeling", "Fatigue Modeling", "Fairness Constraints", "Gurobi", "Google OR-Tools", "Python", "High-Performance Computing (SLURM)", "Survey Design", "Semi-Structured Interviews", "Thematic Analysis", "Inter-Rater Reliability", "Regression Analysis", "Mixed-Effects Models", "Wearable and Physiological Data", "Data Integration", "LLM Evaluation", "Healthcare Operations", "Stakeholder Engagement", "Multi-Site Research Coordination", "Team Supervision"],
+ "utsi-gra": ["Agent-Based Simulation", "AnyLogic", "Supply Chain Modeling", "Bullwhip Effect", "Information Sharing", "Risk Pooling", "Supervised Learning", "Combinatorial Optimization", "Traveling Salesman Problem", "Deep Reinforcement Learning", "Inventory Optimization", "Stochastic Demand", "Mixed-Integer Linear Programming", "Parallel-Machine Scheduling", "Production Scheduling", "Gurobi", "Python", "Technical Writing"],
+ "ruet": ["Probability and Statistics", "Operations Management", "Industrial Simulation", "Product Design", "Control Theory and Automation", "Laboratory Instruction", "Course Design", "Assessment Design", "Capstone Advising", "Undergraduate Research Advising", "Optimization", "Scheduling", "Manufacturing Systems", "Supply Chain Systems"],
+ "aust": ["Operations Management", "Engineering Economy", "Material Handling", "Maintenance Management", "Manufacturing Processes", "Machine Tools and Machining", "Engineering Materials", "Lecture Delivery", "Assessment Design", "Laboratory Instruction"],
+ "clemson-ta": ["Systems Modeling", "Quality Engineering", "Supply Chain Design and Control", "Engineering Economic Analysis", "Problem-Solving Sessions", "Grading", "Student Consultation", "Course Administration"],
+ "utk-ta": ["Facilities Planning", "Material Handling", "Quality Control and Management", "Grading", "Student Consultation"],
+ "energypack": ["Quality Manual Development", "Quality Control", "Transformer Fabrication", "Facility Layout Planning", "Manufacturing Operations"],
+ "informs-pres": ["Leadership", "Team Management", "Event Planning", "Invited Seminars", "Professional Development", "Outreach", "Faculty and University Coordination", "Podcast Production", "Science Communication"],
+ "informs-vp": ["Leadership", "Event Planning", "Professional Development", "Outreach", "Podcast Production"],
+ "mentor": ["Mentoring", "Research Supervision", "Field Data Collection", "Data Quality Checks", "Interdisciplinary Collaboration", "Research Presentation Coaching"],
+}
+IDS = ["clemson-gra", "utsi-gra", "ruet", "aust", "clemson-ta", "utk-ta", "energypack", "informs-pres", "informs-vp", "mentor"]
+_flat = [j for _, jobs in JOBS for j in jobs]
+JOBMAP = {}
+for jid, j in zip(IDS, _flat):
+    JOBMAP[id(j)] = jid
+
+JOBS = JOBS + [("Professional service", [
+  ("Peer Reviewer", "Journal of Big Data · Scientific Reports · BMC Medical Imaging", "Ongoing", [
+    "Review manuscripts for journals in data science, multidisciplinary science, and medical imaging."],
+   ["Peer Review", "Research Evaluation", "Scientific Writing"], None),
+  ("Professional Memberships", "INFORMS · Institute of Industrial and Systems Engineers (IISE)", "2022 – Present", [
+    "Member of the main professional societies in operations research and industrial engineering."],
+   ["INFORMS", "IISE"], None),
+  ("Moderator, RUET IPE Club; Student Leadership", "Rajshahi University of Engineering & Technology · Bangladesh", "2012 – 2021", [
+    "Faculty moderator of the Industrial & Production Engineering club (2019–2021).",
+    "As a student: Organizing Secretary, Association of Industrial & Production Engineering; Vice President, RUET IPE Club; General Secretary, Greater Khulna Association; Class Representative (2012–2016)."],
+   ["Student Organization Leadership", "Event Organization", "Advising"], None),
+])]
+for jid, j in zip(["reviewer", "memberships", "ruet-club"], JOBS[-1][1]):
+    JOBMAP[id(j)] = jid
+
+
+def job_html(j):
+    title, org, when, bullets, sk, link = j
+    jid = JOBMAP.get(id(j), "")
+    sk = SK.get(jid, sk)
+    more = f'<p style="margin:10px 0 0"><a href="{{up}}{link}"><b>Related work →</b></a></p>' if link else ""
+    return f'<div class="job panel" id="{jid}"><div class="head"><h3>{E(title)}</h3><span class="when">{E(when)}</span></div><div class="org">{E(org)}</div><ul>{"".join(f"<li>{E(b)}</li>" for b in bullets)}</ul>{skills_html(sk)}{more}</div>'
+
+
+CSS += """
+.xrow{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--fg)}
+.xrow:last-child{border-bottom:0}
+a.xrow:hover{text-decoration:none;background:var(--bg)}
+.xrow .when{color:var(--purple);font-weight:600;font-size:.9rem}
+@media (prefers-color-scheme:dark){.xrow .when{color:#c9b5f5}}
+.xrow h3{margin:0;font-size:1.06rem}
+.xrow .org{color:var(--muted);font-size:.93rem;margin:2px 0 8px}
+.xgroup{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin:20px 0 2px}
+.xgroup:first-child{margin-top:4px}
+@media (max-width:640px){.xrow{grid-template-columns:1fr;gap:4px}}
+"""
+
+
+def xrow(jid, title, org, when, n=8):
+    return f'<a class="xrow" href="{{up}}experience.html#{jid}"><span class="when">{E(when)}</span><div><h3>{E(title)}</h3><div class="org">{E(org)}</div>{skills_html(SK[jid][:n])}</div></a>'
+
+
+EXP_HOME = """<section><h2>Experience</h2>
+<p class="lede">Research, teaching, industry, and leadership roles. Select a role for full details.</p>
+<div class="panel">
+<div class="xgroup">Research</div>""" + xrow("clemson-gra", "Graduate Research Assistant", "Clemson University · Department of Industrial Engineering", "2025 – Present", 10) + xrow("utsi-gra", "Graduate Research Assistant", "University of Tennessee Space Institute", "2021 – 2022", 9) + """
+<div class="xgroup">Teaching</div>""" + xrow("ruet", "Lecturer and Assistant Professor", "Rajshahi University of Engineering & Technology (RUET), Bangladesh", "2019 – 2021") + xrow("aust", "Lecturer", "Ahsanullah University of Science and Technology, Bangladesh", "2017 – 2018", 6) + xrow("clemson-ta", "Graduate Teaching Assistant", "Clemson University and University of Tennessee, Knoxville", "2022 – 2024", 5) + """
+<div class="xgroup">Industry</div>""" + xrow("energypack", "Intern", "Energypack Engineering Limited, Bangladesh", "2015") + """
+<div class="xgroup">Leadership</div>""" + xrow("informs-pres", "President (Vice President 2024–25)", "Clemson University INFORMS Student Chapter", "2024 – 2026", 7) + xrow("mentor", "Undergraduate Research Mentor", "Clemson University Creative Inquiry", "2025 – Present", 5) + """
+</div>
+<p style="margin-top:16px"><a href="{up}experience.html"><b>Full experience →</b></a></p></section>
+"""
+
+HONORS = """<section><h2>Honors and service</h2>
+<div class="cols">
+<div class="panel"><h3>Honors and awards</h3><ul class="hl">
+<li><span class="y">2026</span><div><b>CECAS GSAB Travel Grant</b><span class="d">College of Engineering, Computing and Applied Sciences, Clemson University</span></div></li>
+<li><span class="y">2026</span><div><b>Graduate Student Government Travel Grant</b><span class="d">Clemson University</span></div></li>
+<li><span class="y">2025, 2026</span><div><b>INFORMS Student Chapter Award, Magna Cum Laude</b><span class="d">Received by the Clemson chapter during my terms as vice president and president</span></div></li>
+<li><span class="y">2021</span><div><b>Dr. Lloyd W. Crawford Fellowship</b><span class="d">University of Tennessee Space Institute</span></div></li>
+<li><span class="y">2019</span><div><b>University Gold Medal</b><span class="d">RUET · highest CGPA in Industrial &amp; Production Engineering</span></div></li>
+<li><span class="y">2018</span><div><b>Prime Minister Gold Medal</b><span class="d">University Grants Commission of Bangladesh · highest CGPA among faculty graduates</span></div></li>
+</ul></div>
+<div class="panel"><h3>Professional service</h3><ul class="hl">
+<li><span class="y">Ongoing</span><div><b>Peer reviewer</b><span class="d"><i>Journal of Big Data</i> · <i>Scientific Reports</i> · <i>BMC Medical Imaging</i></span></div></li>
+<li><span class="y">2022–</span><div><b>Professional memberships</b><span class="d">INFORMS · Institute of Industrial and Systems Engineers (IISE)</span></div></li>
+<li><span class="y">2019–21</span><div><b>Faculty moderator, RUET IPE Club</b><span class="d">Industrial &amp; Production Engineering student club, Bangladesh</span></div></li>
+</ul></div>
+</div></section>
+"""
+HOME = _re.sub(r'<section><h2>Honors and service</h2>.*?</section>\n', lambda m: EXP_HOME + HONORS, HOME, count=1, flags=_re.S)
+assert "Full experience" in HOME
+
 if __name__ == "__main__":
     main()

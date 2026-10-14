@@ -142,6 +142,17 @@ footer a{color:#fff}
 .hl b{display:block}
 .hl span.d{color:var(--muted);font-size:.9rem}
 @media (max-width:760px){.edu{grid-template-columns:1fr}}
+
+.xrow{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--fg)}
+.xrow:last-child{border-bottom:0}
+a.xrow:hover{text-decoration:none;background:var(--bg)}
+.xrow .when{color:var(--purple);font-weight:600;font-size:.9rem}
+@media (prefers-color-scheme:dark){.xrow .when{color:#c9b5f5}}
+.xrow h3{margin:0;font-size:1.06rem}
+.xrow .org{color:var(--muted);font-size:.93rem;margin:2px 0 8px}
+.xgroup{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin:20px 0 2px}
+.xgroup:first-child{margin-top:4px}
+@media (max-width:640px){.xrow{grid-template-columns:1fr;gap:4px}}
 </style>
 </head><body>
 <header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html" class=on>About</a><a href="research.html">Research</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV</a></nav></div></header>
@@ -201,6 +212,15 @@ footer a{color:#fff}
 <div class="pills"><span class="pill">CGPA 3.90 / 4.00</span><span class="pill">Two gold medals</span></div></div>
 </div></section>
 
+<section><h2>Experience</h2>
+<p class="lede">Research, teaching, industry, and leadership roles. Select a role for full details.</p>
+<div class="panel">
+<div class="xgroup">Research</div><a class="xrow" href="experience.html#clemson-gra"><span class="when">2025 – Present</span><div><h3>Graduate Research Assistant</h3><div class="org">Clemson University · Department of Industrial Engineering</div><div class="skills"><span class="sk">Mixed-Integer Linear Programming</span><span class="sk">Constraint Programming (CP-SAT)</span><span class="sk">Bi-Objective Optimization</span><span class="sk">Workforce Scheduling</span><span class="sk">Physician Rostering</span><span class="sk">Preference Modeling</span><span class="sk">Fatigue Modeling</span><span class="sk">Fairness Constraints</span><span class="sk">Gurobi</span><span class="sk">Google OR-Tools</span></div></div></a><a class="xrow" href="experience.html#utsi-gra"><span class="when">2021 – 2022</span><div><h3>Graduate Research Assistant</h3><div class="org">University of Tennessee Space Institute</div><div class="skills"><span class="sk">Agent-Based Simulation</span><span class="sk">AnyLogic</span><span class="sk">Supply Chain Modeling</span><span class="sk">Bullwhip Effect</span><span class="sk">Information Sharing</span><span class="sk">Risk Pooling</span><span class="sk">Supervised Learning</span><span class="sk">Combinatorial Optimization</span><span class="sk">Traveling Salesman Problem</span></div></div></a>
+<div class="xgroup">Teaching</div><a class="xrow" href="experience.html#ruet"><span class="when">2019 – 2021</span><div><h3>Lecturer and Assistant Professor</h3><div class="org">Rajshahi University of Engineering &amp; Technology (RUET), Bangladesh</div><div class="skills"><span class="sk">Probability and Statistics</span><span class="sk">Operations Management</span><span class="sk">Industrial Simulation</span><span class="sk">Product Design</span><span class="sk">Control Theory and Automation</span><span class="sk">Laboratory Instruction</span><span class="sk">Course Design</span><span class="sk">Assessment Design</span></div></div></a><a class="xrow" href="experience.html#aust"><span class="when">2017 – 2018</span><div><h3>Lecturer</h3><div class="org">Ahsanullah University of Science and Technology, Bangladesh</div><div class="skills"><span class="sk">Operations Management</span><span class="sk">Engineering Economy</span><span class="sk">Material Handling</span><span class="sk">Maintenance Management</span><span class="sk">Manufacturing Processes</span><span class="sk">Machine Tools and Machining</span></div></div></a><a class="xrow" href="experience.html#clemson-ta"><span class="when">2022 – 2024</span><div><h3>Graduate Teaching Assistant</h3><div class="org">Clemson University and University of Tennessee, Knoxville</div><div class="skills"><span class="sk">Systems Modeling</span><span class="sk">Quality Engineering</span><span class="sk">Supply Chain Design and Control</span><span class="sk">Engineering Economic Analysis</span><span class="sk">Problem-Solving Sessions</span></div></div></a>
+<div class="xgroup">Industry</div><a class="xrow" href="experience.html#energypack"><span class="when">2015</span><div><h3>Intern</h3><div class="org">Energypack Engineering Limited, Bangladesh</div><div class="skills"><span class="sk">Quality Manual Development</span><span class="sk">Quality Control</span><span class="sk">Transformer Fabrication</span><span class="sk">Facility Layout Planning</span><span class="sk">Manufacturing Operations</span></div></div></a>
+<div class="xgroup">Leadership</div><a class="xrow" href="experience.html#informs-pres"><span class="when">2024 – 2026</span><div><h3>President (Vice President 2024–25)</h3><div class="org">Clemson University INFORMS Student Chapter</div><div class="skills"><span class="sk">Leadership</span><span class="sk">Team Management</span><span class="sk">Event Planning</span><span class="sk">Invited Seminars</span><span class="sk">Professional Development</span><span class="sk">Outreach</span><span class="sk">Faculty and University Coordination</span></div></div></a><a class="xrow" href="experience.html#mentor"><span class="when">2025 – Present</span><div><h3>Undergraduate Research Mentor</h3><div class="org">Clemson University Creative Inquiry</div><div class="skills"><span class="sk">Mentoring</span><span class="sk">Research Supervision</span><span class="sk">Field Data Collection</span><span class="sk">Data Quality Checks</span><span class="sk">Interdisciplinary Collaboration</span></div></div></a>
+</div>
+<p style="margin-top:16px"><a href="experience.html"><b>Full experience →</b></a></p></section>
 <section><h2>Honors and service</h2>
 <div class="cols">
 <div class="panel"><h3>Honors and awards</h3><ul class="hl">
@@ -211,12 +231,11 @@ footer a{color:#fff}
 <li><span class="y">2019</span><div><b>University Gold Medal</b><span class="d">RUET · highest CGPA in Industrial &amp; Production Engineering</span></div></li>
 <li><span class="y">2018</span><div><b>Prime Minister Gold Medal</b><span class="d">University Grants Commission of Bangladesh · highest CGPA among faculty graduates</span></div></li>
 </ul></div>
-<div class="panel"><h3>Service and leadership</h3><ul class="hl">
-<li><span class="y">2025–26</span><div><b>President, Clemson INFORMS Student Chapter</b><span class="d">Seminars, professional development, outreach; co-host of the <i>Optimality Gap</i> podcast (vice president 2024–25)</span></div></li>
-<li><span class="y">2025–</span><div><b>Undergraduate research mentor</b><span class="d">Twelve students across five disciplines, Clemson Creative Inquiry</span></div></li>
+<div class="panel"><h3>Professional service</h3><ul class="hl">
 <li><span class="y">Ongoing</span><div><b>Peer reviewer</b><span class="d"><i>Journal of Big Data</i> · <i>Scientific Reports</i> · <i>BMC Medical Imaging</i></span></div></li>
-<li><span class="y">2017–24</span><div><b>University teaching</b><span class="d">Lecturer and assistant professor in Bangladesh; graduate teaching assistant at Clemson and Tennessee</span></div></li>
-</ul><p style="margin:12px 0 0"><a href="experience.html"><b>Full teaching and leadership history →</b></a></p></div>
+<li><span class="y">2022–</span><div><b>Professional memberships</b><span class="d">INFORMS · Institute of Industrial and Systems Engineers (IISE)</span></div></li>
+<li><span class="y">2019–21</span><div><b>Faculty moderator, RUET IPE Club</b><span class="d">Industrial &amp; Production Engineering student club, Bangladesh</span></div></li>
+</ul></div>
 </div></section>
 
 </div>
