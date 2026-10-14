@@ -1096,14 +1096,14 @@ RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor
 <h2 id="llm">Can large language models reproduce human thematic analysis?</h2>
 <p class="small muted">With S. V. Abrol, V. Prabhu, and K. M. Taaffe · ongoing research</p>
 <p>This study examines how well large language models perform inductive thematic analysis of qualitative healthcare interviews, and how their interpretations compare with those of human researchers. Using 18 emergency department nurse interviews and a human-developed reference codebook of 47 codes, we evaluate Claude Sonnet and Opus at medium and high reasoning-effort settings on conceptual alignment, code coverage, coding specificity, and the ability to reproduce higher-order human interpretations.</p>
-<figure><img src="{{up}}images/llm_workflow.png" alt="Workflow: human and model-generated codebooks compared through conceptual code mapping and agreement review"><figcaption>Human and model-generated codebooks are compared through conceptual code mapping, then reviewed and adjudicated.</figcaption></figure>
+<figure><img src="{{up}}images/llm_workflow_v2.png" alt="Study design: 18 nurse transcripts coded by human researchers and by four Claude configurations; codebooks compared on alignment, coverage, specificity, and higher-order themes"><figcaption>Study design: the same transcripts are coded by human researchers and by four model configurations, and the codebooks are compared.</figcaption></figure>
 <ul>
 <li><b>Combined coverage.</b> Across the four configurations, at least one model represented 44 of 47 human codes (93.6%).</li>
 <li><b>Best single configuration.</b> One configuration represented 39 of 47 human codes (83.0%).</li>
 <li><b>Model differences.</b> Opus generally covered more human codes than Sonnet; raising reasoning effort did not consistently improve coverage.</li>
 <li><b>Interpretive limits.</b> The models captured concrete scheduling factors, preferences, and reasons well, but had more difficulty with higher-order themes about schedule satisfaction and how current schedules compare with ideal ones.</li>
 </ul>
-<figure style="max-width:720px"><img src="{{up}}images/llm_code_coverage.png" alt="Bar chart: 44 of 47 human codes covered across four configurations; 39 of 47 by the best single configuration"><figcaption>Human-code coverage (preliminary, descriptive results; not overall coding accuracy).</figcaption></figure>
+<figure><img src="{{up}}images/llm_coverage_waffle.png" alt="47 squares, one per human code: 39 captured by the best single configuration, 5 more captured by other configurations, 3 not captured"><figcaption>Coverage of the 47 human codes (preliminary results).</figcaption></figure>
 <p><b>My role:</b> reviewing and refining human–model code mappings, evaluating prompting and analysis strategies, developing the inter-rater reliability assessment, calculating agreement statistics, and contributing to adjudication, interpretation, and the manuscript.</p>
 <p class="small muted">Preliminary findings, not yet peer reviewed · manuscript in preparation.</p>
 {{skills5}}
@@ -1142,7 +1142,7 @@ RCARDS = "".join([
           RSK["skills4"][:4], img="images/thumb_survey_alignment.jpg"),
     rcard("llm", "Large language models", "Can LLMs reproduce human thematic analysis?",
           "Using 18 nurse interviews and a 47-code human codebook, we compare four Claude configurations. Together they covered 93.6% of the human codes, but struggled with higher-order themes about schedule satisfaction.",
-          RSK["skills5"][:4], img="images/thumb_llm_code_coverage.jpg"),
+          RSK["skills5"][:4], img="images/thumb_llm_waffle.jpg"),
 ])
 
 HOME = _re.sub(r'<div class="grid">\s*<a class="card" href="\{up\}research\.html#.*?</a></div>(</section>)',
