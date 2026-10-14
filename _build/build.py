@@ -1018,5 +1018,136 @@ def main():
         body += f'<section><h2>{name}</h2><div class="tl">{"".join(job_html(j) for j in jobs)}</div></section>'
     page("experience.html", "Experience | Md Zahidul Islam", body + "</div>", "experience.html")
 
+
+# ================================================================ v6: research write-ups from Zahid's project files (Oct 14, 2026)
+CSS += """
+.doc ul li b{color:var(--fg)}
+.thumb.wide{height:200px;padding:10px 12px}
+.thumb.wide img{max-height:180px;width:100%;object-fit:contain}
+"""
+
+RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor: Dr. Kevin M. Taaffe, Clemson University.</p></div>
+
+<h2 id="scheduling">Optimization models for emergency physician scheduling</h2>
+<p>Prisma Health's emergency physicians rotate among seven emergency department locations. A schedule has to keep every department staffed around the clock and respect credentials, rest rules, and leave, and it also decides how tired physicians get, how fairly nights and weekends are shared, and how well each person's life fits around work. I am working on two connected scheduling problems.</p>
+
+<h3 id="preferences">1. Personalized schedules: each physician's priorities, weighted by how much they matter</h3>
+<p class="small muted">With Dr. Kevin Taaffe and Dr. Hervé Kerivin · Clemson University · in partnership with Prisma Health</p>
+<p>Building a monthly schedule by hand is slow, and it rarely reflects what each physician cares about most. I build optimization models that schedule physicians across all hospitals at once: every hospital is covered, staffing rules are met, and each physician's priorities show up in their own schedule.</p>
+<figure><img src="{{up}}images/sched_overview.png" alt="Personal preferences, time-off requests, and staffing rules feed an optimization model that produces a schedule across hospitals"><figcaption>Inputs feed a mixed-integer optimization model that builds one schedule across all hospitals.</figcaption></figure>
+<p><b>What makes this different.</b> Many scheduling models let physicians say <i>what</i> they prefer, such as fewer nights or a free weekend, and then treat every preference as equally important for everyone. In practice people care about different things: a physician with young children may care a great deal about avoiding nights, while a colleague barely minds. In our model each physician spends a fixed budget of points across the things that matter to them, and the model uses those points as that physician's own weights. Because everyone has the same budget, no one can mark everything as top priority, and fairness limits keep any one physician from carrying too much of the load.</p>
+<figure><img src="{{up}}images/sched_preferences.png" alt="Comparison: equal weights give both physicians three nights; personal weights give one night to the physician who cares most"><figcaption>Illustrative example: with personal weights, nights go to the physician who minds them least, with the same coverage.</figcaption></figure>
+<ul>
+<li><b>Rules that must hold:</b> every shift at every hospital is covered, no physician works at two sites on the same day, workload limits are met, and there is enough rest between shifts.</li>
+<li><b>Goals to balance:</b> each physician's weighted preferences, time-off requests, healthy work patterns, and fairness across the group.</li>
+<li><b>Finding the hard part:</b> removing one rule group at a time showed that the rules on work stretches and rest days make the problem far harder than everything else combined.</li>
+<li><b>A month as a path:</b> to handle those rules better, each physician's month is modeled as a chain of work blocks and rest periods, with penalties for blocks that run too long or rest that is too short.</li>
+<li><b>Fairer nights:</b> a new fairness design cut the imbalance in night shifts between physicians by about half, with no loss in coverage.</li>
+<li><b>Testing at scale:</b> an automated pipeline runs day-long experiments on Clemson's Palmetto supercomputer, checks every schedule against the rules, and compares model versions side by side.</li>
+</ul>
+<figure><img src="{{up}}images/sched_work_rest.png" alt="One physician's month shown as alternating work blocks and rest periods"><figcaption>One physician's month as a path of work blocks and rest periods; a block that runs too long is penalized.</figcaption></figure>
+<p><b>Key insight and next steps.</b> Longer runs kept finding better schedules, but the solver's proof of how good they are stopped improving after a few hours, so more computing time alone will not solve larger systems. The next step is decomposition (column generation): build good schedules for each physician separately, then combine them. In parallel I am solving the same problem with Google's CP-SAT constraint programming solver to see whether it reaches schedules of the same quality in less time.</p>
+<p class="small muted">Accepted talk, INFORMS Annual Meeting, November 2026 · manuscript in preparation.</p>
+{{skills1}}
+
+<h3 id="fatigue">2. Can schedules cut fatigue without giving up coverage or fairness?</h3>
+<p>Physicians in a hospital network rotate across sites, nights, and weekends, and the same shift can tire people differently depending on their body clock. With Dr. Kevin Taaffe and the project team, I built a mixed-integer model in Python and Gurobi for 90-day schedules across four hospitals. It scores each physician–shift pair with a Shift Fatigue Index (chronotype mismatch, shift end time, and shift length) and penalizes uneven sharing of nights, weekends, and distant-site shifts. Themes from the interview study shaped these penalties. Tests use synthetic instances.</p>
+<figure><img src="{{up}}images/rostering_design.png" alt="Diagram: inputs feed a Shift Fatigue Index and a mixed-integer model that produces a roster; post-shift surveys, a wrist-worn sleep tracker, and saliva cortisol will calibrate the index"><figcaption>How the model works, and the field data that will calibrate its fatigue score.</figcaption></figure>
+<ul>
+<li><b>Fatigue drops by almost half at a modest cost.</b> On a 40-physician instance, a balanced weighting cut total modeled fatigue by 45% (6,893 to 3,777) and the highest individual score by 27%, while other schedule penalties rose 12%.</li>
+<li><b>Fatigue alone is the wrong target.</b> Weighting only fatigue lowered it just 2% more, nearly doubled other penalties, and cut mean recovery after work blocks from 2.9 to 1.7 days.</li>
+<li><b>Results are stable across instances.</b> Four random seeds gave feasible rosters with optimality gaps below 4%; distant-site counts differed by at most two.</li>
+<li><b>Size is the bottleneck.</b> Rosters for 40 and 70 physicians were found within six hours; at 100 or more physicians, none was found.</li>
+</ul>
+<figure style="max-width:640px"><img src="{{up}}images/rostering_tradeoff.png" alt="Trade-off between total modeled fatigue and schedule-quality penalty for four weightings"><figcaption>Fatigue versus other schedule penalties for four objective weightings (40 physicians, 4 hospitals, 90 days; synthetic instance).</figcaption></figure>
+<p>The index is a transparent proxy, not yet a validated measure. A 2026 shift study pairs post-shift surveys of fatigue and workload with wrist-worn sleep tracking and before-and-after-shift saliva cortisol; these data will calibrate it.</p>
+<p class="small muted">Presented at the Healthcare Systems Process Improvement Conference (Feb 2026) and the IISE Annual Conference &amp; Expo (May 2026). Next: calibration and faster methods (rolling horizon, decomposition) for larger networks.</p>
+{{skills2}}
+
+<h2 id="interviews">Interview study: schedules for life vs. schedules for fatigue</h2>
+<p>To ground the models in clinicians' experience, I led a comparative interview study with 18 emergency nurses and 13 attending emergency physicians at Prisma Health. I co-designed the interview guide and conducted semi-structured interviews on Microsoft Teams (April–June 2025). The team analyzed the transcripts in ATLAS.ti with a separate codebook for each profession and checked intercoder agreement on double-coded transcripts. Each clinician described two schedules: the one they would choose overall, and the one best for their fatigue and daily functioning.</p>
+<figure><img src="{{up}}images/interview_study_design.png" alt="Study design: 31 clinicians, profession-specific codebooks leading to six cross-professional themes, and a within-person comparison of two elicited schedules"><figcaption>Study design. Every clinician described both schedules, so the two could be compared within the same person.</figcaption></figure>
+<ul>
+<li><b>Preference and fatigue often differ.</b> For 18 of 31 clinicians, the schedule best for fatigue differed from the one they preferred overall: in timing for nine and in structure (shift length, spacing, or blocks) for nine. When timing differed, family obligations, especially childcare, most often pulled the preferred schedule earlier than the hours when clinicians felt they functioned best.</li>
+<li><b>Shared goals, different fatigue drivers.</b> Both groups valued recovery, predictability, and long stretches off, and grouped shifts to get them. Nurses linked fatigue to consecutive 12-hour shifts, patient volume, and missed breaks; physicians linked it to night work and rapid switches between shift types.</li>
+<li><b>Control is not the same as recovery.</b> Nurses valued the flexibility of self-scheduling yet still reported fatigue; physicians could state preferences before the schedule was published but had little flexibility afterward.</li>
+<li><b>Implication for the models.</b> Preference satisfaction and fatigue should be treated as separate objectives rather than one "preference" term. These findings informed the survey questions and the scheduling models.</li>
+</ul>
+<figure style="max-width:720px"><img src="{{up}}images/interview_paired_comparison.png" alt="Bar chart: 11 clinicians described the same schedule, 9 differed in structure, 9 differed in timing, and 2 could not be classified"><figcaption>How each clinician's schedule for life compared with their schedule for fatigue (N = 31).</figcaption></figure>
+<p class="small muted">Early results were presented as a poster at the Prisma Health Research Showcase (November 2025). The full manuscript is in preparation.</p>
+<div class="badges"><a class="badge" href="{{up}}docs/Interview_Study_Poster_2025.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
+{{skills3}}
+
+<h2 id="survey">Survey study: does schedule fit matter for burnout?</h2>
+<p>Burnout is common among emergency department clinicians, and shift scheduling is one factor health systems can change. I analyzed a cross-sectional survey of 103 nurses and 57 attending physicians at seven Prisma Health emergency departments (March–May 2026). It asked about preferred shift length, consecutive shifts, and night work; how many hours into a shift clinicians begin to feel tired; how much time off they need to recover; and how well their most recent schedule matched their preferences (0–10). I ran the analysis in Python (pandas, SciPy, statsmodels) using group comparisons, mixed models, and robust regression with false discovery rate control.</p>
+<figure><img src="{{up}}images/survey_design.png" alt="Study design: participants, survey measures, and analyses"><figcaption>Participants, survey measures, and analyses.</figcaption></figure>
+<ul>
+<li><b>Different preferences.</b> Nurses most often preferred 12-hour shifts (67%); physicians most often preferred 9-hour shifts (49%).</li>
+<li><b>Shifts outlast tiredness.</b> 76% preferred shifts longer than the point at which they begin to feel tired (a median of 2 hours longer).</li>
+<li><b>More recovery after long runs and nights.</b> Days off needed after five or more consecutive shifts including a night were 2.0 times (nurses) and 2.5 times (physicians) those needed after two to four shifts.</li>
+<li><b>Schedule fit and burnout.</b> Clinicians who rated their schedule a better match to their preferences reported lower burnout (standardized β = −0.40); the association held after also adjusting for sleep, chronotype, and shift type.</li>
+</ul>
+<figure style="max-width:720px"><img src="{{up}}images/survey_alignment.png" alt="Association of self-reported schedule alignment with burnout and fatigue"><figcaption>Self-reported schedule alignment and well-being, adjusted for profession, age, and FTE.</figcaption></figure>
+<p>These results link schedule fit to burnout and inform the preference-weighted scheduling models above. Next, we are comparing self-reported alignment with the shifts clinicians actually worked before the survey.</p>
+<p class="small muted">Poster, Prisma Health Research Showcase, October 2026 · manuscript in preparation.</p>
+<div class="badges"><a class="badge" href="{{up}}docs/Survey_Study_Poster_2026.pdf" target="_blank" rel="noopener">Poster (PDF)</a><span class="badge">Manuscript in preparation</span></div>
+{{skills4}}
+
+<h2 id="llm">Can large language models reproduce human thematic analysis?</h2>
+<p class="small muted">With S. V. Abrol, V. Prabhu, and K. M. Taaffe · ongoing research</p>
+<p>This study examines how well large language models perform inductive thematic analysis of qualitative healthcare interviews, and how their interpretations compare with those of human researchers. Using 18 emergency department nurse interviews and a human-developed reference codebook of 47 codes, we evaluate Claude Sonnet and Opus at medium and high reasoning-effort settings on conceptual alignment, code coverage, coding specificity, and the ability to reproduce higher-order human interpretations.</p>
+<figure><img src="{{up}}images/llm_workflow.png" alt="Workflow: human and model-generated codebooks compared through conceptual code mapping and agreement review"><figcaption>Human and model-generated codebooks are compared through conceptual code mapping, then reviewed and adjudicated.</figcaption></figure>
+<ul>
+<li><b>Combined coverage.</b> Across the four configurations, at least one model represented 44 of 47 human codes (93.6%).</li>
+<li><b>Best single configuration.</b> One configuration represented 39 of 47 human codes (83.0%).</li>
+<li><b>Model differences.</b> Opus generally covered more human codes than Sonnet; raising reasoning effort did not consistently improve coverage.</li>
+<li><b>Interpretive limits.</b> The models captured concrete scheduling factors, preferences, and reasons well, but had more difficulty with higher-order themes about schedule satisfaction and how current schedules compare with ideal ones.</li>
+</ul>
+<figure style="max-width:720px"><img src="{{up}}images/llm_code_coverage.png" alt="Bar chart: 44 of 47 human codes covered across four configurations; 39 of 47 by the best single configuration"><figcaption>Human-code coverage (preliminary, descriptive results; not overall coding accuracy).</figcaption></figure>
+<p><b>My role:</b> reviewing and refining human–model code mappings, evaluating prompting and analysis strategies, developing the inter-rater reliability assessment, calculating agreement statistics, and contributing to adjudication, interpretation, and the manuscript.</p>
+<p class="small muted">Preliminary findings, not yet peer reviewed · manuscript in preparation.</p>
+{{skills5}}
+
+<h2 id="earlier">Earlier research</h2>
+<p>At the University of Tennessee Space Institute (2021–2022) I worked on supply chain simulation, learning-based routing, perishable inventory, and production scheduling. See the <a href="{{up}}projects.html">projects page</a>.</p>
+"""
+RSK = {
+ "skills1": ["Mixed-Integer Programming", "Preference Modeling", "Constraint Programming (CP-SAT)", "Network Models", "Gurobi", "Google OR-Tools", "Python", "High-Performance Computing"],
+ "skills2": ["Mixed-Integer Linear Programming", "Bi-Objective Optimization", "Fatigue Modeling", "Chronotype", "Gurobi", "Python"],
+ "skills3": ["Qualitative Research", "Semi-Structured Interviews", "Thematic Analysis", "Intercoder Reliability", "ATLAS.ti", "Clinician Fatigue"],
+ "skills4": ["Survey Research", "Multiple Regression", "Mixed-Effects Models", "Multiple-Testing Correction", "Python (statsmodels, SciPy)", "Clinician Burnout"],
+ "skills5": ["Large Language Models", "Inductive Thematic Analysis", "Human–AI Evaluation", "Inter-Rater Reliability", "Qualitative Coding", "Prompt Design"],
+}
+for k, v in RSK.items():
+    RESEARCH = RESEARCH.replace("{" + k + "}", skills_html(v))
+
+
+def rcard(anchor, tag, title, text, sk, img=None, art=None):
+    th = f'<div class="thumb wide"><img src="{{up}}{img}" alt="" loading="lazy"></div>' if img else f'<div class="thumb art" aria-hidden="true">{ART[art]}</div>'
+    return f'<a class="card" href="{{up}}research.html#{anchor}">{th}<div class="cbody"><span class="tag">{tag}</span><h3>{title}</h3><p class="long">{text}</p>{skills_html(sk)}<span class="go">Read more →</span></div></a>'
+
+
+RCARDS = "".join([
+    rcard("preferences", "Optimization", "Personalized physician schedules across hospitals",
+          "Each physician spends a fixed budget of points on what matters to them, and a mixed-integer model turns those points into personal weights while covering every shift at every hospital. A new fairness design cut the night-shift imbalance between physicians by about half.",
+          RSK["skills1"][:4], img="images/thumb_sched_overview.jpg"),
+    rcard("fatigue", "Optimization", "Fatigue-aware multi-site rostering",
+          "A 90-day, four-hospital rostering model that scores each shift's fatigue from chronotype fit, end time, and length. On a 40-physician test, a balanced weighting cut modeled fatigue by 45% for a 12% rise in other schedule penalties. Presented at HSPI and IISE 2026.",
+          RSK["skills2"][:4], img="images/thumb_rostering_tradeoff.jpg"),
+    rcard("interviews", "Qualitative study", "Schedules for life vs. schedules for fatigue",
+          "Interviews with 18 nurses and 13 physicians, each describing the schedule they prefer and the one best for their fatigue. For 18 of 31 clinicians the two differed, often because family obligations pulled their preferred hours earlier.",
+          RSK["skills3"][:4], img="images/thumb_interview_paired_comparison.jpg"),
+    rcard("survey", "Survey study", "Does schedule fit matter for burnout?",
+          "A survey of 160 nurses and attending physicians at seven emergency departments. Nurses most often preferred 12-hour shifts and physicians 9-hour shifts, and clinicians who rated their schedule a better match to their preferences reported lower burnout (β = −0.40).",
+          RSK["skills4"][:4], img="images/thumb_survey_alignment.jpg"),
+    rcard("llm", "Large language models", "Can LLMs reproduce human thematic analysis?",
+          "Using 18 nurse interviews and a 47-code human codebook, we compare four Claude configurations. Together they covered 93.6% of the human codes, but struggled with higher-order themes about schedule satisfaction.",
+          RSK["skills5"][:4], img="images/thumb_llm_code_coverage.jpg"),
+])
+
+HOME = _re.sub(r'<div class="grid">\s*<a class="card" href="\{up\}research\.html#.*?</a></div>(</section>)',
+               lambda m: '<div class="grid">' + RCARDS + '</div>' + m.group(1), HOME, count=1, flags=_re.S)
+TALKS = [(d, ("Fatigue-aware multi-site rostering model for emergency department physicians with fairness and preference constraints" if t.startswith("Fatigue-aware multi-site rostering model") else t), v, k) for d, t, v, k in TALKS]
+
 if __name__ == "__main__":
     main()
