@@ -1442,6 +1442,30 @@ CSS += """
 .tl2 li{grid-template-columns:112px 1fr}
 .cta{background:var(--navy)}
 """
+
+# ================================================================ v11: illustrated thumbnails, research-focused featured work
+_ILL = {"bullwhip-simulation": "images/ill_bullwhip.jpg", "learning-tsp": "images/ill_tsp.jpg",
+        "perishable-inventory-rl": "images/ill_inventory.jpg", "injection-molding-scheduling": "images/ill_molding.jpg",
+        "mdp-physician-allocation": "images/ill_mdp.jpg", "facility-location-branch-and-bound": "images/ill_facility.jpg"}
+
+
+def thumb_html(p):
+    src = p["figure"][0] if p.get("figure") else _ILL.get(p["slug"])
+    if src:
+        return f'<div class="thumb"><img src="{{up}}{src}" alt="" loading="lazy"></div>'
+    return ""
+
+
+HOME = _re.sub(r'(<section><h2>Featured work</h2>\s*<div class="feat">).*?(</div>\s*<div class="more2">)', lambda m: m.group(1) + "\n" + "\n".join([
+ fcard("research.html#preferences", "images/thumb_sched_pref.jpg", "Doctoral research · Optimization", "Personalized physician scheduling",
+       "Each physician weights what matters to them with a points budget, and a mixed-integer model covers every shift across hospitals. A new fairness design cut night-shift imbalance by about half.", []),
+ fcard("research.html#fatigue", "images/thumb_fatigue.jpg", "Doctoral research · Optimization", "Fatigue-aware multi-site rostering",
+       "A 90-day, four-hospital rostering model that scores each shift's fatigue from body clock, end time, and length. On a 40-physician test, it cut modeled fatigue by 45% for a 12% rise in other schedule penalties.", []),
+ fcard("research.html#llm", "images/thumb_llm.jpg", "Doctoral research · Machine learning", "LLMs for qualitative analysis",
+       "Four Claude configurations coded 18 nurse interviews against a 47-code human codebook. Opus captured up to 39 codes, and together the models covered 93.6%, but none reproduced the human theme on schedule satisfaction.", []),
+]) + "\n" + m.group(2), HOME, count=1, flags=_re.S)
+HOME = HOME.replace('<a href="{up}research.html">All research →</a>', '<a href="{up}research.html">All research →</a>', 1)
+
 # ================================================================ v10c: final pass
 _main_v9 = main
 
