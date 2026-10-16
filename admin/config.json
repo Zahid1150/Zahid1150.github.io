@@ -1,0 +1,305 @@
+{
+  "load_config_file": false,
+  "backend": {
+    "name": "github",
+    "repo": "Zahid1150/Zahid1150.github.io",
+    "branch": "main"
+  },
+  "site_url": "https://zahid1150.github.io",
+  "display_url": "https://zahid1150.github.io",
+  "publish_mode": "editorial_workflow",
+  "media_folder": "images/uploads",
+  "public_folder": "/images/uploads",
+  "collections": [
+    {
+      "name": "website",
+      "label": "Website content",
+      "files": [
+        {
+          "label": "Gallery",
+          "name": "gallery",
+          "file": "content/gallery.json",
+          "fields": [
+            {
+              "label": "Photos",
+              "name": "photos",
+              "widget": "list",
+              "fields": [
+                {
+                  "label": "Image",
+                  "name": "image",
+                  "widget": "image"
+                },
+                {
+                  "label": "Alt",
+                  "name": "alt",
+                  "widget": "string",
+                  "hint": "Describe what is visible for visitors using screen readers."
+                },
+                {
+                  "label": "Caption",
+                  "name": "caption",
+                  "widget": "string"
+                },
+                {
+                  "label": "Album",
+                  "name": "album",
+                  "widget": "string"
+                },
+                {
+                  "label": "Date",
+                  "name": "date",
+                  "widget": "string",
+                  "required": false
+                }
+              ],
+              "summary": "{{fields.caption}}",
+              "default": []
+            }
+          ]
+        },
+        {
+          "label": "Home",
+          "name": "home",
+          "file": "content/home.json",
+          "fields": [
+            {
+              "label": "Headline",
+              "name": "headline",
+              "widget": "string"
+            },
+            {
+              "label": "Intro",
+              "name": "intro",
+              "widget": "text"
+            },
+            {
+              "label": "Availability",
+              "name": "availability",
+              "widget": "string"
+            },
+            {
+              "label": "Interests",
+              "name": "interests",
+              "widget": "text"
+            },
+            {
+              "label": "Background",
+              "name": "background",
+              "widget": "text"
+            },
+            {
+              "label": "Community",
+              "name": "community",
+              "widget": "text"
+            },
+            {
+              "label": "Featured",
+              "name": "featured",
+              "widget": "list",
+              "fields": [
+                {
+                  "label": "Title",
+                  "name": "title",
+                  "widget": "string"
+                },
+                {
+                  "label": "Category",
+                  "name": "category",
+                  "widget": "string"
+                },
+                {
+                  "label": "Url",
+                  "name": "url",
+                  "widget": "string"
+                },
+                {
+                  "label": "Image",
+                  "name": "image",
+                  "widget": "image"
+                },
+                {
+                  "label": "Alt",
+                  "name": "alt",
+                  "widget": "string"
+                },
+                {
+                  "label": "Description",
+                  "name": "description",
+                  "widget": "text"
+                }
+              ],
+              "summary": "{{fields.title}}"
+            }
+          ]
+        },
+        {
+          "label": "Service",
+          "name": "service",
+          "file": "content/service.json",
+          "fields": [
+            {
+              "label": "Groups",
+              "name": "groups",
+              "widget": "list",
+              "fields": [
+                {
+                  "label": "Title",
+                  "name": "title",
+                  "widget": "string"
+                },
+                {
+                  "label": "Items",
+                  "name": "items",
+                  "widget": "list",
+                  "fields": [
+                    {
+                      "label": "Role",
+                      "name": "role",
+                      "widget": "string"
+                    },
+                    {
+                      "label": "Organization",
+                      "name": "organization",
+                      "widget": "string"
+                    },
+                    {
+                      "label": "Dates",
+                      "name": "dates",
+                      "widget": "string"
+                    },
+                    {
+                      "label": "Description",
+                      "name": "description",
+                      "widget": "text",
+                      "required": false
+                    }
+                  ],
+                  "summary": "{{fields.role}}"
+                }
+              ],
+              "summary": "{{fields.title}}"
+            }
+          ]
+        },
+        {
+          "label": "Education",
+          "name": "education",
+          "file": "content/education.json",
+          "fields": [
+            {
+              "label": "Items",
+              "name": "items",
+              "widget": "list",
+              "fields": [
+                {
+                  "label": "Dates",
+                  "name": "dates",
+                  "widget": "string"
+                },
+                {
+                  "label": "Degree",
+                  "name": "degree",
+                  "widget": "string"
+                },
+                {
+                  "label": "Institution",
+                  "name": "institution",
+                  "widget": "string"
+                },
+                {
+                  "label": "Detail",
+                  "name": "detail",
+                  "widget": "string"
+                }
+              ],
+              "summary": "{{fields.degree}}"
+            }
+          ]
+        },
+        {
+          "label": "Awards",
+          "name": "awards",
+          "file": "content/awards.json",
+          "fields": [
+            {
+              "label": "Items",
+              "name": "items",
+              "widget": "list",
+              "fields": [
+                {
+                  "label": "Year",
+                  "name": "year",
+                  "widget": "string"
+                },
+                {
+                  "label": "Title",
+                  "name": "title",
+                  "widget": "string"
+                },
+                {
+                  "label": "Organization",
+                  "name": "organization",
+                  "widget": "string"
+                },
+                {
+                  "label": "Description",
+                  "name": "description",
+                  "widget": "text"
+                },
+                {
+                  "label": "Featured",
+                  "name": "featured",
+                  "widget": "boolean",
+                  "default": false
+                }
+              ],
+              "summary": "{{fields.title}}"
+            }
+          ]
+        },
+        {
+          "label": "Settings",
+          "name": "settings",
+          "file": "content/settings.json",
+          "fields": [
+            {
+              "label": "Resume",
+              "name": "resume",
+              "widget": "file"
+            },
+            {
+              "label": "Cv",
+              "name": "cv",
+              "widget": "file"
+            },
+            {
+              "label": "Navigation",
+              "name": "navigation",
+              "widget": "list",
+              "fields": [
+                {
+                  "label": "Label",
+                  "name": "label",
+                  "widget": "string"
+                },
+                {
+                  "label": "Url",
+                  "name": "url",
+                  "widget": "string"
+                },
+                {
+                  "label": "Visible",
+                  "name": "visible",
+                  "widget": "boolean",
+                  "default": true
+                }
+              ],
+              "summary": "{{fields.label}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

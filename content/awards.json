@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "year": "2026",
+      "title": "CECAS GSAB Travel Grant",
+      "organization": "Clemson University",
+      "description": "Support for conference travel and research dissemination.",
+      "featured": false
+    },
+    {
+      "year": "2026",
+      "title": "Graduate Student Government Graduate Travel Grant",
+      "organization": "Clemson University",
+      "description": "Support for conference travel and research presentation.",
+      "featured": false
+    },
+    {
+      "year": "2021",
+      "title": "Dr. Lloyd W. Crawford Fellowship",
+      "organization": "University of Tennessee Space Institute",
+      "description": "Awarded on the basis of high scholastic achievement, leadership, and outstanding research contributions.",
+      "featured": true
+    },
+    {
+      "year": "2019",
+      "title": "University Gold Medal",
+      "organization": "Rajshahi University of Engineering & Technology",
+      "description": "Highest CGPA in the Department of Industrial & Production Engineering.",
+      "featured": true
+    },
+    {
+      "year": "2018",
+      "title": "Prime Minister Gold Medal",
+      "organization": "University Grants Commission of Bangladesh",
+      "description": "Highest CGPA among graduates of the relevant university faculty in an academic year.",
+      "featured": true
+    },
+    {
+      "year": "2025 & 2026",
+      "title": "INFORMS Student Chapter Annual Award · Magna Cum Laude",
+      "organization": "Clemson University INFORMS Student Chapter",
+      "description": "Chapter recognition received during my service as Vice President (2025) and President (2026).",
+      "featured": false
+    }
+  ]
+}

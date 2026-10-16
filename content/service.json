@@ -1,0 +1,79 @@
+{
+  "groups": [
+    {
+      "title": "RUET & community in Bangladesh",
+      "items": [
+        {
+          "role": "Moderator",
+          "organization": "RUET IPE Club",
+          "dates": "2019–2021",
+          "description": ""
+        },
+        {
+          "role": "Organizing Secretary",
+          "organization": "Association of Industrial & Production Engineering, RUET",
+          "dates": "Student leadership · 2012–2016",
+          "description": ""
+        },
+        {
+          "role": "Vice President",
+          "organization": "RUET IPE Club",
+          "dates": "Student leadership · 2012–2016",
+          "description": ""
+        },
+        {
+          "role": "General Secretary",
+          "organization": "Greater Khulna Association",
+          "dates": "Student leadership · 2012–2016",
+          "description": ""
+        },
+        {
+          "role": "Class Representative",
+          "organization": "Rajshahi University of Engineering & Technology",
+          "dates": "Student leadership · 2012–2016",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "title": "Leadership at Clemson",
+      "items": [
+        {
+          "role": "President",
+          "organization": "Clemson University INFORMS Student Chapter",
+          "dates": "Aug 2025 – Sep 2026",
+          "description": "Led chapter programming, invited seminars, professional-development and outreach activities, student engagement, and coordination with faculty and university partners. Co-host and producer of the Optimality Gap podcast. The chapter received the Magna Cum Laude annual award in 2026."
+        },
+        {
+          "role": "Vice President",
+          "organization": "Clemson University INFORMS Student Chapter",
+          "dates": "Aug 2024 – Jul 2025",
+          "description": "Supported chapter programming, professional-development events, outreach initiatives, and student engagement. Co-host and producer of the Optimality Gap podcast. The chapter received the Magna Cum Laude annual award in 2025."
+        }
+      ]
+    },
+    {
+      "title": "Mentoring & professional service",
+      "items": [
+        {
+          "role": "Undergraduate Research Mentor",
+          "organization": "Clemson University Creative Inquiry",
+          "dates": "Aug 2025 – Present",
+          "description": "Mentor twelve undergraduates across industrial engineering, biological sciences, bioengineering, health science, and nursing in study procedures, field data collection, data quality, analysis, and research presentation."
+        },
+        {
+          "role": "Journal Reviewer",
+          "organization": "Journal of Big Data · Scientific Reports · BMC Medical Imaging",
+          "dates": "Professional service",
+          "description": ""
+        },
+        {
+          "role": "Professional Memberships",
+          "organization": "INFORMS · Institute of Industrial and Systems Engineers",
+          "dates": "2022 – Present",
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

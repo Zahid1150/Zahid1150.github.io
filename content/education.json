@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "dates": "Aug 2023 – Expected Dec 2027",
+      "degree": "Ph.D., Industrial Engineering (Operations Research)",
+      "institution": "Clemson University",
+      "detail": "GPA 3.90/4.00 · Advisor: Dr. Kevin M. Taaffe"
+    },
+    {
+      "dates": "Aug 2021 – Aug 2023",
+      "degree": "M.S., Industrial Engineering",
+      "institution": "University of Tennessee, Knoxville",
+      "detail": "GPA 4.00/4.00"
+    },
+    {
+      "dates": "Jan 2012 – Nov 2016",
+      "degree": "B.Sc., Industrial & Production Engineering",
+      "institution": "Rajshahi University of Engineering & Technology",
+      "detail": "CGPA 3.90/4.00 · First in class"
+    }
+  ]
+}

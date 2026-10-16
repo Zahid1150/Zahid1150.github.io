@@ -1,0 +1,41 @@
+{
+  "resume": "Zahid_Islam_Resume.pdf",
+  "cv": "Zahid_Islam_Academic_CV.pdf",
+  "navigation": [
+    {
+      "label": "Home",
+      "url": "index.html",
+      "visible": true
+    },
+    {
+      "label": "Research",
+      "url": "research.html",
+      "visible": true
+    },
+    {
+      "label": "Projects",
+      "url": "projects.html",
+      "visible": true
+    },
+    {
+      "label": "Publications",
+      "url": "publications.html",
+      "visible": true
+    },
+    {
+      "label": "Experience & Education",
+      "url": "experience.html",
+      "visible": true
+    },
+    {
+      "label": "Community & Service",
+      "url": "community.html",
+      "visible": true
+    },
+    {
+      "label": "Gallery",
+      "url": "gallery.html",
+      "visible": true
+    }
+  ]
+}

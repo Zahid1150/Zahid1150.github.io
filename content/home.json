@@ -1,0 +1,34 @@
+{
+  "headline": "Md Zahidul Islam",
+  "intro": "I build optimization, simulation, and machine-learning models that turn operational requirements and data into decisions. My work spans healthcare scheduling, supply chains, and routing.",
+  "availability": "Open to Summer 2027 internships in operations research and data science.",
+  "interests": "My doctoral research connects clinician preferences, fatigue, and operational requirements to better workforce scheduling models. Across my work, I combine mathematical optimization with data analysis and simulation to examine decisions and their trade-offs.",
+  "background": "I am a Ph.D. candidate at Clemson University. Before Clemson, I pursued graduate research at the University of Tennessee and taught engineering at RUET and Ahsanullah University of Science and Technology in Bangladesh.",
+  "community": "From student leadership at RUET and the Greater Khulna Association to mentoring undergraduate researchers and leading Clemson’s INFORMS chapter, community involvement has been a continuing part of my academic life.",
+  "featured": [
+    {
+      "title": "Personalized physician scheduling",
+      "category": "Doctoral research · Healthcare",
+      "url": "research.html#preferences",
+      "image": "images/sched_preferences.png",
+      "alt": "Physician scheduling preference evaluation figure",
+      "description": "Translating clinician priorities and hospital requirements into multi-site scheduling models that balance coverage, fairness, and individual preferences."
+    },
+    {
+      "title": "Learning-based routing optimization",
+      "category": "Published research · IEEE T-ITS",
+      "url": "projects/learning-tsp.html",
+      "image": "images/tsp_architecture.jpg",
+      "alt": "Architecture of the learning-based traveling salesman solution method",
+      "description": "Combining supervised learning with optimization. On 1,000-node instances, published benchmarks showed a 28% smaller average optimality gap and 59% less computation time than a graph pointer network."
+    },
+    {
+      "title": "Supply-chain simulation",
+      "category": "Published research · WSC",
+      "url": "projects/bullwhip-simulation.html",
+      "image": "images/wsc_variance.jpg",
+      "alt": "Simulated supply-chain order variance comparison",
+      "description": "An agent-based model explores information sharing and risk pooling. Combining both reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler."
+    }
+  ]
+}
