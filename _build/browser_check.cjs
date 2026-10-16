@@ -55,8 +55,6 @@ const server = http.createServer((req,res)=>{
   await page.screenshot({path:path.join(root,'../website-dark-preview.png'),fullPage:true});
   await page.emulateMedia({colorScheme:'light',reducedMotion:'reduce'});
   if(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior)!=='auto')errors.push('Reduced motion ignored');
-  await page.goto(base+'/admin/');
-  await page.getByText('Editor prepared · Secure sign-in is not connected yet.').waitFor();
   // Test gallery behavior using temporary HTML, without publishing invented photos.
   await page.goto(base+'/gallery.html');
   await page.evaluate(()=>{

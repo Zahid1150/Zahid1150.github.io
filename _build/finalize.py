@@ -103,7 +103,7 @@ def build():
     paths=sorted(ROOT.glob('*.html'))+sorted((ROOT/'projects').glob('*.html'))
     urls=''.join(f'<url><loc>https://zahid1150.github.io/{p.relative_to(ROOT).as_posix()}</loc></url>' for p in paths)
     (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls+'</urlset>',encoding='utf-8')
-    (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: https://zahid1150.github.io/sitemap.xml\n',encoding='utf-8')
+    (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://zahid1150.github.io/sitemap.xml\n',encoding='utf-8')
     print(f'Built {len(paths)} pages.')
 
 if __name__=='__main__':build()
