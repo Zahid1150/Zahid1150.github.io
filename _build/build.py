@@ -169,11 +169,11 @@ PROJECTS = [
     dict(slug="learning-tsp", title="Learning-Based Optimization for the Traveling Salesman Problem",
          label="Research · UT Space Institute · IEEE Transactions on Intelligent Transportation Systems, 2024",
          line="Co-authored a supervised-learning approach that guides exact and heuristic solvers on large routing problems.",
-         facts=[("28%", "shorter tours than a graph pointer-network baseline"), ("59%", "less runtime on 1,000-node instances"), ("IEEE T-ITS", "journal article")],
+         facts=[("28%", "smaller average optimality gap than a graph pointer-network baseline"), ("59%", "less runtime on 1,000-node instances"), ("IEEE T-ITS", "journal article")],
          overview="Large traveling salesman problems are slow to solve exactly. This work trains a model to predict which parts of a high-quality tour are likely, then uses those predictions to guide solution methods.",
          approach=["Supervised learning predicts structural components of high-quality solutions.",
                    "The predictions are integrated with exact and heuristic solution methods."],
-         results=["Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances."],
+         results=["Published benchmarks showed 28% smaller average optimality gap with 59% less runtime than a graph pointer-network baseline on 1,000-node instances."],
          note="Collaborative work; I am the second author.",
          tools="Supervised learning, combinatorial optimization", docs=[("Paper (DOI)", "https://doi.org/10.1109/TITS.2024.3410691")]),
     dict(slug="perishable-inventory-rl", title="Deep Reinforcement Learning for Perishable Inventory",
@@ -318,7 +318,7 @@ def project_item(p):
 # ---------------------------------------------------------------- research page
 RESEARCH = """<h1>Research</h1>
 <p>My doctoral research asks how emergency department schedules can be built to meet staffing needs while protecting clinicians from fatigue and burnout. It combines optimization models with evidence collected from the clinicians themselves through interviews, surveys, and wearable-device data.</p>
-<div class="note">This work is part of a CDC/NIOSH-funded, multi-institution project with Prisma Health, Clemson University, Wake Forest University School of Medicine, and the University of Central Florida. Advisor: Dr. Kevin M. Taaffe.</div>
+<div class="note">This work is part of a federally funded, multi-institution project with Prisma Health, Clemson University, Wake Forest University School of Medicine, and the University of Central Florida. Advisor: Dr. Kevin M. Taaffe.</div>
 
 <h2 id="scheduling">Optimization models for physician scheduling</h2>
 <p>Emergency physicians in a multi-hospital system rotate across sites, work nights and weekends, and have individual preferences. I build models that produce schedules meeting every hard staffing rule while balancing fatigue, fairness, and those preferences.</p>
@@ -666,7 +666,7 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 </div>
 
 <section><h2>Research</h2>
-<p class="lede">Scheduling emergency department clinicians so that hospitals stay covered and clinicians stay rested. Part of a CDC/NIOSH-funded, multi-institution project with Prisma Health.</p>
+<p class="lede">Scheduling emergency department clinicians so that hospitals stay covered and clinicians stay rested. Part of a federally funded, multi-institution project with Prisma Health.</p>
 <div class="grid two">{RCARDS}</div></section>
 
 <section><h2>Selected projects</h2>
@@ -754,7 +754,7 @@ def skills_html(items):
 
 BLURB = {
  "bullwhip-simulation": "Built an agent-based supply chain simulation in AnyLogic to test two ways of damping the bullwhip effect. Combining information sharing with risk pooling reduced simulated order-to-demand variance by 46.3% at the factory and 49.3% at the wholesaler.",
- "learning-tsp": "Co-authored a supervised-learning method that predicts parts of a high-quality tour and feeds those predictions to exact and heuristic solvers. Published benchmarks showed 28% shorter tours with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.",
+ "learning-tsp": "Co-authored a supervised-learning method that predicts parts of a high-quality tour and feeds those predictions to exact and heuristic solvers. Published benchmarks showed 28% smaller average optimality gap with 59% less runtime than a graph pointer-network baseline on 1,000-node instances.",
  "perishable-inventory-rl": "Developed reinforcement-learning ordering policies for perishable products whose value decays over time, under random demand and quantity discounts that reward ordering more. Presented at the IISE Annual Conference in 2023.",
  "injection-molding-scheduling": "Collaborated on a mixed-integer model that assigns jobs to injection-molding machines with different capabilities under shared resource limits, solved in Gurobi with a plastics manufacturer's data. Presented at the IISE Annual Conference in 2023.",
  "ed-admission-prediction": "Predicted admission versus discharge for 347,360 emergency department visits by combining 50 structured triage variables with 500 text features from chief complaints. Compared five classifiers with cross-validated tuning; CatBoost reached the best ROC-AUC (0.863).",
@@ -801,7 +801,7 @@ def project_page(p):
 
 
 RESEARCH_INTRO = """<p>My research develops data-driven, fatigue-aware, and preference-based optimization models for healthcare workforce scheduling, with a focus on emergency department physicians and nurses. I combine operations research, mathematical optimization, statistical analysis, and human-factors research to understand how shift schedules affect clinicians' fatigue, sleep, recovery, burnout, and well-being, and to build schedules that account for them.</p>
-<p>The work is part of a CDC/NIOSH-funded, multi-institution project with Prisma Health, Clemson University, Wake Forest University School of Medicine, and the University of Central Florida. I bring together evidence from clinician interviews, surveys, historical work schedules, wearable sleep monitoring, and physiological measurements, and use it to design scheduling approaches that meet clinical staffing requirements while balancing individual preferences, fairness, and fatigue-related risk, in support of clinician well-being, patient safety, and efficient operations.</p>"""
+<p>The work is part of a federally funded, multi-institution project with Prisma Health, Clemson University, Wake Forest University School of Medicine, and the University of Central Florida. I bring together evidence from clinician interviews, surveys, historical work schedules, wearable sleep monitoring, and physiological measurements, and use it to design scheduling approaches that meet clinical staffing requirements while balancing individual preferences, fairness, and fatigue-related risk, in support of clinician well-being, patient safety, and efficient operations.</p>"""
 
 RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor: Dr. Kevin M. Taaffe, Clemson University.</p></div>
 
@@ -947,7 +947,7 @@ CSS += """
 JOBS = [
  ("Research", [
   ("Graduate Research Assistant", "Department of Industrial Engineering, Clemson University · Clemson, SC", "Jan 2025 – Present", [
-    "Lead doctoral researcher on a CDC/NIOSH-funded, multi-institution scheduling project with Prisma Health, collaborating with faculty in industrial engineering, psychology, emergency medicine, and sleep science.",
+    "Lead doctoral researcher on a federally funded, multi-institution scheduling project with Prisma Health, collaborating with faculty in industrial engineering, psychology, emergency medicine, and sleep science.",
     "Translated clinician and hospital requirements into multi-site workforce scheduling models (MILP and CP-SAT) covering staffing levels, eligibility, credentials, rest, fatigue, fairness, and individual preferences.",
     "Implemented the models in Python with Gurobi and Google OR-Tools and compared solution approaches for large instances on a high-performance computing cluster; schedules met an average of 84–87% of each physician's weighted preference categories across synthetic 25–75-physician benchmarks while satisfying all hard staffing rules.",
     "Formulated a bi-objective model trading clinician fatigue against schedule quality and fairness for physicians rotating across multiple hospitals over a 90-day planning horizon.",
@@ -1040,7 +1040,7 @@ RESEARCH = f"""<div class="intro">{RESEARCH_INTRO}<p class="small muted">Advisor
 <li>Goals to balance: each physician's weighted preferences, time-off requests, healthy work patterns, and fairness across the group.</li>
 <li>Finding the hard part: removing one rule group at a time showed that the rules on work stretches and rest days make the problem far harder than everything else combined.</li>
 <li>A month as a path: to handle those rules better, each physician's month is modeled as a chain of work blocks and rest periods, with penalties for blocks that run too long or rest that is too short.</li>
-<li>Fairer nights: a new fairness design cut the imbalance in night shifts between physicians by about half, with no loss in coverage.</li>
+<li>Fairer nights: the model balances night-shift assignments between physicians while maintaining coverage.</li>
 <li>Results so far: on synthetic benchmarks with 25 to 75 physicians, schedules met an average of 84–87% of each physician's weighted preference categories while satisfying all hard staffing rules.</li>
 <li>Testing at scale: an automated pipeline runs day-long experiments on Clemson's Palmetto supercomputer, checks every schedule against the rules, and compares model versions side by side.</li>
 </ul>
@@ -1129,7 +1129,7 @@ def rcard(anchor, tag, title, text, sk, img=None, art=None):
 
 RCARDS = "".join([
     rcard("preferences", "Optimization", "Personalized physician schedules across hospitals",
-          "Each physician spends a fixed budget of points on what matters to them, and a mixed-integer model turns those points into personal weights while covering every shift at every hospital. A new fairness design cut the night-shift imbalance between physicians by about half.",
+          "Each physician spends a fixed budget of points on what matters to them, and a mixed-integer model turns those points into personal weights while covering every shift at every hospital. The model balances night-shift assignments alongside coverage and individual preferences.",
           RSK["skills1"][:4], img="images/thumb_sched_overview.jpg"),
     rcard("fatigue", "Optimization", "Fatigue-aware multi-site rostering",
           "A 90-day, four-hospital rostering model that scores each shift's fatigue from chronotype fit, end time, and length. On a 40-physician test, a balanced weighting cut modeled fatigue by 45% for a 12% rise in other schedule penalties. Presented at HSPI and IISE 2026.",
@@ -1361,9 +1361,9 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 
 <section><h2>Featured work</h2>
 <div class="feat">
-{fcard("research.html#preferences", "images/thumb_sched_pref.jpg", "Doctoral research · Optimization", "Personalized physician scheduling", "Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. A new fairness design cut night-shift imbalance by about half.", ["MILP", "Gurobi", "CP-SAT"])}
+{fcard("research.html#preferences", "images/thumb_sched_pref.jpg", "Doctoral research · Optimization", "Personalized physician scheduling", "Physicians weight what matters to them with a points budget; a mixed-integer model covers every shift across hospitals. The model balances night-shift assignments alongside coverage and individual preferences.", ["MILP", "Gurobi", "CP-SAT"])}
 {fcard("projects/ed-admission-prediction.html", "images/thumb_ed_importance.jpg", "Machine learning", "Predicting ED admissions", "Five classifiers on 347,360 emergency visits, combining triage data with chief-complaint text. CatBoost reached the best ROC-AUC (0.863).", ["Python", "Gradient Boosting", "NLP"])}
-{fcard("projects/learning-tsp.html", "STAT:28%~shorter tours|59%~less runtime", "IEEE T-ITS journal article", "Learning-based routing optimization", "Supervised learning guides exact and heuristic solvers on large traveling salesman problems: a 28% smaller average gap and 59% less computation time than a graph pointer network on 1,000-node instances.", ["Supervised Learning", "Routing", "Optimization"])}
+{fcard("projects/learning-tsp.html", "STAT:28%~smaller average optimality gap|59%~less runtime", "IEEE T-ITS journal article", "Learning-based routing optimization", "Supervised learning guides exact and heuristic solvers on large traveling salesman problems: a 28% smaller average optimality gap and 59% less computation time than a graph pointer network on 1,000-node instances.", ["Supervised Learning", "Routing", "Optimization"])}
 </div>
 <div class="more2"><a href="{{up}}research.html">All research →</a><a href="{{up}}projects.html">All 12 projects →</a><a href="{{up}}publications.html">Publications →</a></div>
 </section>
@@ -1371,7 +1371,7 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 <section><h2>Experience and education</h2>
 <div class="cols">
 <div class="panel"><h3>Experience <a class="lk" href="{{up}}experience.html">Details →</a></h3><ul class="tl2">
-<li><span class="y">2025 – Present</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, CDC/NIOSH-funded</span></div></li>
+<li><span class="y">2025 – Present</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, federally funded</span></div></li>
 <li><span class="y">2021 – 2022</span><div><b>Graduate Research Assistant</b><span class="d">University of Tennessee Space Institute · simulation, routing, ML</span></div></li>
 <li><span class="y">2019 – 2021</span><div><b>Lecturer and Assistant Professor</b><span class="d">RUET, Bangladesh · statistics, operations, simulation</span></div></li>
 <li><span class="y">2017 – 2018</span><div><b>Lecturer</b><span class="d">Ahsanullah University of Science and Technology</span></div></li>
@@ -1397,7 +1397,7 @@ HOME = f"""<div class="band"><div class="wrap"><div class="hero">
 
 # ================================================================ v10: professional cleanup (Oct 14, 2026)
 RESEARCH_INTRO = """<p>I build optimization models for healthcare workforce scheduling, focused on emergency department physicians and nurses. The models are grounded in evidence from the clinicians themselves: interviews, surveys, work schedules, sleep tracking, and physiological measures.</p>
-<p>The goal is schedules that meet staffing requirements while balancing individual preferences, fairness, and fatigue. This work is part of a CDC/NIOSH-funded project with Prisma Health, Wake Forest University School of Medicine, and the University of Central Florida.</p>"""
+<p>The goal is schedules that meet staffing requirements while balancing individual preferences, fairness, and fatigue. This work is part of a federally funded project with Prisma Health, Wake Forest University School of Medicine, and the University of Central Florida.</p>"""
 RESEARCH = _re.sub(r'<div class="intro">.*?<p class="small muted">Advisor', lambda m: '<div class="intro">' + RESEARCH_INTRO + '<p class="small muted">Advisor', RESEARCH, count=1, flags=_re.S)
 
 # Experience: keep 8-10 tags per role
@@ -1459,7 +1459,7 @@ def thumb_html(p):
 
 HOME = _re.sub(r'(<section><h2>Featured work</h2>\s*<div class="feat">).*?(</div>\s*<div class="more2">)', lambda m: m.group(1) + "\n" + "\n".join([
  fcard("research.html#preferences", "images/thumb_sched_pref.jpg", "Doctoral research · Optimization", "Personalized physician scheduling",
-       "Each physician weights what matters to them with a points budget, and a mixed-integer model covers every shift across hospitals. A new fairness design cut night-shift imbalance by about half.", []),
+       "Each physician weights what matters to them with a points budget, and a mixed-integer model covers every shift across hospitals. The model balances night-shift assignments alongside coverage and individual preferences.", []),
  fcard("research.html#fatigue", "images/thumb_fatigue.jpg", "Doctoral research · Optimization", "Fatigue-aware multi-site rostering",
        "A 90-day, four-hospital rostering model that scores each shift's fatigue from body clock, end time, and length. On a 40-physician test, it cut modeled fatigue by 45% for a 12% rise in other schedule penalties.", []),
  fcard("research.html#llm", "images/thumb_llm.jpg", "Doctoral research · Machine learning", "LLMs for qualitative analysis",
@@ -1494,7 +1494,7 @@ _PJ = [
  proj("learning-tsp", "Learning-Based Optimization for the Traveling Salesman Problem",
   "Research · UT Space Institute · IEEE Transactions on Intelligent Transportation Systems, 2024",
   "A neural network predicts “anchor” nodes that guide exact and heuristic solvers on large routing problems.",
-  [("87%", "of anchors identified, at over 95% precision"), ("28%", "smaller average gap than a graph pointer network"), ("59%", "less computation time on 1,000-node instances")],
+  [("87%", "of anchors identified, at over 95% precision"), ("28%", "smaller average optimality gap than a graph pointer network"), ("59%", "less computation time on 1,000-node instances")],
   "Learning-based methods for the traveling salesman problem often work well only on instances like the ones they were trained on. This work aimed for a method that stays accurate as problems grow, by learning a simple local pattern that holds at any scale.",
   ["Defined “anchors”: nodes that connect to their nearest neighbors in the optimal tour. In solved instances, roughly 80–90% of nodes are anchors at every problem size.",
    "Trained a feedforward neural network to classify each node as an anchor using only a local distance matrix of its nearest neighbors, so the model applies to instances of any size.",
@@ -1507,7 +1507,7 @@ _PJ = [
    ("images/tsp_anchors.jpg", "Anchor-based construction: anchors (shaded) are connected to their nearest neighbors first. Figure from the published paper (© IEEE).")],
   [("Paper (DOI)", "https://doi.org/10.1109/TITS.2024.3410691")],
   ["Supervised Learning", "Neural Networks", "Combinatorial Optimization", "Integer Programming", "Heuristics", "Routing"],
-  "A neural network predicts “anchor” nodes from local distance features, then exact and heuristic solvers build the tour. Against a graph pointer network on 1,000-node instances: 28% smaller average gap and 59% less computation time.",
+  "A neural network predicts “anchor” nodes from local distance features, then exact and heuristic solvers build the tour. Against a graph pointer network on 1,000-node instances: 28% smaller average optimality gap and 59% less computation time.",
   thumb="images/tsp_architecture.jpg"),
  proj("perishable-inventory-rl", "Deep Reinforcement Learning for Perishable Inventory",
   "Research · UT Space Institute · IISE Annual Conference 2023",
@@ -1742,3 +1742,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Keep generated pages aligned with the published accessibility and wording fixes.
+if __name__ == "__main__":
+    from polish import polish
+    polish()

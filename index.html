@@ -195,9 +195,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 @media (prefers-color-scheme:dark){.statbox{background:#1d2335}.statbox b{color:#c9b5f5}}
 .tl2 li{grid-template-columns:112px 1fr}
 .cta{background:var(--navy)}
+
+/* Keyboard navigation and motion preferences */
+.skip-link{position:fixed;top:8px;left:8px;z-index:100;padding:10px 16px;background:var(--card);color:var(--fg);border:2px solid currentColor;transform:translateY(-160%)}
+.skip-link:focus{transform:translateY(0)}
+a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+main:focus{outline:none}
+[id]{scroll-margin-top:80px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html" class=on>About</a><a href="research.html">Research</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site"><div class="wrap"><a class="name" href="index.html">Md Zahidul Islam</a><nav><a href="index.html" class="on" aria-current="page">About</a><a href="research.html">Research</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
+<main id="main-content" tabindex="-1">
 <div class="band"><div class="wrap"><div class="hero">
 <img src="images/photo.jpg" alt="Md Zahidul Islam">
 <div>
@@ -222,7 +232,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 
 <section><h2>Featured work</h2>
 <div class="feat">
-<a class="card" href="research.html#preferences"><div class="thumb wide"><img src="images/thumb_sched_pref.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Doctoral research · Optimization</span><h3>Personalized physician scheduling</h3><p class="long">Each physician weights what matters to them with a points budget, and a mixed-integer model covers every shift across hospitals. A new fairness design cut night-shift imbalance by about half.</p><span class="go">Details →</span></div></a>
+<a class="card" href="research.html#preferences"><div class="thumb wide"><img src="images/thumb_sched_pref.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Doctoral research · Optimization</span><h3>Personalized physician scheduling</h3><p class="long">Each physician weights what matters to them with a points budget, and a mixed-integer model covers every shift across hospitals. The model balances night-shift assignments alongside coverage and individual preferences.</p><span class="go">Details →</span></div></a>
 <a class="card" href="research.html#fatigue"><div class="thumb wide"><img src="images/thumb_fatigue.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Doctoral research · Optimization</span><h3>Fatigue-aware multi-site rostering</h3><p class="long">A 90-day, four-hospital rostering model that scores each shift's fatigue from body clock, end time, and length. On a 40-physician test, it cut modeled fatigue by 45% for a 12% rise in other schedule penalties.</p><span class="go">Details →</span></div></a>
 <a class="card" href="research.html#llm"><div class="thumb wide"><img src="images/thumb_llm.jpg" alt="" loading="lazy"></div><div class="cbody"><span class="tag">Doctoral research · Machine learning</span><h3>LLMs for qualitative analysis</h3><p class="long">Four Claude configurations coded 18 nurse interviews against a 47-code human codebook. Opus captured up to 39 codes, and together the models covered 93.6%, but none reproduced the human theme on schedule satisfaction.</p><span class="go">Details →</span></div></a>
 </div>
@@ -232,7 +242,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 <section><h2>Experience and education</h2>
 <div class="cols">
 <div class="panel"><h3>Experience <a class="lk" href="experience.html">Details →</a></h3><ul class="tl2">
-<li><span class="y">2025 – Present</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, CDC/NIOSH-funded</span></div></li>
+<li><span class="y">2025 – Present</span><div><b>Graduate Research Assistant</b><span class="d">Clemson University · physician scheduling, federally funded</span></div></li>
 <li><span class="y">2021 – 2022</span><div><b>Graduate Research Assistant</b><span class="d">University of Tennessee Space Institute · simulation, routing, ML</span></div></li>
 <li><span class="y">2019 – 2021</span><div><b>Lecturer and Assistant Professor</b><span class="d">RUET, Bangladesh · statistics, operations, simulation</span></div></li>
 <li><span class="y">2017 – 2018</span><div><b>Lecturer</b><span class="d">Ahsanullah University of Science and Technology</span></div></li>
@@ -255,5 +265,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 <div class="btns" style="margin:0"><a class="btn primary" href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a><a class="btn" href="Zahid_Islam_Resume.pdf">Download resume</a></div></div>
 </div>
 
+</main>
 <footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>

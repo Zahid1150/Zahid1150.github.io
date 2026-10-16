@@ -195,9 +195,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 @media (prefers-color-scheme:dark){.statbox{background:#1d2335}.statbox b{color:#c9b5f5}}
 .tl2 li{grid-template-columns:112px 1fr}
 .cta{background:var(--navy)}
+
+/* Keyboard navigation and motion preferences */
+.skip-link{position:fixed;top:8px;left:8px;z-index:100;padding:10px 16px;background:var(--card);color:var(--fg);border:2px solid currentColor;transform:translateY(-160%)}
+.skip-link:focus{transform:translateY(0)}
+a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+main:focus{outline:none}
+[id]{scroll-margin-top:80px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class="on" aria-current="page">Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
+<main id="main-content" tabindex="-1">
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Bike-Sharing Demand Forecasting</h1><p class="role" style="margin:0">Graduate class project · team project with A. Hines</p></div></div>
 <div class="wrap doc"><div class="facts"><div class="stat"><b>0.96</b><span>test R² for the tuned neural network</span></div><div class="stat"><b>6</b><span>models compared</span></div><div class="stat"><b>8,620</b><span>hourly observations</span></div></div>
 <h2>Problem</h2><p>Bike-sharing operators need to know how many bikes will be rented each hour to plan staff and fleet. This project predicted hourly rentals in Seoul from a year of hourly weather, calendar, and operating data (UCI Seoul Bike Sharing Demand dataset).</p>
@@ -207,5 +217,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 <h2>Skills</h2><div class="skills"><span class="sk">Time-Series Forecasting</span><span class="sk">PyTorch</span><span class="sk">LSTM</span><span class="sk">XGBoost</span><span class="sk">Hyperparameter Tuning</span><span class="sk">Ray Tune</span><span class="sk">SHAP</span></div>
 <p class="small muted" style="margin-top:14px"><b>Tools:</b> Python, PyTorch, Ray Tune, XGBoost, scikit-learn, SHAP</p>
 <h2>Documents</h2><div class="badges"><a class="badge" href="../docs/Bike_Sharing_Forecasting_Report.pdf" target="_blank" rel="noopener">Project report (PDF)</a><a class="badge" href="../docs/Bike_Sharing_Forecasting_Presentation.pdf" target="_blank" rel="noopener">Final presentation (PDF)</a></div></div>
+</main>
 <footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>

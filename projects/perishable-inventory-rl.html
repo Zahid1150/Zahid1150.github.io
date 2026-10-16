@@ -195,9 +195,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 @media (prefers-color-scheme:dark){.statbox{background:#1d2335}.statbox b{color:#c9b5f5}}
 .tl2 li{grid-template-columns:112px 1fr}
 .cta{background:var(--navy)}
+
+/* Keyboard navigation and motion preferences */
+.skip-link{position:fixed;top:8px;left:8px;z-index:100;padding:10px 16px;background:var(--card);color:var(--fg);border:2px solid currentColor;transform:translateY(-160%)}
+.skip-link:focus{transform:translateY(0)}
+a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+main:focus{outline:none}
+[id]{scroll-margin-top:80px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head><body>
-<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class=on>Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site"><div class="wrap"><a class="name" href="../index.html">Md Zahidul Islam</a><nav><a href="../index.html">About</a><a href="../research.html">Research</a><a href="../experience.html">Experience</a><a href="../projects.html" class="on" aria-current="page">Projects</a><a href="../publications.html">Publications</a><a href="../Zahid_Islam_Academic_CV.pdf">CV (PDF)</a></nav></div></header>
+<main id="main-content" tabindex="-1">
 <div class="band slim"><div class="wrap"><div class="crumb"><a href="../projects.html">← All projects</a></div><h1>Deep Reinforcement Learning for Perishable Inventory</h1><p class="role" style="margin:0">Research · UT Space Institute · IISE Annual Conference 2023</p></div></div>
 <div class="wrap doc"><div class="facts"><div class="stat"><b>3</b><span>deep RL algorithms compared</span></div><div class="stat"><b>2</b><span>issuing policies (FIFO, LIFO)</span></div><div class="stat"><b>IISE 2023</b><span>conference presentation</span></div></div>
 <h2>Problem</h2><p>Perishable products expire at the end of their shelf life, so a retailer must balance waste against stockouts. Quantity discounts reward larger orders, which makes the trade-off harder. Earlier deep reinforcement learning studies of perishable inventory had not considered quantity discounts.</p>
@@ -207,5 +217,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 <h2>Skills</h2><div class="skills"><span class="sk">Deep Reinforcement Learning</span><span class="sk">DQN</span><span class="sk">Actor-Critic (A2C)</span><span class="sk">PPO</span><span class="sk">Markov Decision Processes</span><span class="sk">Inventory Optimization</span></div>
 <p class="small muted" style="margin-top:14px"><b>Tools:</b> Python, deep reinforcement learning (DQN, A2C, PPO)</p>
 </div>
+</main>
 <footer><div class="wrap"><span>© 2026 Md Zahidul Islam · Department of Industrial Engineering, Clemson University</span><span><a href="mailto:mdzahii@clemson.edu">mdzahii@clemson.edu</a> · Updated October 2026</span></div></footer>
 </body></html>
