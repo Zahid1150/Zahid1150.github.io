@@ -48,3 +48,12 @@ img{max-width:100%}button{font:inherit;cursor:pointer}p{margin:0 0 1em}h2,h3{mar
 .hero-band .portrait{background:var(--card)}
 .band{background:var(--navy)!important;color:#fff}.band h1{color:#fff}.band .role,.band p{color:#d9dcf0}.band a{color:#ffb38a}
 @media(max-width:1200px){.js #site-nav{background:var(--navy);border-color:#2b3552}#site-nav a[aria-current=page]{background:#2b2a5e;border-color:var(--orange)}}
+
+/* Editorial navigation and compact secondary projects. */
+.additional-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.additional-project{padding:20px 0;border-top:1px solid var(--line)}
+.additional-project h3{margin:5px 0 10px}.additional-project .small{margin:0}
+.research-contents{display:flex;flex-wrap:wrap;gap:12px 24px;padding:20px 0;border-block:1px solid var(--line);margin:28px 0}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+.doc figcaption{line-height:1.6}.manuscript-list li{margin:12px 0}
+@media(max-width:760px){.additional-projects{grid-template-columns:1fr}}

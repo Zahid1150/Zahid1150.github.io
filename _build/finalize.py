@@ -19,7 +19,7 @@ def page(name, title, description, body):
     depth = '../' if '/' in name else ''
     config = read('settings.json')
     cv_url = config['cv'] if config['cv'].startswith(('/', 'https://')) else depth + config['cv']
-    links = ''.join(f'<a href="{depth}{e(x["url"])}"'+(' aria-current="page"' if x['url']==name else '')+f'>{e(x["label"])}</a>' for x in config['navigation'] if x.get('visible', True))
+    links = ''.join(f'<a href="{depth}{e(x["url"])}"'+(' aria-current="page"' if (x['url']==name or (x['url']=='projects.html' and (name=='research.html' or name.startswith('projects/')))) else '')+f'>{e(x["label"])}</a>' for x in config['navigation'] if x.get('visible', True))
     html = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} | Md Zahidul Islam</title><meta name="description" content="{e(description, quote=True)}">
@@ -46,13 +46,12 @@ def home():
     selected=''.join(f'<article class="work-card"><a href="{e(x["url"])}"><div class="work-image"><img src="{e(x["image"])}" alt="{e(x["alt"])}" loading="lazy" width="640" height="360"></div><div class="work-body"><p class="eyebrow">{e(x["category"])}</p><h3>{e(x["title"])}</h3><p>{e(x["description"])}</p><span class="text-link">Explore the work →</span></div></a></article>' for x in data['featured'])
     honors=''.join(f'<div class="honor"><span class="year">{e(x["year"])}</span><h3>{e(x["title"])}</h3><p>{e(x["organization"])}</p></div>' for x in awards if x.get('featured'))
     return f'''<div class="hero-band"><section class="home-hero wrap"><div class="hero-copy"><p class="eyebrow">Clemson University · Industrial Engineering</p><h1>{e(data['headline'])}</h1><p class="hero-role">Ph.D. Candidate in Operations Research</p><p class="hero-intro">{e(data['intro'])}</p><div class="hero-actions">{link('#selected-work','Explore my work','button primary')}{link(settings['resume'],'Download resume','button')}</div><p class="availability"><span aria-hidden="true"></span>{e(data['availability'])}</p><div class="social-links">{link(settings['cv'],'Academic CV')}{link('mailto:mdzahii@clemson.edu','Email')}{link('https://scholar.google.com/citations?user=Gf1KtKsAAAAJ&hl=en','Google Scholar')}</div></div><figure class="portrait"><img src="images/photo.jpg" alt="Md Zahidul Islam" width="600" height="720" fetchpriority="high"><figcaption>Md Zahidul Islam <span>Optimization · Analytics · Decision Support</span></figcaption></figure></section></div>
-<section class="section tint" id="selected-work"><div class="wrap"><div class="section-title"><div><p class="eyebrow">From models to decisions</p><h2>Selected work</h2></div>{link('projects.html','Explore all projects →')}</div><div class="work-grid">{selected}</div></div></section>
-<section class="section wrap"><div class="editorial"><div><p class="eyebrow">Technical focus</p><h2>Decisions shaped by people,<br>resources, and uncertainty.</h2></div><div><p>{e(data['interests'])}</p>{link('research.html','My doctoral research →')}<div class="topics"><span>Optimization & scheduling</span><span>Machine learning</span><span>Simulation & stochastic models</span></div></div></div></section>
-<section class="section tint"><div class="wrap editorial"><div><p class="eyebrow">Experience & education</p><h2>Experience across models,<br>data, and operations.</h2><p>{e(data['background'])}</p>{link('experience.html','Explore my experience →')}</div><ol class="education-mini"><li><span>Expected 2027 · Clemson University</span><h3>Ph.D., Industrial Engineering</h3><p>Operations Research</p></li><li><span>2023 · University of Tennessee, Knoxville</span><h3>M.S., Industrial Engineering</h3></li><li><span>2016 · RUET</span><h3>B.Sc., Industrial & Production Engineering</h3></li></ol></div></section>
+<section class="section tint" id="selected-work"><div class="wrap"><div class="section-title"><div><p class="eyebrow">Research &amp; projects</p><h2>Selected work</h2></div>{link('projects.html','Research & projects →')}</div><div class="work-grid">{selected}</div></div></section>
+<section class="section wrap"><div class="editorial"><div><p class="eyebrow">Research focus</p><h2>Models for operational decisions</h2></div><div><p>{e(data['interests'])}</p>{link('research.html','My doctoral research →')}<div class="topics"><span>Optimization & scheduling</span><span>Machine learning</span><span>Simulation & stochastic models</span></div></div></div></section>
+<section class="section tint"><div class="wrap editorial"><div><p class="eyebrow">Experience & education</p><h2>Academic background</h2><p>{e(data['background'])}</p>{link('experience.html','Explore my experience →')}</div><ol class="education-mini"><li><span>Expected 2027 · Clemson University</span><h3>Ph.D., Industrial Engineering</h3><p>Operations Research</p></li><li><span>2023 · University of Tennessee, Knoxville</span><h3>M.S., Industrial Engineering</h3></li><li><span>2016 · RUET</span><h3>B.Sc., Industrial & Production Engineering</h3></li></ol></div></section>
 <section class="section wrap"><div class="section-title"><div><p class="eyebrow">Recognition</p><h2>Selected honors</h2></div>{link('experience.html#honors','All honors & awards →')}</div><div class="honors-grid">{honors}</div></section>
-<section class="section community-band"><div class="wrap editorial"><div><p class="eyebrow">Beyond research</p><h2>Leadership, mentoring,<br>and community.</h2></div><div><p>{e(data['community'])}</p>{link('community.html','Community & service →','button')}</div></div></section>
-<section class="section wrap gallery-teaser"><div><p class="eyebrow">Gallery</p><h2>People, places, and milestones.</h2><p>Research, teaching, and community activities across Clemson and Bangladesh.</p></div>{link('gallery.html','Visit the gallery →','button')}</section>
-<section class="contact-section wrap"><h2>Let’s connect.</h2><p>{e(data['availability'])}</p>{link('mailto:mdzahii@clemson.edu','mdzahii@clemson.edu ↗','contact-link')}</section>'''
+<section class="section community-band"><div class="wrap editorial"><div><p class="eyebrow">Service</p><h2>Leadership, mentoring,<br>and community.</h2></div><div><p>{e(data['community'])}</p>{link('community.html','Community & service →','button')}</div></div></section>
+<section class="contact-section wrap"><h2>Contact</h2><p>{e(data['availability'])}</p>{link('mailto:mdzahii@clemson.edu','mdzahii@clemson.edu ↗','contact-link')}</section>'''
 
 def community():
     content=heading('Leadership & involvement','Community & Service','Student leadership, mentoring, and professional service in Bangladesh and the United States.')
@@ -82,7 +81,7 @@ def build():
     for template in (ROOT/'_site/pages').glob('**/*.html'):
         name=template.relative_to(ROOT/'_site/pages').as_posix()
         body=template.read_text(encoding='utf-8')
-        title={'research.html':'Research','projects.html':'Projects','publications.html':'Publications','experience.html':'Experience & Education'}.get(name)
+        title={'research.html':'Doctoral Research','projects.html':'Research & Projects','publications.html':'Publications','experience.html':'Experience & Education'}.get(name)
         if not title:
             match=re.search(r'<h1[^>]*>(.*?)</h1>',body,re.S)
             title=re.sub('<[^>]+>','',match.group(1)) if match else 'Project'
@@ -94,6 +93,8 @@ def build():
                 body+=f'<article class="service-item"><p class="year">{e(x["dates"])}</p><div><h3>{e(x["degree"])}</h3><p>{e(x["institution"])}</p><p>{e(x["detail"])}</p></div></article>'
             body+='</div></section><section class="section wrap" id="honors"><h2>Honors, Fellowships & Awards</h2><div class="service-list">'
             for x in read('awards.json')['items']:
+                if 'Chapter Annual Award' in x['title']:
+                    body+='</div><h3>Chapter recognition</h3><div class="service-list">'
                 body+=f'<article class="service-item"><p class="year">{e(x["year"])}</p><div><h3>{e(x["title"])}</h3><p class="organization">{e(x["organization"])}</p><p>{e(x["description"])}</p></div></article>'
             body+='</div></section>'
         page(name,title,'Research and professional work of Md Zahidul Islam, Ph.D. candidate at Clemson University.',body)

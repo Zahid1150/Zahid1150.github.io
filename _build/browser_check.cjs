@@ -51,6 +51,11 @@ const server = http.createServer((req,res)=>{
   await page.locator('img').evaluateAll(imgs=>imgs.forEach(i=>i.loading='eager'));
   await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete));
   await page.screenshot({path:path.join(root,'../website-desktop-preview.png'),fullPage:true});
+  await page.goto(base+'/projects.html');
+  await page.locator('img').evaluateAll(imgs=>imgs.forEach(i=>i.loading='eager'));
+  await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete));
+  await page.screenshot({path:path.join(root,'../website-projects-preview.png'),fullPage:true});
+  await page.goto(base+'/index.html');
   await page.emulateMedia({colorScheme:'dark'});
   await page.screenshot({path:path.join(root,'../website-dark-preview.png'),fullPage:true});
   await page.emulateMedia({colorScheme:'light',reducedMotion:'reduce'});

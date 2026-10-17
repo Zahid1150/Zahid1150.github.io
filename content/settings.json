@@ -8,12 +8,7 @@
       "visible": true
     },
     {
-      "label": "Research",
-      "url": "research.html",
-      "visible": true
-    },
-    {
-      "label": "Projects",
+      "label": "Research & Projects",
       "url": "projects.html",
       "visible": true
     },

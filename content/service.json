@@ -1,41 +1,6 @@
 {
   "groups": [
     {
-      "title": "RUET & community in Bangladesh",
-      "items": [
-        {
-          "role": "Moderator",
-          "organization": "RUET IPE Club",
-          "dates": "2019–2021",
-          "description": ""
-        },
-        {
-          "role": "Organizing Secretary",
-          "organization": "Association of Industrial & Production Engineering, RUET",
-          "dates": "Student leadership · 2012–2016",
-          "description": ""
-        },
-        {
-          "role": "Vice President",
-          "organization": "RUET IPE Club",
-          "dates": "Student leadership · 2012–2016",
-          "description": ""
-        },
-        {
-          "role": "General Secretary",
-          "organization": "Greater Khulna Association",
-          "dates": "Student leadership · 2012–2016",
-          "description": ""
-        },
-        {
-          "role": "Class Representative",
-          "organization": "Rajshahi University of Engineering & Technology",
-          "dates": "Student leadership · 2012–2016",
-          "description": ""
-        }
-      ]
-    },
-    {
       "title": "Leadership at Clemson",
       "items": [
         {
@@ -71,6 +36,41 @@
           "role": "Professional Memberships",
           "organization": "INFORMS · Institute of Industrial and Systems Engineers",
           "dates": "2022 – Present",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "title": "RUET & community in Bangladesh",
+      "items": [
+        {
+          "role": "Moderator",
+          "organization": "RUET IPE Club",
+          "dates": "2019–2021",
+          "description": ""
+        },
+        {
+          "role": "Organizing Secretary",
+          "organization": "Association of Industrial & Production Engineering, RUET",
+          "dates": "Student leadership · 2012–2016",
+          "description": ""
+        },
+        {
+          "role": "Vice President",
+          "organization": "RUET IPE Club",
+          "dates": "Student leadership · 2012–2016",
+          "description": ""
+        },
+        {
+          "role": "General Secretary",
+          "organization": "Greater Khulna Association",
+          "dates": "Student leadership · 2012–2016",
+          "description": ""
+        },
+        {
+          "role": "Class Representative",
+          "organization": "Rajshahi University of Engineering & Technology",
+          "dates": "Student leadership · 2012–2016",
           "description": ""
         }
       ]
