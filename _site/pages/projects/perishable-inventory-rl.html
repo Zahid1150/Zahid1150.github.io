@@ -4,6 +4,7 @@
 <h2>Methods</h2><ul><li>Modeled a retailer serving random demand without backorders; each item has a fixed lifetime and must be disposed of when it expires, and orders arrive after a deterministic lead time.</li><li>Included ordering, holding, lost-sales, and perishability costs, with an all-unit quantity discount on orders.</li><li>Formulated the problem as a Markov decision process and solved it with three deep reinforcement learning algorithms: deep Q-network, advantage actor-critic, and proximal policy optimization.</li><li>Compared first-in-first-out and last-in-first-out issuing policies and analyzed sensitivity to model parameters.</li></ul>
 <h2>Findings</h2><ul><li>The study examined how DQN, A2C, and PPO policies respond to changes in cost and demand parameters under FIFO and LIFO issuing. It was presented at the IISE Annual Conference in 2023.</li></ul>
 
+<figure><img src="../images/ill_inventory.jpg" alt="Schematic: inventory on hand under an ordering policy, with units expiring at the end of their shelf life. Illustration only, not study results."><figcaption>Schematic: inventory on hand under an ordering policy, with units expiring at the end of their shelf life. Illustration only, not study results.</figcaption></figure>
 <h2>Methods &amp; tools</h2><div class="skills"><span class="sk">Deep Reinforcement Learning</span><span class="sk">DQN</span><span class="sk">Actor-Critic (A2C)</span><span class="sk">PPO</span><span class="sk">Markov Decision Processes</span><span class="sk">Inventory Optimization</span></div>
 
 </div>

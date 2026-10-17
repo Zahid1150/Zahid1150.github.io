@@ -15,6 +15,7 @@
 <h2>Methods</h2><ul><li>Modeled dryers as parallel machines whose drying time depends on the job, followed by unrelated parallel molding machines.</li><li>Included job- and machine-dependent setup and processing times, machine eligibility, and limited shared resources: mold hangers, setup technicians, and operators.</li><li>Formulated the problem as a mixed-integer linear program minimizing makespan and solved smaller instances with Gurobi.</li></ul>
 <h2>Findings</h2><ul><li>Gurobi solved the smaller instances, demonstrating the formulation’s ability to represent drying, molding, machine eligibility, and shared-resource constraints. A multi-phase solution approach was identified as a direction for larger instances.</li></ul>
 
+<figure><img src="../images/ill_molding.jpg" alt="Schematic: molding jobs scheduled across parallel machines. Illustration only, not study results."><figcaption>Schematic: molding jobs scheduled across parallel machines. Illustration only, not study results.</figcaption></figure>
 <h2>Methods &amp; tools</h2><div class="skills"><span class="sk">Mixed-Integer Linear Programming</span><span class="sk">Parallel-Machine Scheduling</span><span class="sk">Resource-Constrained Scheduling</span><span class="sk">Gurobi</span></div>
 
 </div>
