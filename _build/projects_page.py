@@ -38,7 +38,7 @@ def build():
            '<section class="pj-lead"><div class="pj-lead-img"><img src="images/sched_overview.png" alt="Healthcare workforce scheduling model"></div>'
            '<div><p class="eyebrow">Doctoral research · Clemson · Ongoing</p><h2>Healthcare Workforce Planning and Scheduling</h2>'
            '<p>Preference-based and fatigue-aware optimization informed by clinician interviews, surveys, and operational requirements. '
-           'Synthetic scheduling benchmarks met an average of 84–87% of weighted preference categories while satisfying all hard staffing rules.</p>'
+           'In 15 test instances with a pool of about 65 physicians across 5 EDs, preferences backed with the most points were met 89% of the time, and every day-off request was granted.</p>'
            '<a class="text-link" href="research.html">Read about my doctoral research →</a></div></section>']
     jump = []
     secs = []
